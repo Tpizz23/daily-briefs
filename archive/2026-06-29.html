@@ -1,0 +1,195 @@
+<style>
+    :root {
+      --ink: #1a1814;
+      --ink-soft: #5b554c;
+      --paper: #f6f2ea;
+      --paper-deep: #ece5d6;
+      --rule: #d9d2c4;
+      --accent: #8c3a1f;
+      --accent-soft: #b95a36;
+      --serif: Georgia, Charter, 'Iowan Old Style', 'Source Serif 4', serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(100% - 40px, 1120px); margin: 0 auto; padding: 28px 0 88px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .masthead { padding: 24px 0 38px; border-bottom: 1px solid var(--rule); }
+    .wordmark { margin: 0 0 18px; color: var(--ink-soft); font: 700 12px/1 var(--serif); letter-spacing: .04em; }
+    .dateline { margin: 0; font-family: Georgia, Charter, 'Iowan Old Style', serif; font-weight: 650; font-size: clamp(2.55rem, 12vw, 4.85rem); line-height: .96; letter-spacing: -.045em; max-width: 10ch; }
+    .subline { margin: 18px 0 0; color: var(--ink-soft); max-width: 38rem; }
+    .rail { display: none; }
+    .brief-section { padding: 34px 0 30px; border-top: 1px solid var(--rule); }
+    .brief-section:first-child { border-top: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--accent); flex: 0 0 auto; }
+    h2 { margin: 0 0 17px; font: 650 clamp(1.55rem, 5vw, 2.15rem)/1.05 var(--serif); letter-spacing: -.025em; }
+    h3 { margin: 0 0 7px; font: 650 1.15rem/1.25 var(--serif); letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p:first-child { font-size: 1.03rem; }
+    .link-list, .news-list { margin: 0; padding: 0; list-style: none; }
+    .link-list { display: grid; gap: 10px; }
+    .link-list li:not(.plain) a { display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 64%, transparent); color: var(--ink); font-weight: 680; }
+    .link-list .plain { color: var(--ink-soft); font-size: .94rem; margin-top: 8px; }
+    .news-list { counter-reset: news; }
+    .news-list li { position: relative; padding: 18px 0 18px 42px; border-top: 1px solid var(--rule); }
+    .news-list li:first-child { border-top: 0; padding-top: 0; }
+    .news-list li::before { counter-increment: news; content: counter(news); position: absolute; left: 0; top: 18px; width: 24px; height: 24px; display: grid; place-items: center; color: var(--paper); background: var(--ink); font: 700 12px/1 var(--sans); }
+    .news-list li:first-child::before { top: 0; }
+    .dek { color: var(--ink-soft); margin: 0; }
+    footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 22px; color: var(--ink-soft); font-size: .9rem; }
+    @media (min-width: 760px) {
+      body { font-size: 18px; }
+      .shell { width: min(100% - 72px, 1120px); padding-top: 48px; }
+      .dateline { max-width: 13ch; }
+      .content { max-width: 42rem; }
+      .brief-section { padding: 46px 0 40px; }
+    }
+    @media (min-width: 1040px) {
+      .layout { grid-template-columns: 13rem minmax(0, 42rem); align-items: start; gap: 72px; }
+      .rail { display: block; position: sticky; top: 40px; padding-top: 8px; }
+      .rail p { color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; margin: 0 0 16px; }
+      .rail nav { display: grid; gap: 9px; }
+      .rail a { color: var(--ink-soft); font-size: .88rem; }
+      .rail a:hover { color: var(--ink); }
+    }
+  </style><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TJ Daily Brief · Monday, June 29, 2026</title>
+  <meta name="description" content="TJ's public daily brief: verse, motivation, workouts, sermon reflection, and AI news.">
+  <link rel="canonical" href="https://Tpizz23.github.io/daily-briefs/archive/2026-06-29.html">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <aside class="rail" role="navigation" aria-label="Sections">
+        <p>On this page</p>
+        <nav>
+          <a href="#verse">Scripture</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#workout">Workout</a>
+          <a href="#sermon">Sermon Review</a>
+          <a href="#tech">AI · Industry</a>
+          <a href="#health">AI · Medicine</a>
+        </nav>
+      </aside>
+      <main id="main">
+        <header class="masthead">
+          <p class="wordmark">TJ Daily Brief</p>
+          <h1 class="dateline">Monday, June 29, 2026</h1>
+        </header>
+<section class="brief-section" id="verse" aria-labelledby="verse-label">
+  <p class="eyebrow">Today's Verse</p>
+  <h2 id="verse-label">Scripture</h2>
+  <div class="section-body">
+    <p>&quot;Don't let this hope fade from your sight. You learned it from Scripture, and it guided you when you heard the Good News about the salvation that came to you through faith in Jesus Christ.&quot;</p>
+<p>— Romans 10:17 (adapted)</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="motivation" aria-labelledby="motivation-label">
+  <p class="eyebrow">Daily Inspiration</p>
+  <h2 id="motivation-label">Motivation</h2>
+  <div class="section-body">
+    <p>&quot;The Law of Concentration states that whatever you dwell upon grows. The more you think about something, the more it becomes part of your reality.&quot; — Brian Tracy</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="workout" aria-labelledby="workout-label">
+  <p class="eyebrow">Movement</p>
+  <h2 id="workout-label">Workout</h2>
+  <div class="section-body">
+    <p>Wed Jul 01 — Legs, Shoulders &amp; Core (Full Gym)</p>
+<p>Thu Jul 02 — Chest &amp; Triceps (Full Gym)</p>
+<p>Fri Jul 03 — Back &amp; Biceps (Full Gym)</p>
+<p>Sat Jul 04 — Legs, Shoulders &amp; Core (Full Gym)</p>
+    <ul class="link-list"><li><a href="https://Tpizz23.github.io/workouts/2026-07-01_Legs-Shoulders-Core_Full-Gym.html">→</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-07-01_Legs-Shoulders-Core_Limited-Barbell.html">→</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-07-02_Chest-Triceps_Full-Gym.html">→</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-07-02_Chest-Triceps_Limited-Barbell.html">→</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-07-03_Back-Biceps_Full-Gym.html">→</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-07-03_Back-Biceps_Limited-Barbell.html">→</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-07-04_Legs-Shoulders-Core_Full-Gym.html">→</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-07-04_Legs-Shoulders-Core_Limited-Barbell.html">→</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="sermon" aria-labelledby="sermon-label">
+  <p class="eyebrow">Reflection</p>
+  <h2 id="sermon-label">Sermon Review</h2>
+  <div class="section-body">
+    <p>&quot;Sermon: What Will You Leave Behind?&quot;</p>
+<p>Series: Made for Relationships · Preacher: Dan Lian</p>
+<p>TODAY'S FOCUS: The Weight of What We Leave</p>
+<p>KEY SCRIPTURE</p>
+<p>Romans 14:7–8 — &quot;None of us lives for ourselves, and none of us dies for ourselves. If we live, we live for the Lord, and if we die, we die for the Lord.&quot;</p>
+<p>INSIGHT</p>
+<p>Pastor Dan Lian opened week five of Made for Relationships by asking a question many of us avoid: What will you actually leave behind? In a cultural moment obsessed with building empires and accumulating assets, this sermon reframes legacy as relational investment — not financial inheritance. Romans 14:7–8 reminds us that our lives are not our own; they belong to the Lord. This means the most significant thing we can leave is not a thing at all, but a person who has been shaped, discipled, and loved because of our investment in them. The sermon pushback against the comfortable lie that we can delay this kind of investment: &quot;I'll get serious about mentoring someone when I'm older, when I have more time.&quot; Dan's challenge is that the next generation needs us now, not later.</p>
+<p>TODAY'S APPLICATION</p>
+<p>Ask yourself: Who is one person younger than you that you are currently investing in — or could begin investing in? Schedule a conversation with them this week, not to teach, but to listen and learn who they are. Start with presence, not programs.</p>
+<p>CLOSING PRAYER</p>
+<p>Lord, I confess I have often thought about legacy in terms of what I can build or earn, rather than who I can pour into. Help me see the people you've placed around me as the real inheritance I leave. Give me eyes for those who need a faithful presence, and courage to start investing before I feel ready. In Jesus' name, Amen.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="tech" aria-labelledby="tech-label">
+  <p class="eyebrow">Technology briefing</p>
+  <h2 id="tech-label">AI · Industry</h2>
+  <div class="section-body">
+    <p>1. Engineers Are the Last Jobs AI Won't Take — TechCrunch</p>
+<p>Despite relentless layoff headlines, software engineers now make up 55% of new tech hires — up from 46% in 2019 — defying predictions that AI would decimate engineering careers. SignalFire data covering millions of employees shows engineering hiring declined only 11% vs. 2019's 25% overall, with early-stage startup engineering growing 7%. Jensen Huang and Anthropic's head of economics both cite ongoing high demand as AI boosts rather than replaces engineering output.</p>
+<p>https://techcrunch.com/2026/06/24/ai-was-supposed-to-kill-engineering-jobs-but-new-data-suggests-theyre-the-most-resilient/</p>
+<p>2. U.S. Government Restriction on Anthropic's New Models Sparks Global Debate — TechCrunch</p>
+<p>The U.S. government directed Anthropic to suspend foreign access to its newest frontier models Fable 5 and Mythos 5, triggering an urgent debate in India — Anthropic's second-largest market — over strategic dependence on American AI providers. Indian tech leaders are calling for accelerated domestic AI development, with some proposing multi-billion-dollar sovereign AI funds and greater adoption of open-source models to reduce exposure to future geopolitical restrictions.</p>
+<p>https://techcrunch.com/2026/06/13/as-anthropic-suspends-access-to-new-models-india-debates-its-ai-future</p>
+<p>3. Six in Ten Consumers Find &quot;AI&quot; Label a Turnoff in Brand Messaging — TechCrunch</p>
+<p>Sixty percent of U.S. consumers say brands explicitly marketing &quot;AI&quot; features are a turnoff, and 86% don't fully trust AI-generated answers without links to original sources, according to a WordPress VIP survey of 2,000 adults and enterprise decision-makers. The finding creates a paradox: 60% of brands report increased traffic from AI search engines even as consumers increasingly distrust overt AI branding, forcing companies to optimize for AI discoverability without advertising it.</p>
+<p>https://techcrunch.com/2026/06/16/sixty-percent-of-u-s-consumers-say-ai-in-brand-messaging-is-a-turnoff-survey-finds</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="health" aria-labelledby="health-label">
+  <p class="eyebrow">Healthcare briefing</p>
+  <h2 id="health-label">AI · Medicine</h2>
+  <div class="section-body">
+    <p>1. FDA-Cleared AI for Heart Disease Detection Coming to OpenEvidence Platform — STAT News</p>
+<p>A researcher who made STAT's Wunderkinds list in 2020 is commercializing an FDA-cleared AI tool that detects heart disease from standard electrocardiogram readings, which will now be integrated into the OpenEvidence clinical platform used by physicians. The deployment brings AI-assisted cardiovascular screening a step closer to mainstream point-of-care use, potentially enabling earlier detection of heart conditions without specialized imaging equipment.</p>
+<p>https://www.statnews.com/2026/06/23/openevidence-fda-cleared-heart-disease-ai-health-tech</p>
+<p>2. AI Clinical Decision Support Needs Better Evidence and Clearer Labels to Scale — Fierce Healthcare</p>
+<p>A Duke-Margolis Center for Health Policy report warns that AI-enabled clinical decision support software faces a critical adoption barrier: developers cannot yet demonstrate sufficient clinical and economic value using population-representative data. The report calls for new labeling frameworks that distinguish continuous-learning AI models from locked software, alongside clearer requirements for explainability and bias mitigation before payers will provide broad reimbursement.</p>
+<p>https://www.fiercehealthcare.com/tech/more-clinical-evidence-improved-product-labeling-needed-to-accelerate-adoption-ai-enabled-cds</p>
+<p>3. Fierce Healthcare's Fierce 15 Spotlights AI-Native Care Networks and Smart Hospital Platforms — Fierce Healthcare</p>
+<p>Fierce Healthcare's annual 15-most-innovative-companies report highlights Akido Labs — operating nearly 100 AI-native clinics across three states serving 500,000 patients — and Artisight, whose AI camera and microphone smart hospital platform is deployed in 9% of U.S. patient rooms with a 100% contract renewal rate. Atropos Health also appears for its network of 300 million+ de-identified patient records enabling physicians to generate real-world clinical evidence in an average of 5.23 minutes.</p>
+<p>https://www.fiercehealthcare.com/special-reports/fierce-healthcares-fierce-15-2026</p>
+    
+    
+  </div>
+</section>
+        <footer>
+          Generated at 7:15 AM ET · Vol. 2026, No. 180 · <a href="https://Tpizz23.github.io/daily-briefs/archive/2026-06-29.html">Permanent link</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
