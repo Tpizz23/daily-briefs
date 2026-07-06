@@ -1,0 +1,174 @@
+<style>
+    :root {
+      --ink: #1a1814;
+      --ink-soft: #5b554c;
+      --paper: #f6f2ea;
+      --paper-deep: #ece5d6;
+      --rule: #d9d2c4;
+      --accent: #8c3a1f;
+      --accent-soft: #b95a36;
+      --serif: Georgia, Charter, 'Iowan Old Style', 'Source Serif 4', serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(100% - 40px, 1120px); margin: 0 auto; padding: 28px 0 88px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .masthead { padding: 24px 0 38px; border-bottom: 1px solid var(--rule); }
+    .wordmark { margin: 0 0 18px; color: var(--ink-soft); font: 700 12px/1 var(--serif); letter-spacing: .04em; }
+    .dateline { margin: 0; font-family: Georgia, Charter, 'Iowan Old Style', serif; font-weight: 650; font-size: clamp(2.55rem, 12vw, 4.85rem); line-height: .96; letter-spacing: -.045em; max-width: 10ch; }
+    .subline { margin: 18px 0 0; color: var(--ink-soft); max-width: 38rem; }
+    .rail { display: none; }
+    .brief-section { padding: 34px 0 30px; border-top: 1px solid var(--rule); }
+    .brief-section:first-child { border-top: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--accent); flex: 0 0 auto; }
+    h2 { margin: 0 0 17px; font: 650 clamp(1.55rem, 5vw, 2.15rem)/1.05 var(--serif); letter-spacing: -.025em; }
+    h3 { margin: 0 0 7px; font: 650 1.15rem/1.25 var(--serif); letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p:first-child { font-size: 1.03rem; }
+    .link-list, .news-list { margin: 0; padding: 0; list-style: none; }
+    .link-list { display: grid; gap: 10px; }
+    .link-list li:not(.plain) a { display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 64%, transparent); color: var(--ink); font-weight: 680; }
+    .link-list .plain { color: var(--ink-soft); font-size: .94rem; margin-top: 8px; }
+    .news-list { counter-reset: news; }
+    .news-list li { position: relative; padding: 18px 0 18px 42px; border-top: 1px solid var(--rule); }
+    .news-list li:first-child { border-top: 0; padding-top: 0; }
+    .news-list li::before { counter-increment: news; content: counter(news); position: absolute; left: 0; top: 18px; width: 24px; height: 24px; display: grid; place-items: center; color: var(--paper); background: var(--ink); font: 700 12px/1 var(--sans); }
+    .news-list li:first-child::before { top: 0; }
+    .dek { color: var(--ink-soft); margin: 0; }
+    footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 22px; color: var(--ink-soft); font-size: .9rem; }
+    @media (min-width: 760px) {
+      body { font-size: 18px; }
+      .shell { width: min(100% - 72px, 1120px); padding-top: 48px; }
+      .dateline { max-width: 13ch; }
+      .content { max-width: 42rem; }
+      .brief-section { padding: 46px 0 40px; }
+    }
+    @media (min-width: 1040px) {
+      .layout { grid-template-columns: 13rem minmax(0, 42rem); align-items: start; gap: 72px; }
+      .rail { display: block; position: sticky; top: 40px; padding-top: 8px; }
+      .rail p { color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; margin: 0 0 16px; }
+      .rail nav { display: grid; gap: 9px; }
+      .rail a { color: var(--ink-soft); font-size: .88rem; }
+      .rail a:hover { color: var(--ink); }
+    }
+  </style><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TJ Daily Brief · Monday, July 6, 2026</title>
+  <meta name="description" content="TJ's public daily brief: verse, motivation, workouts, sermon reflection, and AI news.">
+  <link rel="canonical" href="https://Tpizz23.github.io/daily-briefs/archive/2026-07-06.html">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <aside class="rail" role="navigation" aria-label="Sections">
+        <p>On this page</p>
+        <nav>
+          <a href="#verse">Scripture</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#sermon">Sermon Review</a>
+          <a href="#tech">AI · Industry</a>
+          <a href="#health">AI · Medicine</a>
+        </nav>
+      </aside>
+      <main id="main">
+        <header class="masthead">
+          <p class="wordmark">TJ Daily Brief</p>
+          <h1 class="dateline">Monday, July 6, 2026</h1>
+        </header>
+<section class="brief-section" id="verse" aria-labelledby="verse-label">
+  <p class="eyebrow">Today's Verse</p>
+  <h2 id="verse-label">Scripture</h2>
+  <div class="section-body">
+    <p><strong>Jeremiah 48:38</strong> — &quot;On all the housetops of Moab, and in its streets, there is lamentation everywhere; for I have broken Moab like a vessel in which no one delights,&quot; says Yahweh.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="motivation" aria-labelledby="motivation-label">
+  <p class="eyebrow">Daily Inspiration</p>
+  <h2 id="motivation-label">Motivation</h2>
+  <div class="section-body">
+    <p>&quot;Don't take yourself too seriously, pretty soon you can find the humor in our everyday lives.&quot; — Betty White</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="sermon" aria-labelledby="sermon-label">
+  <p class="eyebrow">Reflection</p>
+  <h2 id="sermon-label">Sermon Review</h2>
+  <div class="section-body">
+    <p>&quot;What Is Your Money Costing You?&quot; · Made for Relationships · Lee McDerment</p>
+<p>TODAY'S FOCUS: The True Cost of Money</p>
+<p>KEY SCRIPTURE</p>
+<p>Matthew 6:24 — &quot;No one can serve two masters, for either he will hate the one and love the other, or he will be devoted to the one and despise the other. You cannot serve God and money.&quot;</p>
+<p>INSIGHT</p>
+<p>Jesus doesn't say money is bad — He says it's a master that demands total allegiance. When money controls our decisions, it hijacks our relationships, our time, and our trust. How does money affect our relationship with God and with others? For many of us, the answer is more troubling than we'd like to admit. Money creates anxiety, fuels comparison, and breeds resentment when it becomes the lens through which we evaluate our worth. The chaos of &quot;money madness&quot; isn't just about spreadsheets — it's about an idol that promises security but delivers slavery. Series context: Made for Relationships exposes how anything that competes with God for our heart's devotion fractures the relationships we're made for.</p>
+<p>TODAY'S APPLICATION</p>
+<p>Today, examine your relationship with money honestly. Where does financial anxiety show up in your life — in conversations with your spouse, in decisions about your time, in how you think about your future? Ask God: &quot;What would it look like to serve You instead of this master?&quot; Write down one money-related decision you'll make differently today as an act of worship.</p>
+<p>CLOSING PRAYER</p>
+<p>God, I confess that money has often been a master in my life when You deserve to be the only One. Forgive me for the times I've trusted in what I have rather than in who You are. Today I choose to serve You alone. Show me where money has created chaos in my relationships and give me the courage to release control. In Jesus' name, Amen.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="tech" aria-labelledby="tech-label">
+  <p class="eyebrow">Technology briefing</p>
+  <h2 id="tech-label">AI · Industry</h2>
+  <div class="section-body">
+    <p>1. UN Warning on Global AI Governance — UN Secretary-General is pushing for binding international AI rules amid escalating concerns over &quot;catastrophic harm&quot; from unregulated AI systems deployed across borders.</p>
+<p>https://news.google.com/rss/articles/CBMiV0FVX3lxTE0wRnVPT1YyTXBENHBlZEFnOUZDLUNfdXdjczBfTzlGSFgydExNTXhDZEc4Z2Z6bmhycVgwSGoxQ0lDelhod01UbkZEbUNpUnQxZWQwLVFrbw?oc=5</p>
+<p>2. Chinese AI Models Close the Gap With Anthropic and OpenAI — Major Chinese AI labs have released new models that benchmark competitively against leading Western systems, signaling a rapid closing of the capability gap.</p>
+<p>https://news.google.com/rss/articles/CBMimAFBVV95cUxPUDRpb3h2M2o0SndKeW0zNVpOWmUxN01wV2xXc2VfcEo3UkVzb0xpdVpwUTJZZEN1X1BIMEJrUUNxTEpnMks3dFg3a1c3R1FsbnJpQ3ZidWhUUHVCZGRTX2R2ZEozVkQwTHBGeFQta2JadTdGLW9uN0dkSzZIYmVPb1E4clBPVEZYMk5YWVR5VTJBb0lwalV0aA?oc=5</p>
+<p>3. UK Startups Raise $17B in H1 2026 With AI Dominating VC — UK AI startups captured $17 billion in the first half of 2026, with AI deals representing 74% of all venture capital invested.</p>
+<p>https://news.google.com/rss/articles/CBMidkFVX3lxTE9sNE0zWnJXZlZHR29PMHBmRmRIeUpacjhjWlZ4N1pVc1hyRnJXRXVJVGluZUdQZWs4NjNHcFM3VzRWZXR2cng2Z0t1a1Y2MEdlTGt0VXRtMkJvTWpOS3hUY1FuR2hHTWZCSzZ3N0NLanZJaC1HX3c?oc=5</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="health" aria-labelledby="health-label">
+  <p class="eyebrow">Healthcare briefing</p>
+  <h2 id="health-label">AI · Medicine</h2>
+  <div class="section-body">
+    <p>1. AI Tool Improves Prediction of Cancer Immunotherapy Response — A new AI system analyzes patient data to better predict which individuals will respond to cancer immunotherapy drugs, potentially sparing non-responders from harmful side effects.</p>
+<p>https://news.google.com/rss/articles/CBMiX0FVX3lxTE5BdHJHODc1ck41N29adnZCZlMtVURGUEV6X1k0Tjhyc1ZpcUJJTkxRaHIxQkc0WnhSVklLNGhrUVRQYkJZVjBYUjI2a3Z2TlZyNlF3a19Td3pJdFJXRFhj?oc=5</p>
+<p>2. Eric Topol: Agentic AI Is Coming to Medicine — Leading digital health expert Eric Topol examines the emergence of autonomous AI agents in clinical settings and what they mean for diagnosis and treatment.</p>
+<p>https://news.google.com/rss/articles/CBMibkFVX3lxTE5sUEcwRzB2RDdHX09XSWxZU3lYa2F4RUtFT0FVZmJVTV9ZX1ZpY01NMlFFMUZ2YlA0eHZ0TV9lVEE4N3kyaEVMS1R2VUJuR1AteTN5dlh0LXpqTjlyd1lyLUxhMzluc1hPdjd1Tzh3?oc=5</p>
+<p>3. AMA: Transparency and Quality Are Essential as AI Expands in Care — The American Medical Association releases new guidance urging healthcare systems to ensure AI tools meet transparency and quality standards before deployment.</p>
+<p>https://news.google.com/rss/articles/CBMivAFBVV95cUxNSlAtSTlFNjNIYkJMMzM5YzJZWk9ydFhFdkFOMlVKQlFHcGlGUUZRR0lqVFZ4TEZCbmxSWDlJVHgyUDlUMUIxeXRhME5hU0w0alRsZ0lSNU81SVJVdXNpRUVxVVZNdkRpZUgzTE90aElYV2ZndXRrRkk3bkZKZnI0MkpkRWFxNmdZeTYwRUJLNVNTUkpfa00xVWlhTU1zRmpTSGlOZ2UzQWZPSGNwNzNHbi1EekFFNlZtSXlJVQ?oc=5</p>
+    
+    
+  </div>
+</section>
+        <footer>
+          Generated at 7:15 AM ET · Vol. 2026, No. 187 · <a href="https://Tpizz23.github.io/daily-briefs/archive/2026-07-06.html">Permanent link</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
