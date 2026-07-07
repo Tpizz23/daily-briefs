@@ -1,0 +1,174 @@
+<style>
+    :root {
+      --ink: #1a1814;
+      --ink-soft: #5b554c;
+      --paper: #f6f2ea;
+      --paper-deep: #ece5d6;
+      --rule: #d9d2c4;
+      --accent: #8c3a1f;
+      --accent-soft: #b95a36;
+      --serif: Georgia, Charter, 'Iowan Old Style', 'Source Serif 4', serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(100% - 40px, 1120px); margin: 0 auto; padding: 28px 0 88px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .masthead { padding: 24px 0 38px; border-bottom: 1px solid var(--rule); }
+    .wordmark { margin: 0 0 18px; color: var(--ink-soft); font: 700 12px/1 var(--serif); letter-spacing: .04em; }
+    .dateline { margin: 0; font-family: Georgia, Charter, 'Iowan Old Style', serif; font-weight: 650; font-size: clamp(2.55rem, 12vw, 4.85rem); line-height: .96; letter-spacing: -.045em; max-width: 10ch; }
+    .subline { margin: 18px 0 0; color: var(--ink-soft); max-width: 38rem; }
+    .rail { display: none; }
+    .brief-section { padding: 34px 0 30px; border-top: 1px solid var(--rule); }
+    .brief-section:first-child { border-top: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--accent); flex: 0 0 auto; }
+    h2 { margin: 0 0 17px; font: 650 clamp(1.55rem, 5vw, 2.15rem)/1.05 var(--serif); letter-spacing: -.025em; }
+    h3 { margin: 0 0 7px; font: 650 1.15rem/1.25 var(--serif); letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p:first-child { font-size: 1.03rem; }
+    .link-list, .news-list { margin: 0; padding: 0; list-style: none; }
+    .link-list { display: grid; gap: 10px; }
+    .link-list li:not(.plain) a { display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 64%, transparent); color: var(--ink); font-weight: 680; }
+    .link-list .plain { color: var(--ink-soft); font-size: .94rem; margin-top: 8px; }
+    .news-list { counter-reset: news; }
+    .news-list li { position: relative; padding: 18px 0 18px 42px; border-top: 1px solid var(--rule); }
+    .news-list li:first-child { border-top: 0; padding-top: 0; }
+    .news-list li::before { counter-increment: news; content: counter(news); position: absolute; left: 0; top: 18px; width: 24px; height: 24px; display: grid; place-items: center; color: var(--paper); background: var(--ink); font: 700 12px/1 var(--sans); }
+    .news-list li:first-child::before { top: 0; }
+    .dek { color: var(--ink-soft); margin: 0; }
+    footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 22px; color: var(--ink-soft); font-size: .9rem; }
+    @media (min-width: 760px) {
+      body { font-size: 18px; }
+      .shell { width: min(100% - 72px, 1120px); padding-top: 48px; }
+      .dateline { max-width: 13ch; }
+      .content { max-width: 42rem; }
+      .brief-section { padding: 46px 0 40px; }
+    }
+    @media (min-width: 1040px) {
+      .layout { grid-template-columns: 13rem minmax(0, 42rem); align-items: start; gap: 72px; }
+      .rail { display: block; position: sticky; top: 40px; padding-top: 8px; }
+      .rail p { color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; margin: 0 0 16px; }
+      .rail nav { display: grid; gap: 9px; }
+      .rail a { color: var(--ink-soft); font-size: .88rem; }
+      .rail a:hover { color: var(--ink); }
+    }
+  </style><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TJ Daily Brief · Tuesday, July 7, 2026</title>
+  <meta name="description" content="TJ's public daily brief: verse, motivation, workouts, sermon reflection, and AI news.">
+  <link rel="canonical" href="https://Tpizz23.github.io/daily-briefs/archive/2026-07-07.html">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <aside class="rail" role="navigation" aria-label="Sections">
+        <p>On this page</p>
+        <nav>
+          <a href="#verse">Scripture</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#workout">Workout</a>
+          <a href="#sermon">Sermon Review</a>
+          <a href="#tech">AI · Industry</a>
+          <a href="#health">AI · Medicine</a>
+        </nav>
+      </aside>
+      <main id="main">
+        <header class="masthead">
+          <p class="wordmark">TJ Daily Brief</p>
+          <h1 class="dateline">Tuesday, July 7, 2026</h1>
+        </header>
+<section class="brief-section" id="verse" aria-labelledby="verse-label">
+  <p class="eyebrow">Today's Verse</p>
+  <h2 id="verse-label">Scripture</h2>
+  <div class="section-body">
+    <p><strong>Proverbs 2:21</strong> — &quot;For the upright will dwell in the land. The perfect will remain in it.&quot;</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="motivation" aria-labelledby="motivation-label">
+  <p class="eyebrow">Daily Inspiration</p>
+  <h2 id="motivation-label">Motivation</h2>
+  <div class="section-body">
+    <p>&quot;You don't need a weatherman to know which way the wind blows.&quot; — Bob Dylan</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="workout" aria-labelledby="workout-label">
+  <p class="eyebrow">Movement</p>
+  <h2 id="workout-label">Workout</h2>
+  <div class="section-body">
+    
+    <ul class="link-list"><li><a href="https://Tpizz23.github.io/workouts/">This week's workouts are ready at</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="sermon" aria-labelledby="sermon-label">
+  <p class="eyebrow">Reflection</p>
+  <h2 id="sermon-label">Sermon Review</h2>
+  <div class="section-body">
+    <p>&quot;What Is Your Money Costing You?&quot; · Made for Relationships · Lee McDerment</p>
+<p>TODAY'S FOCUS: Generosity as the Gospel Shape of Money</p>
+<p>KEY SCRIPTURE</p>
+<p>2 Corinthians 9:6-7 — &quot;Whoever sows sparingly will also reap sparingly, and whoever sows with blessings will also reap with blessings. Each person should give what he has decided in his heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.&quot;</p>
+<p>INSIGHT</p>
+<p>The antidote to money madness is not merely budgeting better — it's the heart behind giving. Paul's words in 2 Corinthians reframe our entire approach: generosity isn't a suggestion for the spiritual elite, it's the natural fruit of a heart captured by the gospel. When we grasp that God gave His only Son while we were still sinners (Romans 5:8), our calculations about risk and sacrifice in giving get recalibrated entirely. Cheerful giving isn't about the amount — it's about the posture. A person who tithes out of guilt gives differently than one who gives out of gratitude. The sermon's mention of &quot;true freedom as we steward money God's way&quot; points here: generosity is how we escape the matrix of consumption and find freedom in giving.</p>
+<p>TODAY'S APPLICATION</p>
+<p>Identify one person or one cause you can give to this week — not out of obligation, but out of genuine gratitude for what God has given you. Set up that gift today, whether it's money, time, or a handwritten note. Let your giving be an act of worship, not a response to guilt.</p>
+<p>CLOSING PRAYER</p>
+<p>Lord, You gave everything on the cross while I was still self-focused. Help me to give with that same freely-given, not-compelled spirit. Break the spirit of measurement in me — &quot;how much is enough?&quot; — and replace it with the joy of participating in Your kingdom work. Teach me that generosity is the doorway to freedom, not sacrifice. Amen.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="tech" aria-labelledby="tech-label">
+  <p class="eyebrow">Technology briefing</p>
+  <h2 id="tech-label">AI · Industry</h2>
+  <div class="section-body">
+    
+    
+    <ol class="news-list"><li><h3>MIT Tech Review: The 10 AI Trends Shaping 2026 — Humanoid robots are being trained on massive datasets of human movement videos, as companies collect motion data to bridge AI's gap into physical environments. This emerging &quot;humanoid data&quot; collection effort parallels how language data built today's LLMs. |</h3><p class="dek"></p><p><a href="https://www.technologyreview.com/2026/04/21/1135643/10-ai-artificial-intelligence-trends-technologies-research-2026">Open link</a></p></li><li><h3>NVIDIA: State of AI Report 2026 — A survey of 3,200+ organizations found 88% report AI increased annual revenue and 87% report reduced costs, with 64% actively using AI in production. Healthcare leads in generative AI adoption, with 99% of telecom respondents citing improved employee productivity. |</h3><p class="dek"></p><p><a href="https://blogs.nvidia.com/blog/state-of-ai-report-2026">Open link</a></p></li><li><h3>IBM Think: AI Trends for 2026 — The AI industry is shifting from model-centric competition to system-level integration, with &quot;super agents&quot; that coordinate multiple AI systems across environments emerging as the next frontier for enterprise productivity. |</h3><p class="dek"></p><p><a href="https://www.ibm.com/think/news/ai-tech-trends-predictions-2026">Open link</a></p></li></ol>
+  </div>
+</section>
+<section class="brief-section" id="health" aria-labelledby="health-label">
+  <p class="eyebrow">Healthcare briefing</p>
+  <h2 id="health-label">AI · Medicine</h2>
+  <div class="section-body">
+    
+    
+    <ol class="news-list"><li><h3>Healthcare IT News: Execution Paralysis in Health Systems — A HIMSS/Guidehouse survey found 78% of health systems are engaged in AI projects, but only 52% feel operationally ready to deploy at scale, with data quality and cybersecurity concerns as top barriers. |</h3><p class="dek"></p><p><a href="https://www.healthcareitnews.com/news/many-health-systems-suffer-ai-execution-paralysis-study-shows">Open link</a></p></li><li><h3>FierceHealthcare: 75% of US Health Systems Now Using AI — Adoption surged to 75% in 2026, up from 59% in 2025, with 50% of systems using three or more AI applications; clinical documentation leads at 68% adoption, while draft replies to patient texts grew 80% year-over-year. |</h3><p class="dek"></p><p><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/75-us-healthcare-systems-use-plan-use-ai-platform-2026">Open link</a></p></li><li><h3>Healthcare IT News: Mental Health AI Moves to Core Operations — A $15M Duke University grant is deploying AI that predicts mental health deterioration up to 84% accurately up to one year in advance, moving from pilot studies to rural clinic deployments across three states. |</h3><p class="dek"></p><p><a href="https://www.healthcareitnews.com/news/mental-health-ai-breaking-through-core-operations-2026">Open link</a></p></li></ol>
+  </div>
+</section>
+        <footer>
+          Generated at 7:15 AM ET · Vol. 2026, No. 188 · <a href="https://Tpizz23.github.io/daily-briefs/archive/2026-07-07.html">Permanent link</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
