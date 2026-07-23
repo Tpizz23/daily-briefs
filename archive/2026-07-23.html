@@ -1,0 +1,175 @@
+<style>
+    :root {
+      --ink: #1a1814;
+      --ink-soft: #5b554c;
+      --paper: #f6f2ea;
+      --paper-deep: #ece5d6;
+      --rule: #d9d2c4;
+      --accent: #8c3a1f;
+      --accent-soft: #b95a36;
+      --serif: Georgia, Charter, 'Iowan Old Style', 'Source Serif 4', serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(100% - 40px, 1120px); margin: 0 auto; padding: 28px 0 88px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .masthead { padding: 24px 0 38px; border-bottom: 1px solid var(--rule); }
+    .wordmark { margin: 0 0 18px; color: var(--ink-soft); font: 700 12px/1 var(--serif); letter-spacing: .04em; }
+    .dateline { margin: 0; font-family: Georgia, Charter, 'Iowan Old Style', serif; font-weight: 650; font-size: clamp(2.55rem, 12vw, 4.85rem); line-height: .96; letter-spacing: -.045em; max-width: 10ch; }
+    .subline { margin: 18px 0 0; color: var(--ink-soft); max-width: 38rem; }
+    .rail { display: none; }
+    .brief-section { padding: 34px 0 30px; border-top: 1px solid var(--rule); }
+    .brief-section:first-child { border-top: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--accent); flex: 0 0 auto; }
+    h2 { margin: 0 0 17px; font: 650 clamp(1.55rem, 5vw, 2.15rem)/1.05 var(--serif); letter-spacing: -.025em; }
+    h3 { margin: 0 0 7px; font: 650 1.15rem/1.25 var(--serif); letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p:first-child { font-size: 1.03rem; }
+    .link-list, .news-list { margin: 0; padding: 0; list-style: none; }
+    .link-list { display: grid; gap: 10px; }
+    .link-list li:not(.plain) a { display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 64%, transparent); color: var(--ink); font-weight: 680; }
+    .link-list .plain { color: var(--ink-soft); font-size: .94rem; margin-top: 8px; }
+    .news-list { counter-reset: news; }
+    .news-list li { position: relative; padding: 18px 0 18px 42px; border-top: 1px solid var(--rule); }
+    .news-list li:first-child { border-top: 0; padding-top: 0; }
+    .news-list li::before { counter-increment: news; content: counter(news); position: absolute; left: 0; top: 18px; width: 24px; height: 24px; display: grid; place-items: center; color: var(--paper); background: var(--ink); font: 700 12px/1 var(--sans); }
+    .news-list li:first-child::before { top: 0; }
+    .dek { color: var(--ink-soft); margin: 0; }
+    footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 22px; color: var(--ink-soft); font-size: .9rem; }
+    @media (min-width: 760px) {
+      body { font-size: 18px; }
+      .shell { width: min(100% - 72px, 1120px); padding-top: 48px; }
+      .dateline { max-width: 13ch; }
+      .content { max-width: 42rem; }
+      .brief-section { padding: 46px 0 40px; }
+    }
+    @media (min-width: 1040px) {
+      .layout { grid-template-columns: 13rem minmax(0, 42rem); align-items: start; gap: 72px; }
+      .rail { display: block; position: sticky; top: 40px; padding-top: 8px; }
+      .rail p { color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; margin: 0 0 16px; }
+      .rail nav { display: grid; gap: 9px; }
+      .rail a { color: var(--ink-soft); font-size: .88rem; }
+      .rail a:hover { color: var(--ink); }
+    }
+  </style><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TJ Daily Brief · Thursday, July 23, 2026</title>
+  <meta name="description" content="TJ's public daily brief: verse, motivation, workouts, sermon reflection, and AI news.">
+  <link rel="canonical" href="https://Tpizz23.github.io/daily-briefs/archive/2026-07-23.html">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <aside class="rail" role="navigation" aria-label="Sections">
+        <p>On this page</p>
+        <nav>
+          <a href="#verse">Scripture</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#workout">Workout</a>
+          <a href="#sermon">Sermon Review</a>
+          <a href="#tech">AI · Industry</a>
+          <a href="#health">AI · Medicine</a>
+        </nav>
+      </aside>
+      <main id="main">
+        <header class="masthead">
+          <p class="wordmark">TJ Daily Brief</p>
+          <h1 class="dateline">Thursday, July 23, 2026</h1>
+        </header>
+<section class="brief-section" id="verse" aria-labelledby="verse-label">
+  <p class="eyebrow">Today's Verse</p>
+  <h2 id="verse-label">Scripture</h2>
+  <div class="section-body">
+    <p><strong>Psalms 118:24</strong> — “This is the day that Yahweh has made. We will rejoice and be glad in it!”</p>
+<p>Source: World English Bible via bible-api.com</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="motivation" aria-labelledby="motivation-label">
+  <p class="eyebrow">Daily Inspiration</p>
+  <h2 id="motivation-label">Motivation</h2>
+  <div class="section-body">
+    <p>“It is the mark of an educated mind to be able to entertain a thought without accepting it.” — Aristotle</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="workout" aria-labelledby="workout-label">
+  <p class="eyebrow">Movement</p>
+  <h2 id="workout-label">Workout</h2>
+  <div class="section-body">
+    
+    <ul class="link-list"><li><a href="https://Tpizz23.github.io/workouts/2026-07-25_Back-Biceps_Full-Gym.html">[July 25 — Back-Biceps (Full Gym)]()</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-07-25_Back-Biceps_Limited-Barbell.html">[July 25 — Back-Biceps (Limited Barbell)]()</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-07-26_Legs-Shoulders-Core_Full-Gym.html">[July 26 — Legs-Shoulders-Core (Full Gym)]()</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-07-26_Legs-Shoulders-Core_Limited-Barbell.html">[July 26 — Legs-Shoulders-Core (Limited Barbell)]()</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="sermon" aria-labelledby="sermon-label">
+  <p class="eyebrow">Reflection</p>
+  <h2 id="sermon-label">Sermon Review</h2>
+  <div class="section-body">
+    <p>“Why Friendship is So Hard” · Made For Relationships · Allen Cothran</p>
+<p>TODAY'S FOCUS: Practical Disciplines for Friendship</p>
+<p>KEY SCRIPTURE</p>
+<p>Proverbs 17:17 — “A friend loves at all times, and a brother is born for a difficult day.”</p>
+<p>INSIGHT</p>
+<p>Friendship does not happen by accident—it requires discipline. The sermon offered practical wisdom: prioritize consistency over intensity, show up in both celebrations and struggles, and be present when it matters. One of the key insights was that we often want friendship without the cost, but real friendship requires being there for the difficult days, not just the good ones. This means regular investment, practical service, and emotional availability. The Made for Relationships series reminds us that relationships are skills to be developed, not just feelings to be enjoyed.</p>
+<p>TODAY'S APPLICATION</p>
+<p>Identify one practical discipline you can commit to this week to strengthen a friendship: consistent coffee meetings, a weekly phone call, or simply being more available when a friend reaches out. Commit to one specific action today and set a reminder. Then actually do it—friendship requires execution, not just intention.</p>
+<p>CLOSING PRAYER</p>
+<p>God, I want to be a good friend, but I confess I often prioritize my own comfort over investing in others. Give me the discipline to show up consistently. Teach me to love at all times—in the easy seasons and especially in the hard ones. Help me build rhythms of friendship that reflect Your steadfast love. Amen.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="tech" aria-labelledby="tech-label">
+  <p class="eyebrow">Technology briefing</p>
+  <h2 id="tech-label">AI · Industry</h2>
+  <div class="section-body">
+    
+    
+    <ol class="news-list"><li><h3>Experts tell Alabama lawmakers to set red lines to protect adolescents from AI, chatbots — Alabama Reflector</h3><p class="dek">Experts urged Alabama legislators to establish safeguards protecting adolescents from risks posed by AI chatbots.</p><p><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxNZ2l1cnRjM0V1WnVQaG1UbzEwMjFEMXV6Q05qNHRQQV8xSWU4SGFFTzRrUGhXdjBqLWJOZ0tDd0VIT0tLTU0yTnZOMGNWSjNPWXl5UzBNMXI1MDIwZnMxYW44N1lYcGNhTHc1YWtNbEhFWmJkbW9aaXVlTkZFQXNDZXBHZE5INURqUjFRS05FVmdzZ0J1SWVpOEpUeUFIYzBnTS1GZjVHekdEZ2lpWE52aEh4S2NOOVdhNFBlcy1SM2lTODNkcU8w?oc=5">Open link</a></p></li><li><h3>How artificial intelligence is transforming APIs and digital integration at Telefónica — telefonica.com</h3><p class="dek">Telefónica describes using AI to modernize APIs and integration, signaling broader operational changes across its digital systems.</p><p><a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOakJ6QnVuNVNWQnhoT0FFaDY2UUNoenN3NlE1ZHRBQWlCMDc2MkpwVnZpZmhnamdTT25sNm9Id1ltZjNkMWRESm1lS28yTDlKUUwxeDVzRTJNWENabXRaeDlnWXY1cE9FZFB0TkFIbVNZQ1R6cTc2QmNVQ0hHY0FUVVc5S3ktemtBM18tcEs1b3BDaG1DVjFXZ3R3?oc=5">Open link</a></p></li><li><h3>$5 billion in federal research funding announced for artificial-intelligence projects — AL.com</h3><p class="dek">Federal officials announced $5 billion for artificial-intelligence research projects, expanding public support for AI development.</p><p><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxOdjRzQ3dYWFRKZG1DU3JUSTAtTjNmLVVCNlNHb3diYWVSNzgxVGhVLU4xZUR3Q3EwRHoxSzhqYmFJbWgwNno0OHd6eWdWVzZCazBOU2pzR2lmVk5QaG1VUWNtSVFMYV9FdUdpX2hnRVdyOTVBU3paTjMzUTRpblpMSWZJVzBsQUItVVo0NTRGMmVNcTI2eF9Jb1p5eENOZ180eFI4ZE9Gem1HNlplVVFJNUNjYWRhNXhocG1rUGVB0gHSAUFVX3lxTFA5MTZjaDBFRG1MTHBET0VPeVg1bEU5WHBiSmZ4T0VKY1cwRkFRMXF6d0tsYnZLQ29XWm5qZTEyLWJ4dEtrU013MkphVW4zaTRQbUIwX2dkcTZWSkpWZnl4Y2xBRDVjdVp6S3JlMVRqTGRURzY4QThLXzhBWmFHcDVBTVZqZEhfYVVkNkpIYy1Ub2c1em5WeTMyTzRlTEtlcU40NXF4Vk0zZTdGUE93RnNTM3pudGl1X2JsRmtfVUF1VTFSdVVnWUpRYXdPX3I1Wkd3QQ?oc=5">Open link</a></p></li></ol>
+  </div>
+</section>
+<section class="brief-section" id="health" aria-labelledby="health-label">
+  <p class="eyebrow">Healthcare briefing</p>
+  <h2 id="health-label">AI · Medicine</h2>
+  <div class="section-body">
+    
+    
+    <ol class="news-list"><li><h3>Health-ISAC benchmarking report finds healthcare CISOs prioritize IAM, resilience as AI threats accelerate — Industrial Cyber</h3><p class="dek">A Health-ISAC benchmark finds healthcare CISOs prioritizing identity management and resilience as AI-driven cyber threats accelerate.</p><p><a href="https://news.google.com/rss/articles/CBMi2AFBVV95cUxOQ0ZxN0Z1RVBOOXJGWUZZTHdLWnllbFdnbkZoMDZ6ZWFZQ2dpSXpzeDBQUzRwTF9EMzUtZ3c0ZmFYX3dyaGR5TjVqNnB3MWxuUlUzcS1oUE9CMXBFLXMxcTFyTmdBOGlJMG9PRW9tcjJ5LVMtdEYzUDdFN25DSXJnTEx4clpjNF92YzdlcG9mTVBVbU9GME9JSm5ydUxCZkdmRnJ2QnlfMjlpakk4dVBlbGg1T3IwUFd2eDZlU01hazJBR1VLS1Q3TE1XQkpraVBjM2NBZTlIQXI?oc=5">Open link</a></p></li><li><h3>AI confidence outpaces operational adoption across healthcare — Healthcare Finance News</h3><p class="dek">Healthcare leaders report strong confidence in AI, but deployment remains constrained by operational readiness and implementation barriers.</p><p><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxNNFdwRWhuTC1hcFZBM3V3TmdZRlZzWHo4Wm9HRWtDUEhINWpVdl9JTXV2aUVFaVFqYnY4RlNPWjIwdGs3NnBLRkFNRVN4OXFwMDllR3lMbXF1SnNqQ0p6ZEdJT2NnYjRSYjlTY0c5YmpMWklzX0VSLXJnaHVDaWxob1h2XzVoQ2dmelphNWdTUWRLajd5SDNxSXYtN1FQZ2o1elEwaTNVdw?oc=5">Open link</a></p></li><li><h3>From black box to “glass box”: How RAAPID is bringing explainable AI to healthcare risk adjustment — The Official Microsoft Blog</h3><p class="dek">RAAPID uses explainable AI for risk adjustment, giving healthcare teams clearer insight into coding recommendations.</p><p><a href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxNc3RmelZiS2dTRGtvUGtBbkxmZThsbHBheWUwU2twX042RWtiMkdDOHhjRnl4UHpHX3BWaWdkOVJiZVZrVU9XV29Ed3JsTDJpTmMzc1BLUno4dEJQSmNWQTdyQUVOSnZKWGUxMnZ6YWt5TzhnY1RmUlVwTUt0TWJWV0FLTFgxYkdGenZkQUhyWEk1SVhta3hUMXUyUzdZcnRZMndiQi10NjhSdmtLN21teDFkVlo2dFNQVFltVFVWQThRRWN5Qk5xeXRCMmZVdGFEMDVuSXptY283b3c?oc=5">Open link</a></p></li></ol>
+  </div>
+</section>
+        <footer>
+          Generated at 7:15 AM ET · Vol. 2026, No. 204 · <a href="https://Tpizz23.github.io/daily-briefs/archive/2026-07-23.html">Permanent link</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
