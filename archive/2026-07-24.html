@@ -1,0 +1,176 @@
+<style>
+    :root {
+      --ink: #1a1814;
+      --ink-soft: #5b554c;
+      --paper: #f6f2ea;
+      --paper-deep: #ece5d6;
+      --rule: #d9d2c4;
+      --accent: #8c3a1f;
+      --accent-soft: #b95a36;
+      --serif: Georgia, Charter, 'Iowan Old Style', 'Source Serif 4', serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(100% - 40px, 1120px); margin: 0 auto; padding: 28px 0 88px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .masthead { padding: 24px 0 38px; border-bottom: 1px solid var(--rule); }
+    .wordmark { margin: 0 0 18px; color: var(--ink-soft); font: 700 12px/1 var(--serif); letter-spacing: .04em; }
+    .dateline { margin: 0; font-family: Georgia, Charter, 'Iowan Old Style', serif; font-weight: 650; font-size: clamp(2.55rem, 12vw, 4.85rem); line-height: .96; letter-spacing: -.045em; max-width: 10ch; }
+    .subline { margin: 18px 0 0; color: var(--ink-soft); max-width: 38rem; }
+    .rail { display: none; }
+    .brief-section { padding: 34px 0 30px; border-top: 1px solid var(--rule); }
+    .brief-section:first-child { border-top: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--accent); flex: 0 0 auto; }
+    h2 { margin: 0 0 17px; font: 650 clamp(1.55rem, 5vw, 2.15rem)/1.05 var(--serif); letter-spacing: -.025em; }
+    h3 { margin: 0 0 7px; font: 650 1.15rem/1.25 var(--serif); letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p:first-child { font-size: 1.03rem; }
+    .link-list, .news-list { margin: 0; padding: 0; list-style: none; }
+    .link-list { display: grid; gap: 10px; }
+    .link-list li:not(.plain) a { display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 64%, transparent); color: var(--ink); font-weight: 680; }
+    .link-list .plain { color: var(--ink-soft); font-size: .94rem; margin-top: 8px; }
+    .news-list { counter-reset: news; }
+    .news-list li { position: relative; padding: 18px 0 18px 42px; border-top: 1px solid var(--rule); }
+    .news-list li:first-child { border-top: 0; padding-top: 0; }
+    .news-list li::before { counter-increment: news; content: counter(news); position: absolute; left: 0; top: 18px; width: 24px; height: 24px; display: grid; place-items: center; color: var(--paper); background: var(--ink); font: 700 12px/1 var(--sans); }
+    .news-list li:first-child::before { top: 0; }
+    .dek { color: var(--ink-soft); margin: 0; }
+    footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 22px; color: var(--ink-soft); font-size: .9rem; }
+    @media (min-width: 760px) {
+      body { font-size: 18px; }
+      .shell { width: min(100% - 72px, 1120px); padding-top: 48px; }
+      .dateline { max-width: 13ch; }
+      .content { max-width: 42rem; }
+      .brief-section { padding: 46px 0 40px; }
+    }
+    @media (min-width: 1040px) {
+      .layout { grid-template-columns: 13rem minmax(0, 42rem); align-items: start; gap: 72px; }
+      .rail { display: block; position: sticky; top: 40px; padding-top: 8px; }
+      .rail p { color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; margin: 0 0 16px; }
+      .rail nav { display: grid; gap: 9px; }
+      .rail a { color: var(--ink-soft); font-size: .88rem; }
+      .rail a:hover { color: var(--ink); }
+    }
+  </style><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TJ Daily Brief · Friday, July 24, 2026</title>
+  <meta name="description" content="TJ's public daily brief: verse, motivation, workouts, sermon reflection, and AI news.">
+  <link rel="canonical" href="https://Tpizz23.github.io/daily-briefs/archive/2026-07-24.html">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <aside class="rail" role="navigation" aria-label="Sections">
+        <p>On this page</p>
+        <nav>
+          <a href="#verse">Scripture</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#sermon">Sermon Review</a>
+          <a href="#tech">AI · Industry</a>
+          <a href="#health">AI · Medicine</a>
+        </nav>
+      </aside>
+      <main id="main">
+        <header class="masthead">
+          <p class="wordmark">TJ Daily Brief</p>
+          <h1 class="dateline">Friday, July 24, 2026</h1>
+        </header>
+<section class="brief-section" id="verse" aria-labelledby="verse-label">
+  <p class="eyebrow">Today's Verse</p>
+  <h2 id="verse-label">Scripture</h2>
+  <div class="section-body">
+    <p>“God is our refuge and strength, a very present help in trouble.” — Psalms 46:1 (WEB)</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="motivation" aria-labelledby="motivation-label">
+  <p class="eyebrow">Daily Inspiration</p>
+  <h2 id="motivation-label">Motivation</h2>
+  <div class="section-body">
+    <p>“Life is to be fortified by many friendships. To love, and to be loved, is the greatest happiness of existence.” — Sydney Smith</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="sermon" aria-labelledby="sermon-label">
+  <p class="eyebrow">Reflection</p>
+  <h2 id="sermon-label">Sermon Review</h2>
+  <div class="section-body">
+    <p><strong>Why Friendship is So Hard — Day 5 of 6</strong></p>
+<p><strong>Theme: The Freedom of True Friendship</strong></p>
+<p><strong>Key Scripture:</strong> Proverbs 27:9 — “Perfume and incense bring joy to the heart, and the pleasantness of a friend springs from their heartfelt advice.”</p>
+<p><strong>Sermon insight:</strong> True friendship brings freedom from performance, honesty, and room to grow because trusted friends know us deeply and still love us. Fear of rejection or vulnerability can cost more than the risk, while healthy friendships offer mutual encouragement and heartfelt counsel.</p>
+<p><strong>Today’s application:</strong> Identify where fear has kept you from genuine friendship; ask God to replace it with trust, then take one small vulnerable step with a safe person.</p>
+<p><strong>Closing prayer:</strong> Father, thank You for the freedom found in genuine friendship. Free me from fear, performance, and hiding; give me courage to be known and grace to receive honest counsel. Amen.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="tech" aria-labelledby="tech-label">
+  <p class="eyebrow">Technology briefing</p>
+  <h2 id="tech-label">AI · Industry</h2>
+  <div class="section-body">
+    <p>1. [As AI grows more powerful, a US-China feud threatens safety efforts] — Reuters</p>
+<p>Escalating US-China tensions are hindering cooperation on AI safety just as advanced systems create shared global risks.</p>
+<p>https://news.google.com/rss/articles/CBMitAFBVV95cUxOSTVEV25mbEljZGR4REN5cm5RdFZockt4TlBqYUFPS3FseExuOGJ4NFdBR3NsY1l3dnhSNlJ5RXNrdktZaDlDRWN3OTZHRkJnbk1LVk5FS0F4LUZwOHVEQ3FXUFp2aWhYbnlabkZUS3p4M09DbVRvR2NpR3dITjhTWXpzajE3eVNVeEJyeVZadlFsMGFzMnZ0SVMwRS1oZUt0NFhZUExCR3NSYl9teXE5NTNWVUQ?oc=5</p>
+<p>2. [UNESCO and LG AI Research Launch Global MOOC on the Ethics of AI] — UNESCO</p>
+<p>UNESCO and LG AI Research launched a global online course to broaden practical education on responsible AI ethics.</p>
+<p>https://news.google.com/rss/articles/CBMikwFBVV95cUxOS256RTBsT0lHUWR3QkxoMml2U1QyUS1SVS1mQXlZd3ZaUldGSWwyMGxhdHYxYTFycC1ET19Xc1RvaTg0X2JOV1NxVUN4QXhBNHZWY3ppQ1o5cVhBZ1FPcGQ2UXljTWFjVW9zN05DdUZPUXU3X0tkMHN2NXM0a0NJWE45bVdTbXp4U3ZLenFZNTVMNzQ?oc=5</p>
+<p>3. [AI impacts college graduates finding jobs] — FOX 13 Tampa Bay</p>
+<p>AI’s growing workplace role is reshaping entry-level hiring prospects for recent college graduates and the skills employers seek.</p>
+<p>https://news.google.com/rss/articles/CBMisAFBVV95cUxNdk9zWWZkeUFETnlZOWItNXRJby14a1hmdHByNDhra2Jpc3U1TFZXMzRwWU43NVNOTFBaZjg2SzRIN3pOOGFOWFV5SmpaR1FfSTdudGMzVmdxcTdEVUxlYnZXTVV3c1JaaFY4YXoyM2FYVHdSLUhkU05mazJ2eHU5ZEd2ZHdVOXFOME9fajQ1M1B4VmZTajltODFOMEhaeVo4LS02S0tqSGFTNTZGQTFBY9IBtgFBVV95cUxNb2h4X1UyYnhoZXdkTTlsOGN3b1AzNkJxSXQzYUFvSUNGVFliS2JHMnRPSUx1NVdjS3pSNTZWZ3JZWGxpNzdQaXJPRXdQOWhFRFpZN19HYVN3QmNVTlBnQVowOGhuSVRlcXZ1Y1ZHeHhPbXhhOUtrT3FfODFxVkpnNUpEYVFaTU5JM3FMa21SLUF1bHdaamtNVExlQk50MzVJUDNYZHlZNVdYbjFjbUZZTngwT1ZVdw?oc=5</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="health" aria-labelledby="health-label">
+  <p class="eyebrow">Healthcare briefing</p>
+  <h2 id="health-label">AI · Medicine</h2>
+  <div class="section-body">
+    <p>1. [AI Tracker: Teladoc launches new virtual care model] — Modern Healthcare</p>
+<p>Teladoc introduced a new virtual-care model, signaling continued efforts to embed AI-enabled services into scalable patient care.</p>
+<p>https://news.google.com/rss/articles/CBMijwFBVV95cUxOSEJfOGFQa0d4TW9ONGVxSWx1NkRVQm5WUThYdkZmRWJ4cG5GNGtDMXlSUVh5dlo5YWoyeDJSdEo2SVg4M19GTk5XcEttbE8zV1FEMS11V1BJTU1OdWFEOGpMZThPVVBRXzRxZGdlbTVaQ29zR0JtQzZiRDBOQld6Um9mTlRzdTVwZW4wSWJEOA?oc=5</p>
+<p>2. [Many medical AI developers in Asia, UK lack regulation awareness: study] — MobiHealthNews</p>
+<p>A study found many medical-AI developers in Asia and the UK lack awareness of applicable health-technology regulations.</p>
+<p>https://news.google.com/rss/articles/CBMiqwFBVV95cUxNREpEMnFia0h1ZktESmJPZzM1cnhFV1hOWFNYSjhUVGk0cEl0LXFMYlJNZGh3YlVWTzhFWTlVeFJ3V21FM1QzcVRwbDkyejFaOHJ1d1QwN1E3bzN1U1h4cm8tOUlSS2t6Zjg3eVFpeXA1N0lqSGVRZ3lVejFmZnBKYUhZOWZLMWRkQmFvdVZiVlZNYUFkNTVmSmwxQ0s2cElTWm1YYUZicjRLaXc?oc=5</p>
+<p>3. [AI use in APAC healthcare rises, but support lags: report] — Healthcare IT News</p>
+<p>AI adoption is rising across Asia-Pacific healthcare, but organizations report insufficient support to sustain effective implementation.</p>
+<p>https://news.google.com/rss/articles/CBMilgFBVV95cUxOQjMwV3NqUkpJMENkNF9ERHAzdHE2YUJZR1MwSnVGR0pVQXJ2MTRiLUZlNlJfdlJ3U1U4RElDZ3JEa2hJdXR1SUJrMl9TQUZkNkhDdU1ZdFBKaFYwSHJyZWNtWWp4bjVNYnR1RzRqSzhpbFJCd3NIOW01TERTUl93am9VTUdqMGhfV0NLaW8wSE94Mmt5cVE?oc=5</p>
+    
+    
+  </div>
+</section>
+        <footer>
+          Generated at 7:15 AM ET · Vol. 2026, No. 205 · <a href="https://Tpizz23.github.io/daily-briefs/archive/2026-07-24.html">Permanent link</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
