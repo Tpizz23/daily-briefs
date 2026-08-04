@@ -1,0 +1,198 @@
+<style>
+    :root {
+      --ink: #1a1814;
+      --ink-soft: #5b554c;
+      --paper: #f6f2ea;
+      --paper-deep: #ece5d6;
+      --rule: #d9d2c4;
+      --accent: #8c3a1f;
+      --accent-soft: #b95a36;
+      --serif: Georgia, Charter, 'Iowan Old Style', 'Source Serif 4', serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(100% - 40px, 1120px); margin: 0 auto; padding: 28px 0 88px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .masthead { padding: 24px 0 38px; border-bottom: 1px solid var(--rule); }
+
+    .wordmark { margin: 0 0 18px; color: var(--ink-soft); font: 700 12px/1 var(--serif); letter-spacing: .04em; }
+    .dateline { margin: 0; font-family: Georgia, Charter, 'Iowan Old Style', serif; font-weight: 650; font-size: clamp(2.55rem, 12vw, 4.85rem); line-height: .96; letter-spacing: -.045em; max-width: 10ch; }
+    .subline { margin: 18px 0 0; color: var(--ink-soft); max-width: 38rem; }
+    .rail { display: none; }
+    .brief-section { padding: 34px 0 30px; border-top: 1px solid var(--rule); }
+    .brief-section:first-child { border-top: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--accent); flex: 0 0 auto; }
+    h2 { margin: 0 0 17px; font: 650 clamp(1.55rem, 5vw, 2.15rem)/1.05 var(--serif); letter-spacing: -.025em; }
+    h3 { margin: 0 0 7px; font: 650 1.15rem/1.25 var(--serif); letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p:first-child { font-size: 1.03rem; }
+    .link-list, .news-list { margin: 0; padding: 0; list-style: none; }
+    .link-list { display: grid; gap: 10px; }
+    .link-list li:not(.plain) a { display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 64%, transparent); color: var(--ink); font-weight: 680; }
+    .link-list .plain { color: var(--ink-soft); font-size: .94rem; margin-top: 8px; }
+    .news-list { counter-reset: news; }
+    .news-list li { position: relative; padding: 18px 0 18px 42px; border-top: 1px solid var(--rule); }
+    .news-list li:first-child { border-top: 0; padding-top: 0; }
+    .news-list li::before { counter-increment: news; content: counter(news); position: absolute; left: 0; top: 18px; width: 24px; height: 24px; display: grid; place-items: center; color: var(--paper); background: var(--ink); font: 700 12px/1 var(--sans); }
+    .news-list li:first-child::before { top: 0; }
+    .dek { color: var(--ink-soft); margin: 0; }
+    footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 22px; color: var(--ink-soft); font-size: .9rem; }
+    @media (min-width: 760px) {
+      body { font-size: 18px; }
+      .shell { width: min(100% - 72px, 1120px); padding-top: 48px; }
+      .dateline { max-width: 13ch; }
+      .content { max-width: 42rem; }
+      .brief-section { padding: 46px 0 40px; }
+    }
+    @media (min-width: 1040px) {
+      .layout { grid-template-columns: 13rem minmax(0, 42rem); align-items: start; gap: 72px; }
+      .rail { display: block; position: sticky; top: 40px; padding-top: 8px; }
+      .rail p { color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; margin: 0 0 16px; }
+      .rail nav { display: grid; gap: 9px; }
+      .rail a { color: var(--ink-soft); font-size: .88rem; }
+      .rail a:hover { color: var(--ink); }
+    }
+  </style><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TJ Daily Brief · Tuesday, August 4, 2026</title>
+  <meta name="description" content="TJ's public daily brief: verse, motivation, workouts, sermon reflection, and AI news.">
+  <link rel="canonical" href="https://Tpizz23.github.io/daily-briefs/archive/2026-08-04.html">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <aside class="rail" role="navigation" aria-label="Sections">
+        <p>On this page</p>
+        <nav>
+          <a href="#verse">Scripture</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#emergency-medicine-reading">EM:RAP CorePendium</a>
+          <a href="#workout">Workout</a>
+          <a href="#sermon">Sermon Review</a>
+          <a href="#tech">AI · Industry</a>
+          <a href="#health">AI · Medicine</a>
+        </nav>
+      </aside>
+      <main id="main">
+        <header class="masthead">
+          <p class="wordmark">TJ Daily Brief</p>
+          <h1 class="dateline">Tuesday, August 4, 2026</h1>
+        </header>
+<section class="brief-section" id="verse" aria-labelledby="verse-label">
+  <p class="eyebrow">Today's Verse</p>
+  <h2 id="verse-label">Scripture</h2>
+  <div class="section-body">
+    <p>Psalm 46:1 — “God is our refuge and strength, a very present help in trouble.”</p>
+<p>Source: bible-api.com (World English Bible)</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="motivation" aria-labelledby="motivation-label">
+  <p class="eyebrow">Daily Inspiration</p>
+  <h2 id="motivation-label">Motivation</h2>
+  <div class="section-body">
+    <p>“Love never keeps a man from pursuing his destiny.” — Paulo Coelho</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="emergency-medicine-reading" aria-labelledby="emergency-medicine-reading-label">
+  <p class="eyebrow">Clinical learning</p>
+  <h2 id="emergency-medicine-reading-label">EM:RAP CorePendium</h2>
+  <div class="section-body">
+    <p>Today’s most recently updated CorePendium chapter. Sign in to EM:RAP if prompted.</p>
+    <ul class="link-list"><li><a href="https://www.emrap.org/corependium/chapter/recMqZnPbird64vYA/ECG-Diagnosis-ST-Elevation-in-aVR" target="_blank" rel="noopener noreferrer">Read: ECG Diagnosis: ST Elevation in aVR</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="workout" aria-labelledby="workout-label">
+  <p class="eyebrow">Movement</p>
+  <h2 id="workout-label">Workout</h2>
+  <div class="section-body">
+    
+    <ul class="link-list"><li><a href="https://Tpizz23.github.io/workouts/2026-08-04_Legs-Shoulders-Core_Full-Gym.html" target="_blank" rel="noopener noreferrer">Legs &amp; Shoulders &amp; Core — Full Gym:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-08-04_Legs-Shoulders-Core_Limited-Barbell.html" target="_blank" rel="noopener noreferrer">Legs &amp; Shoulders &amp; Core — Limited Barbell:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-08-05_Chest-Triceps_Full-Gym.html" target="_blank" rel="noopener noreferrer">Chest &amp; Triceps — Full Gym:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-08-05_Chest-Triceps_Limited-Barbell.html" target="_blank" rel="noopener noreferrer">Chest &amp; Triceps — Limited Barbell:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-08-06_Back-Biceps_Full-Gym.html" target="_blank" rel="noopener noreferrer">Back &amp; Biceps — Full Gym:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-08-06_Back-Biceps_Limited-Barbell.html" target="_blank" rel="noopener noreferrer">Back &amp; Biceps — Limited Barbell:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-08-08_Legs-Shoulders-Core_Full-Gym.html" target="_blank" rel="noopener noreferrer">Legs &amp; Shoulders &amp; Core — Full Gym:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-08-08_Legs-Shoulders-Core_Limited-Barbell.html" target="_blank" rel="noopener noreferrer">Legs &amp; Shoulders &amp; Core — Limited Barbell:</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="sermon" aria-labelledby="sermon-label">
+  <p class="eyebrow">Reflection</p>
+  <h2 id="sermon-label">Sermon Review</h2>
+  <div class="section-body">
+    <p>We Have All Sinned — Day 2 of 6</p>
+<p>Theme: Why Judgment Makes Sense</p>
+<p>Key Scripture: Romans 1:20 — “His invisible attributes… have been clearly perceived… in the things that have been made.”</p>
+<p>Sermon insight: God’s judgment is not arbitrary; His power and character are evident, yet people suppress truth and turn away from their Creator. Sin is not merely rule-breaking but refusing God’s rightful authority and goodness.</p>
+<p>Today’s application: Notice one way you resist God’s authority today—through distraction, self-reliance, or disobedience. Turn that resistance into a specific act of trust.</p>
+<p>Closing prayer: God, I often want Your gifts without Your authority. Show me where I have suppressed what I know to be true, and give me courage to respond with reverence rather than excuses.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="tech" aria-labelledby="tech-label">
+  <p class="eyebrow">Technology briefing</p>
+  <h2 id="tech-label">AI · Industry</h2>
+  <div class="section-body">
+    <p>1. UT artificial intelligence researchers awarded grants in Department of Energy initiative — The Daily Texan</p>
+<p>University researchers received Department of Energy initiative grants, expanding campus-led artificial-intelligence research and federally supported collaboration.</p>
+<p>https://news.google.com/rss/articles/CBMixAFBVV95cUxPbjY5OEJ3RW9mRUcxMHBDQVQwYk5BNEEyNUdtSS1mamtibmowem1QdVZZSG51NTk3TXhzZU9EbHZnb09ZdmJIbGVWMGpJWFoxWHhQelpWRElPUFZKQmpRYXhVdXZFQWhacTJVYm9TZjIxQWF5cWhlQU4ybGpGdlViNmp5eXJoN0poSlNkSHJXSVMxSnMwM19lbzVFbkQ3WmxmNXoyTkItN0hJdlRkZ0ZBYWN1WjFvM2cycWVPWUtlTFZ3QkE1?oc=5</p>
+<p>2. Artificial intelligence in breast cancer imaging: a systematic review of diagnostic performance, predictive modeling, and clinical translation — Springer Nature Link</p>
+<p>A systematic review assesses AI’s breast-cancer imaging performance, predictive modeling, and remaining barriers to clinical translation.</p>
+<p>https://news.google.com/rss/articles/CBMibEFVX3lxTE1PZ2g0emFNSTFVWlRsbHFjS0VzSFpzaFlid3h3TDZuMkl2S1pZdnVzbnFPU1hlY3lsS3EzYjBTcnBuaGhKSlF5TWxadWRuTDh1dkhWdng3OGRvNHNfR0NTWlBrWWpqVzdFczNlSQ?oc=5</p>
+<p>3. White House finalizes artificial intelligence oversight framework — Politico</p>
+<p>The White House finalized an AI oversight framework outlining federal responsibilities for governing artificial-intelligence development and deployment.</p>
+<p>https://news.google.com/rss/articles/CBMipwFBVV95cUxNbjhZZGs2bWJOb3J4d2xpSy16MEtQYWRJOEx5S2FLajJ4d0c2RG12REdlTGpHMDR1RWFST0tIcjBPV3VOcUtqVnA4Q1h6Ql9pVlppTFRzMzh1clo4WWFBeWhGcG8zR3Y5bHRDcHlrTHNvT05pcHpLNGRqOXRodXJLYlFsRUx0TTg3NGc5UDNha1lFcmxkZDNPdklLWVg5TFAzTTV5NTZ3NA?oc=5</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="health" aria-labelledby="health-label">
+  <p class="eyebrow">Healthcare briefing</p>
+  <h2 id="health-label">AI · Medicine</h2>
+  <div class="section-body">
+    <p>1. The benefits of medical AI assistance vary based on user expertise — MIT News</p>
+<p>MIT researchers found medical AI assistance benefits vary with user expertise, highlighting the importance of training and calibrated reliance.</p>
+<p>https://news.google.com/rss/articles/CBMilAFBVV95cUxQYnZvNDhuSXpQSXdqdEU5NWZYQlJvQnlUQjVnSV9FWUpTLTNscU5mQ0dDdWdIN3BwRmVJNGpYNXd5MVg2ZkRxNDhnd0p5MkpTZDg0ZVY1NVlKVHpScGlBVWlTVjBmV2lRUkM5UFFzcHFyRzJ0UVRCb0Y3aHRLV2hzVUtPLWk1NUYyLXpBYjVoRlE1Um1h?oc=5</p>
+<p>2. Many medical AI developers unfamiliar with regulations — Computer Weekly</p>
+<p>Many medical AI developers reportedly lack regulatory familiarity, underscoring governance and compliance gaps as clinical tools advance.</p>
+<p>https://news.google.com/rss/articles/CBMiogFBVV95cUxNelFDdW8ycUNJa0RpYjdOeGwzY2pRZThfbWdOR1RDaU8tLVNJSkJrNVBPRXljUUZzdXM4cU5ZbEVsU2xNdFFwUEh4bFdkamxsUzEzYW52TldTMFJhZUJxY1RheUozVnZCYmpEM0RSanI2b1RkUjh2T1VMd09CdEs5ZFA1WFJLbVFrRk9Ia1llNGRBREtwOGRoN3ROYmRyb2YtQmc?oc=5</p>
+<p>3. AI in hospitals: the real challenge isn't the algorithm — it's the data — Healthcare IT News</p>
+<p>Healthcare AI adoption depends on reliable, interoperable data infrastructure more than algorithmic sophistication alone.</p>
+<p>https://news.google.com/rss/articles/CBMimgFBVV95cUxOaWdOX2l4Y2lkQUhRWnBkOG96Y25JMTNySFNSMUR2TUN0Tk9vUXlyUUx5ejAwa0FQVnl2WjJzaWVaclNkaW5mbmdPQVlDY3FQeTktOG9VNVgtcFZIQzNlclJxTVRrVUJEeXAxQ0V6ZTJCTWhkMENTbEJrZ3lHcEMxVl95bzQyUmx5YzBpRThrc0kyVFFINXpSX1BR?oc=5</p>
+    
+    
+  </div>
+</section>
+        <footer>
+          Generated at 7:05 AM ET · Vol. 2026, No. 216 · <a href="https://Tpizz23.github.io/daily-briefs/archive/2026-08-04.html">Permanent link</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
