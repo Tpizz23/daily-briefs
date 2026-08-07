@@ -1,0 +1,189 @@
+<style>
+    :root {
+      --ink: #1a1814;
+      --ink-soft: #5b554c;
+      --paper: #f6f2ea;
+      --paper-deep: #ece5d6;
+      --rule: #d9d2c4;
+      --accent: #8c3a1f;
+      --accent-soft: #b95a36;
+      --serif: Georgia, Charter, 'Iowan Old Style', 'Source Serif 4', serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(100% - 40px, 1120px); margin: 0 auto; padding: 28px 0 88px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .masthead { padding: 24px 0 38px; border-bottom: 1px solid var(--rule); }
+
+    .wordmark { margin: 0 0 18px; color: var(--ink-soft); font: 700 12px/1 var(--serif); letter-spacing: .04em; }
+    .dateline { margin: 0; font-family: Georgia, Charter, 'Iowan Old Style', serif; font-weight: 650; font-size: clamp(2.55rem, 12vw, 4.85rem); line-height: .96; letter-spacing: -.045em; max-width: 10ch; }
+    .subline { margin: 18px 0 0; color: var(--ink-soft); max-width: 38rem; }
+    .rail { display: none; }
+    .brief-section { padding: 34px 0 30px; border-top: 1px solid var(--rule); }
+    .brief-section:first-child { border-top: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--accent); flex: 0 0 auto; }
+    h2 { margin: 0 0 17px; font: 650 clamp(1.55rem, 5vw, 2.15rem)/1.05 var(--serif); letter-spacing: -.025em; }
+    h3 { margin: 0 0 7px; font: 650 1.15rem/1.25 var(--serif); letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p:first-child { font-size: 1.03rem; }
+    .link-list, .news-list { margin: 0; padding: 0; list-style: none; }
+    .link-list { display: grid; gap: 10px; }
+    .link-list li:not(.plain) a { display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 64%, transparent); color: var(--ink); font-weight: 680; }
+    .link-list .plain { color: var(--ink-soft); font-size: .94rem; margin-top: 8px; }
+    .news-list { counter-reset: news; }
+    .news-list li { position: relative; padding: 18px 0 18px 42px; border-top: 1px solid var(--rule); }
+    .news-list li:first-child { border-top: 0; padding-top: 0; }
+    .news-list li::before { counter-increment: news; content: counter(news); position: absolute; left: 0; top: 18px; width: 24px; height: 24px; display: grid; place-items: center; color: var(--paper); background: var(--ink); font: 700 12px/1 var(--sans); }
+    .news-list li:first-child::before { top: 0; }
+    .dek { color: var(--ink-soft); margin: 0; }
+    footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 22px; color: var(--ink-soft); font-size: .9rem; }
+    @media (min-width: 760px) {
+      body { font-size: 18px; }
+      .shell { width: min(100% - 72px, 1120px); padding-top: 48px; }
+      .dateline { max-width: 13ch; }
+      .content { max-width: 42rem; }
+      .brief-section { padding: 46px 0 40px; }
+    }
+    @media (min-width: 1040px) {
+      .layout { grid-template-columns: 13rem minmax(0, 42rem); align-items: start; gap: 72px; }
+      .rail { display: block; position: sticky; top: 40px; padding-top: 8px; }
+      .rail p { color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; margin: 0 0 16px; }
+      .rail nav { display: grid; gap: 9px; }
+      .rail a { color: var(--ink-soft); font-size: .88rem; }
+      .rail a:hover { color: var(--ink); }
+    }
+  </style><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TJ Daily Brief · Friday, August 7, 2026</title>
+  <meta name="description" content="TJ's public daily brief: verse, motivation, workouts, sermon reflection, and AI news.">
+  <link rel="canonical" href="https://Tpizz23.github.io/daily-briefs/archive/2026-08-07.html">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <aside class="rail" role="navigation" aria-label="Sections">
+        <p>On this page</p>
+        <nav>
+          <a href="#verse">Scripture</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#emergency-medicine-reading">EM:RAP CorePendium</a>
+          <a href="#sermon">Sermon Review</a>
+          <a href="#tech">AI · Industry</a>
+          <a href="#health">AI · Medicine</a>
+        </nav>
+      </aside>
+      <main id="main">
+        <header class="masthead">
+          <p class="wordmark">TJ Daily Brief</p>
+          <h1 class="dateline">Friday, August 7, 2026</h1>
+        </header>
+<section class="brief-section" id="verse" aria-labelledby="verse-label">
+  <p class="eyebrow">Today's Verse</p>
+  <h2 id="verse-label">Scripture</h2>
+  <div class="section-body">
+    <p>Proverbs 3:5–6 (World English Bible)</p>
+<p>“Trust in Yahweh with all your heart, and don’t lean on your own understanding. In all your ways acknowledge him, and he will make your paths straight.”</p>
+<p>Source: bible-api.com</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="motivation" aria-labelledby="motivation-label">
+  <p class="eyebrow">Daily Inspiration</p>
+  <h2 id="motivation-label">Motivation</h2>
+  <div class="section-body">
+    <p>“Ability is a poor man's wealth.” — John Wooden</p>
+<p>Source: ZenQuotes daily selection</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="emergency-medicine-reading" aria-labelledby="emergency-medicine-reading-label">
+  <p class="eyebrow">Clinical learning</p>
+  <h2 id="emergency-medicine-reading-label">EM:RAP CorePendium</h2>
+  <div class="section-body">
+    <p>Today’s most recently updated CorePendium chapter. Sign in to EM:RAP if prompted.</p>
+    <ul class="link-list"><li><a href="https://www.emrap.org/corependium/chapter/recvEB7ZgSavm1c7n/Cardiac-Arrest" target="_blank" rel="noopener noreferrer">Read: Cardiac Arrest</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="sermon" aria-labelledby="sermon-label">
+  <p class="eyebrow">Reflection</p>
+  <h2 id="sermon-label">Sermon Review</h2>
+  <div class="section-body">
+    <p>We Have All Sinned — Day 5: Freedom from Condemnation</p>
+<p>Key Scripture: Romans 8:1 — “There is therefore now no condemnation for those who are in Christ Jesus.”</p>
+<p>Sermon Insight: The reality of sin is serious, but it is not the final word for those who belong to Christ. The Savior who exposes our guilt also removes condemnation and gives us a new standing before God. Freedom is not pretending the diagnosis was wrong; it is knowing that Jesus has carried the judgment we deserved. From that secure place, we can face sin honestly without being trapped by shame.</p>
+<p>Today's Application: When shame tells you that failure defines you, answer it with Romans 8:1 and one concrete step of obedience. Let acceptance in Christ motivate change rather than fear.</p>
+<p>Closing Prayer: Lord Jesus, thank You that my sin is real but condemnation is not my identity in You. Help me walk today as someone forgiven, free to obey, and no longer enslaved to shame.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="tech" aria-labelledby="tech-label">
+  <p class="eyebrow">Technology briefing</p>
+  <h2 id="tech-label">AI · Industry</h2>
+  <div class="section-body">
+    <p>1. Artificial Intelligence used to design brand new viruses — BBC</p>
+<p>Researchers used AI to design novel viruses, raising fresh biosafety concerns about tools that can create biological agents absent from nature.</p>
+<p>https://news.google.com/rss/articles/CBMiWkFVX3lxTE5LNUZxOFlLRVNUTFI1UGpzVk16V003ZnVMLUQ1ZjZSd2M3VVhmU0V5c3JVUUczMVhRVGVuUmdZRVo1R1RxampkUTRBdkhVeHlLZkZyOGFHX3RXZw?oc=5</p>
+<p>2. Artificial intelligence in drug discovery — what it is, where we stand and the path forward — Nature</p>
+<p>Nature reviews AI’s role in drug discovery, outlining current progress, limitations, and the research path ahead.</p>
+<p>https://news.google.com/rss/articles/CBMiX0FVX3lxTE5PRnBXREdkUzdBRklQY3VoTXdBbm96TU5uckNwS2ZhX2ZsUmc3eFdpREpSeXREZlFwZ0twM2o3RlAtajBNaEMyNWpzeTZMN2hpalBfT05xUzNzUVJkZ0t3?oc=5</p>
+<p>3. Who’s controlling artificial intelligence? — Washington Times</p>
+<p>The report examines who controls AI development and how concentrated power could shape technology’s future governance.</p>
+<p>https://news.google.com/rss/articles/CBMikwFBVV95cUxOY18xYnpGZjQteC1yaEVQRVFfaHBWMUpFdDR4Q0Y2ZUJSRUFpaF93YkhGT3hSTE9iYjA3dkc0bmN5QTZNSU9vN01KNUhkQ2dBbzNsZHlMU1lIQnFnQVQtWmt6TGZZdllodG5UbkNVcmRuZUlKVk9EUTkwa0lWSHo0dlprSzlHN3Jqb1dsVlVMNWxSUzA?oc=5</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="health" aria-labelledby="health-label">
+  <p class="eyebrow">Healthcare briefing</p>
+  <h2 id="health-label">AI · Medicine</h2>
+  <div class="section-body">
+    <p>1. Making Medical AI More Reliable — USC Viterbi School of Engineering</p>
+<p>Researchers outline reliability safeguards for medical AI, emphasizing stronger evaluation, transparent reasoning, and robust clinical validation.</p>
+<p>https://news.google.com/rss/articles/CBMigAFBVV95cUxORlFLMElNQk1YMDEtQ2hnZGdjNFFvUU1CaHlCbkdfVHhEakZYbmlVQkNWcnpfaE1ZMkNvWldYd1F3MTkwdnVjRWFISHhTLWNMbUJ2a2QtdlhjMmZ6MTVhcjZwWTNDQ0FucF9ORnByZHNpSDNGek0xQ21mcVJZSzhfcA?oc=5</p>
+<p>2. PwC and Zyter Collaborate to Deploy AI Execution Platform for Healthcare Payers and Providers — HIT Consultant</p>
+<p>PwC and Zyter announced an AI platform intended to streamline execution for healthcare payers and providers.</p>
+<p>https://news.google.com/rss/articles/CBMiowFBVV95cUxQVjhzVzI2NzZZRV9PazUxWjhDdkVVWHVxaXZhV3hPNlJ4aEM4ejVmWW9EUGtaRUpWdk4wVERJV2x1ajJ5UUpPb1VmdE9vOGJ2ejJaN1Fqbk5xcDF0a1cybl91enY5OVc5dDNRaTdxaUN1ZkpIdmlVeksxMnN3M1RpQjdzcXBBcktBZllkdEpGTkZJWGpVT1hTSmZYUTZWT3JzWmdR?oc=5</p>
+<p>3. Atropos Health partners with Health Universe on AI clinical decision support — MobiHealthNews</p>
+<p>Atropos Health and Health Universe partnered to expand AI clinical decision support for healthcare organizations.</p>
+<p>https://news.google.com/rss/articles/CBMipwFBVV95cUxOUmdPdmZQUGkzLW11VFBPaG5PeERoMzZwcU9CYjh1TTM4Z1V5bmFvY0Rvb0pwanpLQnVGS2ZVeWxGUmt6cjF6enBUdjhGM2hYeTA0TVZDVEhWaUp5cEt6VHdITVg1RExxTUdXbGNjWW51eDE0Tl80M2hRVHROVVZSM25VSnpKTUhVVGF1VzB0MklNME90WDh4MXZHNlFaamd4RnpCcE1vOA?oc=5</p>
+    
+    
+  </div>
+</section>
+        <footer>
+          Generated at 7:15 AM ET · Vol. 2026, No. 219 · <a href="https://Tpizz23.github.io/daily-briefs/archive/2026-08-07.html">Permanent link</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
