@@ -1,0 +1,190 @@
+<style>
+    :root {
+      --ink: #1a1814;
+      --ink-soft: #5b554c;
+      --paper: #f6f2ea;
+      --paper-deep: #ece5d6;
+      --rule: #d9d2c4;
+      --accent: #8c3a1f;
+      --accent-soft: #b95a36;
+      --serif: Georgia, Charter, 'Iowan Old Style', 'Source Serif 4', serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(100% - 40px, 1120px); margin: 0 auto; padding: 28px 0 88px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .masthead { padding: 24px 0 38px; border-bottom: 1px solid var(--rule); }
+
+    .wordmark { margin: 0 0 18px; color: var(--ink-soft); font: 700 12px/1 var(--serif); letter-spacing: .04em; }
+    .dateline { margin: 0; font-family: Georgia, Charter, 'Iowan Old Style', serif; font-weight: 650; font-size: clamp(2.55rem, 12vw, 4.85rem); line-height: .96; letter-spacing: -.045em; max-width: 10ch; }
+    .subline { margin: 18px 0 0; color: var(--ink-soft); max-width: 38rem; }
+    .rail { display: none; }
+    .brief-section { padding: 34px 0 30px; border-top: 1px solid var(--rule); }
+    .brief-section:first-child { border-top: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--accent); flex: 0 0 auto; }
+    h2 { margin: 0 0 17px; font: 650 clamp(1.55rem, 5vw, 2.15rem)/1.05 var(--serif); letter-spacing: -.025em; }
+    h3 { margin: 0 0 7px; font: 650 1.15rem/1.25 var(--serif); letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p:first-child { font-size: 1.03rem; }
+    .link-list, .news-list { margin: 0; padding: 0; list-style: none; }
+    .link-list { display: grid; gap: 10px; }
+    .link-list li:not(.plain) a { display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 64%, transparent); color: var(--ink); font-weight: 680; }
+    .link-list .plain { color: var(--ink-soft); font-size: .94rem; margin-top: 8px; }
+    .news-list { counter-reset: news; }
+    .news-list li { position: relative; padding: 18px 0 18px 42px; border-top: 1px solid var(--rule); }
+    .news-list li:first-child { border-top: 0; padding-top: 0; }
+    .news-list li::before { counter-increment: news; content: counter(news); position: absolute; left: 0; top: 18px; width: 24px; height: 24px; display: grid; place-items: center; color: var(--paper); background: var(--ink); font: 700 12px/1 var(--sans); }
+    .news-list li:first-child::before { top: 0; }
+    .dek { color: var(--ink-soft); margin: 0; }
+    footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 22px; color: var(--ink-soft); font-size: .9rem; }
+    @media (min-width: 760px) {
+      body { font-size: 18px; }
+      .shell { width: min(100% - 72px, 1120px); padding-top: 48px; }
+      .dateline { max-width: 13ch; }
+      .content { max-width: 42rem; }
+      .brief-section { padding: 46px 0 40px; }
+    }
+    @media (min-width: 1040px) {
+      .layout { grid-template-columns: 13rem minmax(0, 42rem); align-items: start; gap: 72px; }
+      .rail { display: block; position: sticky; top: 40px; padding-top: 8px; }
+      .rail p { color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; margin: 0 0 16px; }
+      .rail nav { display: grid; gap: 9px; }
+      .rail a { color: var(--ink-soft); font-size: .88rem; }
+      .rail a:hover { color: var(--ink); }
+    }
+  </style><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TJ Daily Brief · Monday, August 10, 2026</title>
+  <meta name="description" content="TJ's public daily brief: verse, motivation, workouts, sermon reflection, and AI news.">
+  <link rel="canonical" href="https://Tpizz23.github.io/daily-briefs/archive/2026-08-10.html">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <aside class="rail" role="navigation" aria-label="Sections">
+        <p>On this page</p>
+        <nav>
+          <a href="#verse">Scripture</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#emergency-medicine-reading">EM:RAP CorePendium</a>
+          <a href="#sermon">Sermon Review</a>
+          <a href="#tech">AI · Industry</a>
+          <a href="#health">AI · Medicine</a>
+        </nav>
+      </aside>
+      <main id="main">
+        <header class="masthead">
+          <p class="wordmark">TJ Daily Brief</p>
+          <h1 class="dateline">Monday, August 10, 2026</h1>
+        </header>
+<section class="brief-section" id="verse" aria-labelledby="verse-label">
+  <p class="eyebrow">Today's Verse</p>
+  <h2 id="verse-label">Scripture</h2>
+  <div class="section-body">
+    <p>Psalm 46:1-3 — “God is our refuge and strength, a very present help in trouble. Therefore we won’t be afraid, though the earth changes, though the mountains are shaken into the heart of the seas; though its waters roar and are troubled, though the mountains tremble with their swelling. Selah.”</p>
+<p>Source: bible-api.com (World English Bible)</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="motivation" aria-labelledby="motivation-label">
+  <p class="eyebrow">Daily Inspiration</p>
+  <h2 id="motivation-label">Motivation</h2>
+  <div class="section-body">
+    <p>“Do the best you can until you know better. Then when you know better, do better.” — Maya Angelou</p>
+<p>Source: deterministic fallback rotation (ZenQuotes endpoints timed out)</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="emergency-medicine-reading" aria-labelledby="emergency-medicine-reading-label">
+  <p class="eyebrow">Clinical learning</p>
+  <h2 id="emergency-medicine-reading-label">EM:RAP CorePendium</h2>
+  <div class="section-body">
+    <p>Today’s most recently updated CorePendium chapter. Sign in to EM:RAP if prompted.</p>
+    <ul class="link-list"><li><a href="https://www.emrap.org/corependium/chapter/rec60pv6eX7W1fbD9/Pediatric-Head-Trauma-major-and-minor" target="_blank" rel="noopener noreferrer">Read: Pediatric Head Trauma (major and minor)</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="sermon" aria-labelledby="sermon-label">
+  <p class="eyebrow">Reflection</p>
+  <h2 id="sermon-label">Sermon Review</h2>
+  <div class="section-body">
+    <p>We Have All Sinned — Romans series, Lee McDerment</p>
+<p>DAY 1 — MONDAY</p>
+<p>Theme: The Universality of Sin</p>
+<p>Key Scripture: Romans 3:23 — “For all have sinned and fall short of the glory of God.”</p>
+<p>Sermon Insight: Paul does not divide humanity into respectable people and obvious rule-breakers; he places everyone under the same honest diagnosis. That is the central claim of “We Have All Sinned”: God’s judgment makes sense because sin is real and universal, and no one stands before God on personal goodness. Romans was written to a divided church, but this truth levels the ground and points every person toward the same need for a Savior.</p>
+<p>Today’s Application: Name one way you are tempted to compare your goodness with someone else’s. Confess that specific sin to God without minimizing it or defending yourself.</p>
+<p>Closing Prayer: God, I confess that I have sinned and fallen short of Your glory. Keep me from hiding behind comparison, and help me receive the truth with humility and hope. Thank You that my need does not disqualify me from Your mercy.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="tech" aria-labelledby="tech-label">
+  <p class="eyebrow">Technology briefing</p>
+  <h2 id="tech-label">AI · Industry</h2>
+  <div class="section-body">
+    <p>1. New Survey: When Choosing a School for Their Children, Majority of Parents Consider Artificial Intelligence Policies — PR Newswire</p>
+<p>A new survey finds most parents weigh a school’s artificial-intelligence policies when choosing where their children will study.</p>
+<p>https://news.google.com/rss/articles/CBMi_wFBVV95cUxOWnBYY1NSQ0dwZG4yc1R3QnBGREpSRDl6dHFseG5ULXVnQUpNa0lYU25qZlFYNFN1V083VXVXVHF3MV90T2hMdUgyUWc1aHNWQXBPX25jM05hUEd3U2FKZkhwZWxzRnlpUzlWcDNXVEtTSmF1YmRYZEhZVFpmXzZLLUh5RVlDNnB1UDVSZWE4MnJ2cEoxTUdvbUdaWWRxVVVoOGJtS0pqN1lWVlc1a21oT2V5VXZNOWIwaU0wQV9MX1FWMFBzRTllZkhobzA2b0FRNDF0TkxGX1pxd3oxRFNXNUhWVjFRekVLcG1PSDd1ZHBLNnJjVlBUbHZRSXgzUmc?oc=5</p>
+<p>2. TEXAS WESLEYAN UNIVERSITY LAUNCHES NEW BACHELOR'S DEGREE IN HUMANITIES AND ARTIFICIAL INTELLIGENCE — The Business Press</p>
+<p>Texas Wesleyan University announced a new humanities-and-AI bachelor’s degree, combining technical study with broader humanistic education.</p>
+<p>https://news.google.com/rss/articles/CBMi1AFBVV95cUxQeWk1b1o4MDdHWXpWR1RNZ0o2bUhXakUtSmttalVxSVJwZ0t0aEhSZTh6R2h6SV9qSW9wS09wdDRHZ0g4ckVVU01UaXhobmpKMHMtZXNXWU9pMXBsenk0aEhXOTZkYWMwekVtUUNIZmk4bWRyaDBYdnRoNW84NDNlaHA5Yk5Hak9zTHFOcVVFMDBtaEw4djFnRFJnTjUxWHdIeGZfd0dLODZ6WXcxeGVqdE92MXltY1NmRUtuNEY0ckc3VUVlUkQ1UkxsQVVHdkFUWmtzYQ?oc=5</p>
+<p>3. Parenting in the Age of Artificial Intelligence — Ideastream</p>
+<p>Ideastream examines how parents are navigating children’s exposure to AI, balancing educational opportunities with safety and judgment.</p>
+<p>https://news.google.com/rss/articles/CBMiqAFBVV95cUxPdDBmWnE4emR0RzY1Y0xlOGF2N0F4ZUYzQXBORmF6YzVqMXp2Wk1iZ1hEaXdhVGU3Z2sydjExbl9YazRUQWNjNFJOZmF0V2tIZ3pJVEVGdDRyVW84NTNBTUF0TUg4RUdyMk1ybGRHNnFiSTR2RUhJTHVqcWJyXzhqbUNxeDRRS2lseDNyVGFpLW53cjNhUTl0QjJ6cGFicjdKVmhleVdkZzY?oc=5</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="health" aria-labelledby="health-label">
+  <p class="eyebrow">Healthcare briefing</p>
+  <h2 id="health-label">AI · Medicine</h2>
+  <div class="section-body">
+    <p>1. Hackensack Meridian Health Becomes First Health System to Earn Responsible Use of AI in Healthcare Certification from Joint Commission — HCI Innovation Group</p>
+<p>Hackensack Meridian Health received the Joint Commission’s first responsible-AI certification for a health system, emphasizing governance and safer deployment.</p>
+<p>https://news.google.com/rss/articles/CBMitwJBVV95cUxQVFNmblV4MnljWHV5Xzkxak0yd1VJNW5nc25Jb1hEZTNEd0FaVDZXNnhhNWRSVFlaQ05hdXlZc3RrR0E0QkJ6N29wT3dhYWJldURyazNYQ2h6WVZvb3dNVWl5RHVhV3g1R0pZR3FNcHU4MWVwVHFlZnBueXhoWDEzWUdfdF8waVo2UFF2MkRKLUVhOUpkUkZTZlJCTGd4am5yX1dZY1ZaNFNTeUcya0Nuem5mS24xOUFwSFdrZklNRzhUN1cxZzZ6cHQtM055UzhGS3RmVVJiMi1GczdOVmptQWwtLWV2UUVxUHlURld3UVlrQmJJc19GWTVrRzY1SVA3WGlsWDdvajFwRW5GaHNlVGpsYnlqbGJtYVVoaVFWcFhLOXJaOWRKbnFoQ2xwaWx3RGRRSHNwaw?oc=5</p>
+<p>2. AI Is Already Beating Human Doctors in Medical Tests — Reason Magazine</p>
+<p>Reason reports that AI systems are outperforming doctors on selected medical tests, underscoring the need for careful clinical validation.</p>
+<p>https://news.google.com/rss/articles/CBMiW0FVX3lxTE4xUE9NaDhVRjRCNTBvOTRWUTZrUjN0NVVtTmh0cHlZRWIySU9OSngzaTZMVWpNZzg2TGh3c2ozaGdLR1pPOWMtWGpYM011M2NzeS1kekxtM3o2S0U?oc=5</p>
+<p>3. Many Medical AI Developers Unaware of Key AI Regulations, Study Finds — Qazinform</p>
+<p>A study finds many medical-AI developers remain unaware of important regulations, exposing compliance and patient-safety risks.</p>
+<p>https://news.google.com/rss/articles/CBMipAFBVV95cUxPUjQ0czdKMzFBSnQ2Um5rcmV1WTdPbGpiWk9maTk3YkdWYURQd2RWNEZwV015Tkp1cU1OT3hwcTMtUnptbE1oa3d3d3llQnRpcGhxd2NVTWVJMFkwNTgzWW40V3pOb2I3NVlibHVHTlRtenA0MUxSSE1zYjY4QVJtczM0NExHd3lUS2xrYjNYZE9xQjd6X1pHT2FkU2hDekw0dHJib9IBpAFBVV95cUxPU3N0eUJRR1BaVWVkSWZkQjZET19nTVBwNU5mV2tNYm1tTzVwUjVCbnZYM1VrZEpwMmlPYWhldnZoMUY3TUh1N1ZOblhmak9FOVk5QWUySFNqSEMxbjlGbVFzWTQtNDBDRWJULXcwVHhyWUZMcTNua0U4WVBrZXJyaGp1N1FPanM4dldsUGpSM1BZb2MtbzRSWTdMa1BtaXl5VmpTZg?oc=5</p>
+    
+    
+  </div>
+</section>
+        <footer>
+          Generated at 7:04 AM ET · Vol. 2026, No. 222 · <a href="https://Tpizz23.github.io/daily-briefs/archive/2026-08-10.html">Permanent link</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
