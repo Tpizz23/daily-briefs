@@ -1,0 +1,190 @@
+<style>
+    :root {
+      --ink: #1a1814;
+      --ink-soft: #5b554c;
+      --paper: #f6f2ea;
+      --paper-deep: #ece5d6;
+      --rule: #d9d2c4;
+      --accent: #8c3a1f;
+      --accent-soft: #b95a36;
+      --serif: Georgia, Charter, 'Iowan Old Style', 'Source Serif 4', serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(100% - 40px, 1120px); margin: 0 auto; padding: 28px 0 88px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .masthead { padding: 24px 0 38px; border-bottom: 1px solid var(--rule); }
+
+    .wordmark { margin: 0 0 18px; color: var(--ink-soft); font: 700 12px/1 var(--serif); letter-spacing: .04em; }
+    .dateline { margin: 0; font-family: Georgia, Charter, 'Iowan Old Style', serif; font-weight: 650; font-size: clamp(2.55rem, 12vw, 4.85rem); line-height: .96; letter-spacing: -.045em; max-width: 10ch; }
+    .subline { margin: 18px 0 0; color: var(--ink-soft); max-width: 38rem; }
+    .rail { display: none; }
+    .brief-section { padding: 34px 0 30px; border-top: 1px solid var(--rule); }
+    .brief-section:first-child { border-top: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--accent); flex: 0 0 auto; }
+    h2 { margin: 0 0 17px; font: 650 clamp(1.55rem, 5vw, 2.15rem)/1.05 var(--serif); letter-spacing: -.025em; }
+    h3 { margin: 0 0 7px; font: 650 1.15rem/1.25 var(--serif); letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p:first-child { font-size: 1.03rem; }
+    .link-list, .news-list { margin: 0; padding: 0; list-style: none; }
+    .link-list { display: grid; gap: 10px; }
+    .link-list li:not(.plain) a { display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 64%, transparent); color: var(--ink); font-weight: 680; }
+    .link-list .plain { color: var(--ink-soft); font-size: .94rem; margin-top: 8px; }
+    .news-list { counter-reset: news; }
+    .news-list li { position: relative; padding: 18px 0 18px 42px; border-top: 1px solid var(--rule); }
+    .news-list li:first-child { border-top: 0; padding-top: 0; }
+    .news-list li::before { counter-increment: news; content: counter(news); position: absolute; left: 0; top: 18px; width: 24px; height: 24px; display: grid; place-items: center; color: var(--paper); background: var(--ink); font: 700 12px/1 var(--sans); }
+    .news-list li:first-child::before { top: 0; }
+    .dek { color: var(--ink-soft); margin: 0; }
+    footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 22px; color: var(--ink-soft); font-size: .9rem; }
+    @media (min-width: 760px) {
+      body { font-size: 18px; }
+      .shell { width: min(100% - 72px, 1120px); padding-top: 48px; }
+      .dateline { max-width: 13ch; }
+      .content { max-width: 42rem; }
+      .brief-section { padding: 46px 0 40px; }
+    }
+    @media (min-width: 1040px) {
+      .layout { grid-template-columns: 13rem minmax(0, 42rem); align-items: start; gap: 72px; }
+      .rail { display: block; position: sticky; top: 40px; padding-top: 8px; }
+      .rail p { color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; margin: 0 0 16px; }
+      .rail nav { display: grid; gap: 9px; }
+      .rail a { color: var(--ink-soft); font-size: .88rem; }
+      .rail a:hover { color: var(--ink); }
+    }
+  </style><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TJ Daily Brief · Thursday, August 13, 2026</title>
+  <meta name="description" content="TJ's public daily brief: verse, motivation, workouts, sermon reflection, and AI news.">
+  <link rel="canonical" href="https://Tpizz23.github.io/daily-briefs/archive/2026-08-13.html">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <aside class="rail" role="navigation" aria-label="Sections">
+        <p>On this page</p>
+        <nav>
+          <a href="#verse">Scripture</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#emergency-medicine-reading">EM:RAP CorePendium</a>
+          <a href="#sermon">Sermon Review</a>
+          <a href="#tech">AI · Industry</a>
+          <a href="#health">AI · Medicine</a>
+        </nav>
+      </aside>
+      <main id="main">
+        <header class="masthead">
+          <p class="wordmark">TJ Daily Brief</p>
+          <h1 class="dateline">Thursday, August 13, 2026</h1>
+        </header>
+<section class="brief-section" id="verse" aria-labelledby="verse-label">
+  <p class="eyebrow">Today's Verse</p>
+  <h2 id="verse-label">Scripture</h2>
+  <div class="section-body">
+    <p>Philippians 4:13 — “I can do all things through Christ, who strengthens me.”</p>
+<p>Source: bible-api.com (World English Bible)</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="motivation" aria-labelledby="motivation-label">
+  <p class="eyebrow">Daily Inspiration</p>
+  <h2 id="motivation-label">Motivation</h2>
+  <div class="section-body">
+    <p>“Keep your face to the sunshine and you cannot see the shadows.” — Helen Keller</p>
+<p>Source: ZenQuotes today</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="emergency-medicine-reading" aria-labelledby="emergency-medicine-reading-label">
+  <p class="eyebrow">Clinical learning</p>
+  <h2 id="emergency-medicine-reading-label">EM:RAP CorePendium</h2>
+  <div class="section-body">
+    <p>Today’s most recently updated CorePendium chapter. Sign in to EM:RAP if prompted.</p>
+    <ul class="link-list"><li><a href="https://www.emrap.org/corependium/chapter/rectTdlITgGCzd03w/ECG-Diagnosis-The-Normal-Adult-ECG" target="_blank" rel="noopener noreferrer">Read: ECG Diagnosis: The Normal Adult ECG</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="sermon" aria-labelledby="sermon-label">
+  <p class="eyebrow">Reflection</p>
+  <h2 id="sermon-label">Sermon Review</h2>
+  <div class="section-body">
+    <p>The Righteousness of God Through Faith — Romans, Dan Lian</p>
+<p>DAY 3 — WEDNESDAY</p>
+<p>Theme: Faith Centers on Jesus</p>
+<p>Key Scripture: Romans 3:24–26</p>
+<p>Sermon Insight: The righteousness Paul describes is bound to the redeeming work of Jesus Christ, whom God put forward to deal with sin and demonstrate God’s justice. At the cross, God neither ignores evil nor abandons sinners; He acts decisively in mercy. Faith directs attention away from self and toward Christ.</p>
+<p>Today’s Application: Thank Jesus specifically for bearing the weight of sin you cannot carry. If shame makes you hide, answer it with the cross by coming honestly to Christ.</p>
+<p>Closing Prayer: Jesus, thank You that Your cross shows both God’s justice and love. Keep my eyes fixed on You, my Redeemer and righteousness.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="tech" aria-labelledby="tech-label">
+  <p class="eyebrow">Technology briefing</p>
+  <h2 id="tech-label">AI · Industry</h2>
+  <div class="section-body">
+    <p>1. How is artificial intelligence affecting Chicago workers? — WBEZ Chicago</p>
+<p>Chicago workers and employers are navigating AI’s changing effects on jobs, workplace practices, and the future of employment.</p>
+<p>https://news.google.com/rss/articles/CBMixgFBVV95cUxPc25nRDZMaW94Mm9zX0tsUFdqNFNaVWdmbXhXY0k2QV9VOEpwaG1OTmM3TTNfNllQbGl5SFo3b0N6cDV5aU9rbUlnaHNFU2VXemk4ZnhVeXBQWUpNTjF0WG1FMm1peUJkekltV1E3SUktX3hpbmFvMEpPQXJyTEdaaHZSMXV1aG55R3dma3hCSi1yS01ta0hHSUtudDVvX1o2ZTlDS3pOYmJwc2FDVzZpcF9mR2pRY0l0djRqYVJZNFN0NU05WkE?oc=5</p>
+<p>2. Morgan State University Launches Artificial Intelligence Degree With Quantum Machine Learning Courses — NCHStats</p>
+<p>Morgan State launched an AI degree that adds quantum machine-learning coursework to its technology education offerings.</p>
+<p>https://news.google.com/rss/articles/CBMilAFBVV95cUxQTmpkamJ4bjlsWGlCUjFUTDhBQzVEb2J6dHN0b0xGR055U2owdFdSNWpPQ3hDaHp3UUlSbzhoRldmYkJrWE5KZFl0N0YyZnlqVXRQb2MxZENjdmJ6WjlHWGNXZllGRzZWbHhxRnVkYVdGVFRseWE4cjJ6V2RzcUo1dlhpcmVjWC1uWVV0cllJUkQ4QWN6?oc=5</p>
+<p>3. DSU launches new programs in artificial intelligence — Madison Daily Leader</p>
+<p>DSU is expanding its academic offerings with new artificial-intelligence programs designed to meet growing workforce demand.</p>
+<p>https://news.google.com/rss/articles/CBMinwFBVV95cUxNWXdBNzJ5UVBhNkVMY0F5aTBud0ZmVGhtaU5jTnYwbG9OeGQyQ0tyVVFNaXY2Z1o3Y2RLOXkxRnh0YlpZbW8xUkJOVGR4cGFVVkFBT3RQU0JVN0E1bWYwX2NLeDFhR3VkbXFjWlNnTzFjeVd0NmFFQUZNM1ZSaWc3UzBHQTFkY2pNeDZ1Ul8yYkluQzFsMXhaMG85eC1oclU?oc=5</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="health" aria-labelledby="health-label">
+  <p class="eyebrow">Healthcare briefing</p>
+  <h2 id="health-label">AI · Medicine</h2>
+  <div class="section-body">
+    <p>1. AI Tracker: CHAI forms cybersecurity group — Modern Healthcare</p>
+<p>CHAI formed a cybersecurity group to address emerging security risks as artificial intelligence expands across healthcare.</p>
+<p>https://news.google.com/rss/articles/CBMijwFBVV95cUxOSEJfOGFQa0d4TW9ONGVxSWx1NkRVQm5WUThYdkZmRWJ4cG5GNGtDMXlSUVh5dlo5YWoyeDJSdEo2SVg4M19GTk5XcEttbE8zV1FEMS11V1BJTU1OdWFEOGpMZThPVVBRXzRxZGdlbTVaQ29zR0JtQzZiRDBOQld6Um9mTlRzdTVwZW4wSWJEOA?oc=5</p>
+<p>2. Cedar launches Kora Platform to build out agentic AI for medical billing — Fierce Healthcare</p>
+<p>Cedar launched Kora, an agentic AI platform intended to automate and improve medical-billing workflows.</p>
+<p>https://news.google.com/rss/articles/CBMipwFBVV95cUxPQ0VpcTdYNWJDQk4wZU9YeHhEd3o5T1FHZUpyNmZEdFU4QUctLXlub2ZaYnFSaV9YRE94aU04cGVCUFlxejNkREt5RUFETlJZYzhmOUFubG5neExKQm5DQldGYjhYOGd4SjIzZU9Sb1dhU0NaUFB5Sm9DOXJHaTcxLXhhMnlmQVBJWTlsTGl4RWg0RFJjZndnN2Juazg5a2F6aTR6MjBRbw?oc=5</p>
+<p>3. Oracle launches AI-driven patient portal — Healthcare Dive</p>
+<p>Oracle introduced an AI-driven patient portal aimed at making digital healthcare interactions more personalized and accessible.</p>
+<p>https://news.google.com/rss/articles/CBMijAFBVV95cUxNRXhrQWpzMXg2WFpBZHl2alowc0sxaEs4VTh5TjFCMUk1RVFNQm9ibUV1T2M2U3hlRTEwTzY4b19VQXAwc3c0TW1BV1ItNTJrMGNrLVdZbkwxd3hXUEtNLXNhUG1ydi1IeGpIbm9KZVBXLWQwZ2RMMnBaRmREZklSUWo4dDRFZE9XVHNyYg?oc=5</p>
+    
+    
+  </div>
+</section>
+        <footer>
+          Generated at 7:02 AM ET · Vol. 2026, No. 225 · <a href="https://Tpizz23.github.io/daily-briefs/archive/2026-08-13.html">Permanent link</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
