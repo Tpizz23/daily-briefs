@@ -1,0 +1,188 @@
+<style>
+    :root {
+      --ink: #1a1814;
+      --ink-soft: #5b554c;
+      --paper: #f6f2ea;
+      --paper-deep: #ece5d6;
+      --rule: #d9d2c4;
+      --accent: #8c3a1f;
+      --accent-soft: #b95a36;
+      --serif: Georgia, Charter, 'Iowan Old Style', 'Source Serif 4', serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(100% - 40px, 1120px); margin: 0 auto; padding: 28px 0 88px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .masthead { padding: 24px 0 38px; border-bottom: 1px solid var(--rule); }
+
+    .wordmark { margin: 0 0 18px; color: var(--ink-soft); font: 700 12px/1 var(--serif); letter-spacing: .04em; }
+    .dateline { margin: 0; font-family: Georgia, Charter, 'Iowan Old Style', serif; font-weight: 650; font-size: clamp(2.55rem, 12vw, 4.85rem); line-height: .96; letter-spacing: -.045em; max-width: 10ch; }
+    .subline { margin: 18px 0 0; color: var(--ink-soft); max-width: 38rem; }
+    .rail { display: none; }
+    .brief-section { padding: 34px 0 30px; border-top: 1px solid var(--rule); }
+    .brief-section:first-child { border-top: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--accent); flex: 0 0 auto; }
+    h2 { margin: 0 0 17px; font: 650 clamp(1.55rem, 5vw, 2.15rem)/1.05 var(--serif); letter-spacing: -.025em; }
+    h3 { margin: 0 0 7px; font: 650 1.15rem/1.25 var(--serif); letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p:first-child { font-size: 1.03rem; }
+    .link-list, .news-list { margin: 0; padding: 0; list-style: none; }
+    .link-list { display: grid; gap: 10px; }
+    .link-list li:not(.plain) a { display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 64%, transparent); color: var(--ink); font-weight: 680; }
+    .link-list .plain { color: var(--ink-soft); font-size: .94rem; margin-top: 8px; }
+    .news-list { counter-reset: news; }
+    .news-list li { position: relative; padding: 18px 0 18px 42px; border-top: 1px solid var(--rule); }
+    .news-list li:first-child { border-top: 0; padding-top: 0; }
+    .news-list li::before { counter-increment: news; content: counter(news); position: absolute; left: 0; top: 18px; width: 24px; height: 24px; display: grid; place-items: center; color: var(--paper); background: var(--ink); font: 700 12px/1 var(--sans); }
+    .news-list li:first-child::before { top: 0; }
+    .dek { color: var(--ink-soft); margin: 0; }
+    footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 22px; color: var(--ink-soft); font-size: .9rem; }
+    @media (min-width: 760px) {
+      body { font-size: 18px; }
+      .shell { width: min(100% - 72px, 1120px); padding-top: 48px; }
+      .dateline { max-width: 13ch; }
+      .content { max-width: 42rem; }
+      .brief-section { padding: 46px 0 40px; }
+    }
+    @media (min-width: 1040px) {
+      .layout { grid-template-columns: 13rem minmax(0, 42rem); align-items: start; gap: 72px; }
+      .rail { display: block; position: sticky; top: 40px; padding-top: 8px; }
+      .rail p { color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; margin: 0 0 16px; }
+      .rail nav { display: grid; gap: 9px; }
+      .rail a { color: var(--ink-soft); font-size: .88rem; }
+      .rail a:hover { color: var(--ink); }
+    }
+  </style><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TJ Daily Brief · Tuesday, August 18, 2026</title>
+  <meta name="description" content="TJ's public daily brief: verse, motivation, workouts, sermon reflection, and AI news.">
+  <link rel="canonical" href="https://Tpizz23.github.io/daily-briefs/archive/2026-08-18.html">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <aside class="rail" role="navigation" aria-label="Sections">
+        <p>On this page</p>
+        <nav>
+          <a href="#verse">Scripture</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#emergency-medicine-reading">EM:RAP CorePendium</a>
+          <a href="#sermon">Sermon Review</a>
+          <a href="#tech">AI · Industry</a>
+          <a href="#health">AI · Medicine</a>
+        </nav>
+      </aside>
+      <main id="main">
+        <header class="masthead">
+          <p class="wordmark">TJ Daily Brief</p>
+          <h1 class="dateline">Tuesday, August 18, 2026</h1>
+        </header>
+<section class="brief-section" id="verse" aria-labelledby="verse-label">
+  <p class="eyebrow">Today's Verse</p>
+  <h2 id="verse-label">Scripture</h2>
+  <div class="section-body">
+    <p>Romans 8:1 — “There is therefore now no condemnation for those who are in Christ Jesus.”</p>
+<p>Source: sermon docx</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="motivation" aria-labelledby="motivation-label">
+  <p class="eyebrow">Daily Inspiration</p>
+  <h2 id="motivation-label">Motivation</h2>
+  <div class="section-body">
+    <p>“No one can compete with you on being you. Most of life is a search for who and what needs you the most.” — Naval Ravikant</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="emergency-medicine-reading" aria-labelledby="emergency-medicine-reading-label">
+  <p class="eyebrow">Clinical learning</p>
+  <h2 id="emergency-medicine-reading-label">EM:RAP CorePendium</h2>
+  <div class="section-body">
+    <p>Today’s most recently updated CorePendium chapter. Sign in to EM:RAP if prompted.</p>
+    <ul class="link-list"><li><a href="https://www.emrap.org/corependium/chapter/recN9AXGWMstEm8CO/Aortic-Dissection" target="_blank" rel="noopener noreferrer">Read: Aortic Dissection</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="sermon" aria-labelledby="sermon-label">
+  <p class="eyebrow">Reflection</p>
+  <h2 id="sermon-label">Sermon Review</h2>
+  <div class="section-body">
+    <p>Champion of Hope — Romans, Day 2 of 6</p>
+<p>Theme: No Condemnation</p>
+<p>Key Scripture: Romans 8:1 — “There is therefore now no condemnation for those who are in Christ Jesus.”</p>
+<p>Sermon insight: Romans moves from the verdict of justification to the freedom of a new standing before God. Because Jesus brings us to God, our past no longer has the final word and shame is not our identity. Hope grows when we believe God’s declaration more than the accusations we repeat against ourselves.</p>
+<p>Today’s application: Notice one condemning thought that surfaces today. Answer it with the truth of Romans 8:1, then take one concrete step from shame toward faithful obedience.</p>
+<p>Closing prayer: Father, I bring You the failures I would rather hide. Thank You that in Christ condemnation is not my future; teach me to walk as someone truly forgiven.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="tech" aria-labelledby="tech-label">
+  <p class="eyebrow">Technology briefing</p>
+  <h2 id="tech-label">AI · Industry</h2>
+  <div class="section-body">
+    <p>1. Let’s talk about Artificial Intelligence (I) — Evangelical Focus</p>
+<p>The article examines artificial intelligence’s expanding influence and the questions its rapid adoption raises for society.</p>
+<p>https://news.google.com/rss/articles/CBMinwFBVV95cUxOQlJKY1VkN1FBVVZoeFNSWVMzMGh1aHV4QlgyMFhFV2FsXzN2SFFYTlk3NXpCd2s4NUt5c1RORjVnTnpJWHdJVjR5T1cteDB3OXhyNHNXajVIZGhrSHk3TzAybmF5QVNTc0lNa2Q4Mkk5ZzNWZHFyV1E2cHlQSGNXbXB1X05sODFZWFFZRG5sRE1JbTVON3k5NnUyMzFBTEk?oc=5</p>
+<p>2. The Trailblazing School on the Frontier of Artificial Intelligence — Education Next</p>
+<p>A specialized school is developing students’ AI skills, highlighting how education is adapting to frontier technology.</p>
+<p>https://news.google.com/rss/articles/CBMiwAFBVV95cUxOWk1fbTdfa0VOaklrQkJZQU10OVNvTVc3bDI0QzZEcnlyUlF0c0ExVnF2S0Rrc0ZHWWZnS0d2dldldzVvZVBxTV9qQkVsdHV1eGtJOExnQzR5Z3FRZWF4eXkteTAxNFJZS3g4c0hHVkRjY2o2bEY5SUc2UGFqMGdwaDNqOWtSXzd5alpEeGxxV0RESzliNWlydmg4elNTVUs4OUVhSGxheTFGREQxbmtKazJZZ2VpQVNEcTJCOTVZVU0?oc=5</p>
+<p>3. Shaping the Future: How AI is Redefining the Modern Classroom — WCAX</p>
+<p>Schools are integrating AI into classroom practice, prompting educators to rethink teaching methods and student preparation.</p>
+<p>https://news.google.com/rss/articles/CBMilgFBVV95cUxNMkVTQ0E0NmtMU2tfUWNSZWxUTDNjVU4tOV81eGNRQzIxN1VaMldEeThaelYwT1VTa19uUjhRb2tlRjZ6MW1jUGdiQlMwVFZRa195RkI1djg5UnFQSG1QZkdlWURCb0tKTEIwOEJTLWdTUEtuUEZfMkdPSmJ4NUJHSTJmQlpjY2tTWHVYTThTZUw2VHhnYmc?oc=5</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="health" aria-labelledby="health-label">
+  <p class="eyebrow">Healthcare briefing</p>
+  <h2 id="health-label">AI · Medicine</h2>
+  <div class="section-body">
+    <p>1. FDA Has Authorized 1,500 AI Medical Devices. The Evidence for Most of Them Is Still Catching Up. — The Clinical Trial Vanguard</p>
+<p>The FDA device count is rising faster than real-world evidence, underscoring the need for stronger post-market evaluation.</p>
+<p>https://news.google.com/rss/articles/CBMi1wFBVV95cUxQc05peVRmU0plUzM0Y0tXTkdJS1ZrU1hjZHh6eFlZbmFDdHFMczhoLWJNSXBkbTJLSm5OVjVYTjI5X0MxVHVJbDRKY2tXb3FnZWxablNZaXZMV1h4bWliMW1xS2lIMEptMlVpbXotVjRWWXFIenVhazlzcUU2eEhCekhHRWYxZlNNR1F5anRzNlVOS0M2aUQ5by1McFRwM1ZBX1NZckVtZjE2Rkh2V3dvak5ybUVTdWpFSGNzczZ1NEMtQnpSRV9uXzUxakg1VWxVSEd3MVNndw?oc=5</p>
+<p>2. Patients wary of governments, companies pushing AI as rural healthcare solution — Jefferson City News Tribune</p>
+<p>Rural patients express concern about AI-led care while providers weigh potential access gains against trust and accountability risks.</p>
+<p>https://news.google.com/rss/articles/CBMimwFBVV95cUxNWGdjcWpPUngxempVWTREU2t0VGo1MWR2cFROUVZGV3dJbUd6ZjN0d0Z6WHZKeWZLZVZaMVd0cEpaNnR3RWFTRFNSLUNVWTNuWWJKOTc0V2diTENHQXJkcTdwajFJWWZEYTN4RTZqWER4MHF5NXp6Y01jMEFCYnBRbHYzMnAta3BpcU1SeWd2MndrSi1KTEdBMUR3WQ?oc=5</p>
+<p>3. How Hippocratic AI navigates the limits of clinical AI — Modern Healthcare</p>
+<p>Hippocratic AI is confronting clinical AI’s boundaries by emphasizing safer deployment and limits on automated decision-making.</p>
+<p>https://news.google.com/rss/articles/CBMijAFBVV95cUxNcGlOLUJPM0FRUV9SamhIU3VVQ1lXVEgzZFdWczlzV1ZtdkZXUVZuOXRqQ1BUZHVpWVZWUmNoMEhjbGdpS2F5M3JTMFdOYVZUYzNDYWQwMXpadXpjLWU0MGllbmJCZUExR0NNdkNFS3FBcVlLZ0FySksxaWZXTGZKUVNqVTJvMUdjd1NFSw?oc=5</p>
+    
+    
+  </div>
+</section>
+        <footer>
+          Generated at 7:03 AM ET · Vol. 2026, No. 230 · <a href="https://Tpizz23.github.io/daily-briefs/archive/2026-08-18.html">Permanent link</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
