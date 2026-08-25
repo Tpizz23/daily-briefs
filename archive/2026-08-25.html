@@ -1,0 +1,199 @@
+<style>
+    :root {
+      --ink: #1a1814;
+      --ink-soft: #5b554c;
+      --paper: #f6f2ea;
+      --paper-deep: #ece5d6;
+      --rule: #d9d2c4;
+      --accent: #8c3a1f;
+      --accent-soft: #b95a36;
+      --serif: Georgia, Charter, 'Iowan Old Style', 'Source Serif 4', serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(100% - 40px, 1120px); margin: 0 auto; padding: 28px 0 88px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .masthead { padding: 24px 0 38px; border-bottom: 1px solid var(--rule); }
+
+    .wordmark { margin: 0 0 18px; color: var(--ink-soft); font: 700 12px/1 var(--serif); letter-spacing: .04em; }
+    .dateline { margin: 0; font-family: Georgia, Charter, 'Iowan Old Style', serif; font-weight: 650; font-size: clamp(2.55rem, 12vw, 4.85rem); line-height: .96; letter-spacing: -.045em; max-width: 10ch; }
+    .subline { margin: 18px 0 0; color: var(--ink-soft); max-width: 38rem; }
+    .rail { display: none; }
+    .brief-section { padding: 34px 0 30px; border-top: 1px solid var(--rule); }
+    .brief-section:first-child { border-top: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--accent); flex: 0 0 auto; }
+    h2 { margin: 0 0 17px; font: 650 clamp(1.55rem, 5vw, 2.15rem)/1.05 var(--serif); letter-spacing: -.025em; }
+    h3 { margin: 0 0 7px; font: 650 1.15rem/1.25 var(--serif); letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p:first-child { font-size: 1.03rem; }
+    .link-list, .news-list { margin: 0; padding: 0; list-style: none; }
+    .link-list { display: grid; gap: 10px; }
+    .link-list li:not(.plain) a { display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 64%, transparent); color: var(--ink); font-weight: 680; }
+    .link-list .plain { color: var(--ink-soft); font-size: .94rem; margin-top: 8px; }
+    .news-list { counter-reset: news; }
+    .news-list li { position: relative; padding: 18px 0 18px 42px; border-top: 1px solid var(--rule); }
+    .news-list li:first-child { border-top: 0; padding-top: 0; }
+    .news-list li::before { counter-increment: news; content: counter(news); position: absolute; left: 0; top: 18px; width: 24px; height: 24px; display: grid; place-items: center; color: var(--paper); background: var(--ink); font: 700 12px/1 var(--sans); }
+    .news-list li:first-child::before { top: 0; }
+    .dek { color: var(--ink-soft); margin: 0; }
+    footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 22px; color: var(--ink-soft); font-size: .9rem; }
+    @media (min-width: 760px) {
+      body { font-size: 18px; }
+      .shell { width: min(100% - 72px, 1120px); padding-top: 48px; }
+      .dateline { max-width: 13ch; }
+      .content { max-width: 42rem; }
+      .brief-section { padding: 46px 0 40px; }
+    }
+    @media (min-width: 1040px) {
+      .layout { grid-template-columns: 13rem minmax(0, 42rem); align-items: start; gap: 72px; }
+      .rail { display: block; position: sticky; top: 40px; padding-top: 8px; }
+      .rail p { color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; margin: 0 0 16px; }
+      .rail nav { display: grid; gap: 9px; }
+      .rail a { color: var(--ink-soft); font-size: .88rem; }
+      .rail a:hover { color: var(--ink); }
+    }
+  </style><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TJ Daily Brief · Tuesday, August 25, 2026</title>
+  <meta name="description" content="TJ's public daily brief: verse, motivation, workouts, sermon reflection, and AI news.">
+  <link rel="canonical" href="https://Tpizz23.github.io/daily-briefs/archive/2026-08-25.html">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <aside class="rail" role="navigation" aria-label="Sections">
+        <p>On this page</p>
+        <nav>
+          <a href="#verse">Scripture</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#emergency-medicine-reading">EM:RAP CorePendium</a>
+          <a href="#workout">Workout</a>
+          <a href="#sermon">Sermon Review</a>
+          <a href="#tech">AI · Industry</a>
+          <a href="#health">AI · Medicine</a>
+        </nav>
+      </aside>
+      <main id="main">
+        <header class="masthead">
+          <p class="wordmark">TJ Daily Brief</p>
+          <h1 class="dateline">Tuesday, August 25, 2026</h1>
+        </header>
+<section class="brief-section" id="verse" aria-labelledby="verse-label">
+  <p class="eyebrow">Today's Verse</p>
+  <h2 id="verse-label">Scripture</h2>
+  <div class="section-body">
+    <p>Proverbs 16:3 — “Commit your deeds to Yahweh, and your plans shall succeed.”</p>
+<p>Source: bible-api.com (World English Bible)</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="motivation" aria-labelledby="motivation-label">
+  <p class="eyebrow">Daily Inspiration</p>
+  <h2 id="motivation-label">Motivation</h2>
+  <div class="section-body">
+    <p>“Mistakes are painful when they happen, but years later a collection of mistakes is what is called experience.” — Denis Waitley</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="emergency-medicine-reading" aria-labelledby="emergency-medicine-reading-label">
+  <p class="eyebrow">Clinical learning</p>
+  <h2 id="emergency-medicine-reading-label">EM:RAP CorePendium</h2>
+  <div class="section-body">
+    <p>Today’s most recently updated CorePendium chapter. Sign in to EM:RAP if prompted.</p>
+    <ul class="link-list"><li><a href="https://www.emrap.org/corependium/chapter/reciCMKG7uORm0APE/Mass-Gathering-Medicine-and-Triage" target="_blank" rel="noopener noreferrer">Read: Mass Gathering Medicine and Triage</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="workout" aria-labelledby="workout-label">
+  <p class="eyebrow">Movement</p>
+  <h2 id="workout-label">Workout</h2>
+  <div class="section-body">
+    
+    <ul class="link-list"><li><a href="https://Tpizz23.github.io/workouts/2026-08-25_Legs-Shoulders-Core_Limited-Barbell.html" target="_blank" rel="noopener noreferrer">Legs-Shoulders-Core:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-08-26_Chest-Triceps_Limited-Barbell.html" target="_blank" rel="noopener noreferrer">Chest-Triceps:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-08-27_Back-Biceps_Limited-Barbell.html" target="_blank" rel="noopener noreferrer">Back-Biceps:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-08-28_Legs-Shoulders-Core_Limited-Barbell.html" target="_blank" rel="noopener noreferrer">Legs-Shoulders-Core:</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="sermon" aria-labelledby="sermon-label">
+  <p class="eyebrow">Reflection</p>
+  <h2 id="sermon-label">Sermon Review</h2>
+  <div class="section-body">
+    <p>Dead to Sin, Raised to Life — Romans — Clayton King</p>
+<p>DAY 2 — TUESDAY</p>
+<p>Theme: Sin No Longer Rules</p>
+<p>Key Scripture: Romans 6:11-12 — “So you also must consider yourselves dead to sin and alive to God in Christ Jesus. Let not sin therefore reign in your mortal body…”</p>
+<p>Sermon Insight: Paul explains the consequence of being united to Christ: sin may still be present, but it is no longer the rightful ruler. The Roman Christians lived amid pressures that could pull them back toward old loyalties, and modern believers face the same conflict in different forms. The gospel gives a new way to interpret temptation—not as proof that nothing changed, but as a moment to live from what Christ has already accomplished. Grace changes the believer’s allegiance.</p>
+<p>Today's Application: When temptation comes, say aloud or write, “Sin is present, but it is not my master.” Identify the specific choice that would put that truth into practice today.</p>
+<p>Closing Prayer: Father, I feel the pull of sin and sometimes mistake its strength for authority. Remind me that Jesus is my King, and that sin has no rightful claim over me. Give me courage to obey in the next small decision.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="tech" aria-labelledby="tech-label">
+  <p class="eyebrow">Technology briefing</p>
+  <h2 id="tech-label">AI · Industry</h2>
+  <div class="section-body">
+    <p>1. Artificial Intelligence and Psychiatric Training: Opportunities, Challenges, and the Future of Mental Health Education — Cureus</p>
+<p>A new review examines how AI could reshape psychiatric education while highlighting implementation challenges and risks for trainees.</p>
+<p>https://news.google.com/rss/articles/CBMigwJBVV95cUxQVkVZR0x3T0VRcTBueVVkR3cxSGJhSU5nX0Q5VENJZ3ZGbkZybnBraWRYTTNxS2RPaVJiaDBxalhsR1p6WU1SY0tLOV96dEZrZ1BYa1lNbUhRSTRrRE5nbndXbmp2Y1hWWHFLaFduWExhT3RzWnNzS3l5T0syeVlSVDBCQ2xadlBNUmJWWGhhMEx2RUxycm9YQmpPU09UZHpUUUNsYTc3OE5Yc1Bfb0dPLTk0VHZ4TGpwMVNjWFRCQVZfN3l6bS16Zk9ZSWJ0Vnp2cUUxcS1WanVIWDVNS2EzanRXNEY0cUFsZE1IZkFyNksybXBWbm9acnEwb0NaODAwbzJn?oc=5</p>
+<p>2. Vallejo Pastor Justin Lester from Friendship Missionary Baptist Church brings artificial intelligence to religious realm — ABC7 Bay Area</p>
+<p>A California pastor is applying AI within religious work, illustrating the technology’s spread into community and faith organizations.</p>
+<p>https://news.google.com/rss/articles/CBMi4gFBVV95cUxNQUNhWktaR1dOX1dlQk14LUk2d1B0YnlYUHBYYWdrQThTTXNlcG5UVy02YVpuc3NXelA5SmY1VC01RWVKSXI2aVBvcGl6akE0UUw5RWFFNGYtX0tzN3BuQms4Wi1BLVhjMjJIUF9QS0Mwc2dGdnBFYjlUd0JGdzRPN1JwUDFZeDNyZmVmTGl0c2l0SGU5dEV1UHFCLUdNcnFxWlB4cDdjQVhEVUlOMWc5b1JsTUlKa0lQTUFFUS0tTE9zWkNmcHRpOUpYLWRHVEQ4empCbENhOTJWVWgwRDE1Wkh30gHnAUFVX3lxTFBMN2NDc1FKQmYzSWhqN09HR1gyVUw0UkZjdG9LdU5sZWtYczRXMTdNelpaODZ0eE1OUTVxTkw2ek5qenJnNWdiT3dYb3A0NFVDU21ZUHJZMWVZNG0tbW94UTJHYk1CZTNhZ0h3Z29yUmtCUDdlU2t2TjNpY2hEYVJwbmZTU0ZPcVphem9EdXJxTzVOU0xwZUlyTEJ6WTQ3bkdRUzMyZlBuLUlxdGxTd2k4MjNhNFB4UHF3bVZxSkdqa0xEQkY2c3ZzdVhKTDZBNVR3ZkZ3YU04WG04NkY1WThYeW8wZmVjOA?oc=5</p>
+<p>3. How Will Ag Benefit from Artificial Intelligence? — AG INFORMATION NETWORK OF THE WEST</p>
+<p>Agriculture-focused reporting considers how AI may improve farm operations and decision-making across the sector.</p>
+<p>https://news.google.com/rss/articles/CBMipwFBVV95cUxPWl9qdlZrMXRuQ2hSdkZ1dVQtYVpDQ1NKZHJKOW1JekVad3hKWWpXRjQ2eW9hMmFDVHItcnRWVXIzNFBOSUpFRzNIWVlLQVAtRzE0Y3ZjT3lBVTF3dkxTbHluZ3ltaGNLRkhCcDBBU05vemFBNVFzWW1PNzZNemlfZ3NjcXctVnFuODZpMmtmQ0RNeUlqRnE4MkV6Yy1oZHJqaWFBQlRYaw?oc=5</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="health" aria-labelledby="health-label">
+  <p class="eyebrow">Healthcare briefing</p>
+  <h2 id="health-label">AI · Medicine</h2>
+  <div class="section-body">
+    <p>1. The three risks holding back healthcare AI | Viewpoint — Chief Healthcare Executive</p>
+<p>Healthcare AI adoption is being slowed by three major risks, underscoring the need for governance, safety, and operational readiness.</p>
+<p>https://news.google.com/rss/articles/CBMinwFBVV95cUxQTmdoYm1YNGIyYUJKY0lhSEY4OHBoamxUUksyZm11a0ZFcEZyMjZUa1l6MUY3UDhUQzZfWGRUZFR0Q3FVT0pqaGVrSFRzTjNYWENYaEZiQkZyLUx2bGpsUEFDM3R2Z0pkMlBQTi1lQUJITXlneUV4d2pJLThXQ0JUQXZtY3l6dW1rVDJMYmdWX0I3NWZCR0VOa2FxbU5Salk?oc=5</p>
+<p>2. Americans Want to Know When Their Healthcare Providers Use AI — CNET</p>
+<p>Patients increasingly want disclosure when clinicians use AI, making transparency a central expectation for healthcare organizations.</p>
+<p>https://news.google.com/rss/articles/CBMingFBVV95cUxPU2RJOUYydGFZTTZWM095NXRaNGNMOUl2a3ZTdW1kcFBrRXJuaEZuODFFQ25tNGsxenZIZmJxQUY1dFo5VTdwdktzbDBOd2hNUHlhcndUOUN0QzBkZlBDWmlqb0k4UjBYMkZ0dXphZXZsbV93OHN1aVJ4VE9UamFvNFhpQ0xDbVdvQnNCdE02ZF8xWXIyQjhRWjJvaS16QQ?oc=5</p>
+<p>3. What radiologists want from the next generation of AI — Modern Healthcare</p>
+<p>Radiologists are defining next-generation AI around practical workflow needs, signaling demand for tools that augment rather than disrupt care.</p>
+<p>https://news.google.com/rss/articles/CBMimwFBVV95cUxQVGpqYmgyMGdWbHBHUU1pdzBmVGs0aUE2ZVhEOXRyU19JclR4Z21YS2xiY25ScFdvNXgtMDZDSjZCNzNLVFNCVXRQQ016dHRkNzg0U05QUkR6X28zeERkZ3A1eFNHNHI2anljZ21pX3c0dnNFRU1ZUFNiRnJtWDBZeEhYa2h4RG5fOFlxZmU3YVFJdEt5LUZkZXJBZw?oc=5</p>
+    
+    
+  </div>
+</section>
+        <footer>
+          Generated at 7:02 AM ET · Vol. 2026, No. 237 · <a href="https://Tpizz23.github.io/daily-briefs/archive/2026-08-25.html">Permanent link</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
