@@ -1,0 +1,199 @@
+<style>
+    :root {
+      --ink: #1a1814;
+      --ink-soft: #5b554c;
+      --paper: #f6f2ea;
+      --paper-deep: #ece5d6;
+      --rule: #d9d2c4;
+      --accent: #8c3a1f;
+      --accent-soft: #b95a36;
+      --serif: Georgia, Charter, 'Iowan Old Style', 'Source Serif 4', serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(100% - 40px, 1120px); margin: 0 auto; padding: 28px 0 88px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .masthead { padding: 24px 0 38px; border-bottom: 1px solid var(--rule); }
+
+    .wordmark { margin: 0 0 18px; color: var(--ink-soft); font: 700 12px/1 var(--serif); letter-spacing: .04em; }
+    .dateline { margin: 0; font-family: Georgia, Charter, 'Iowan Old Style', serif; font-weight: 650; font-size: clamp(2.55rem, 12vw, 4.85rem); line-height: .96; letter-spacing: -.045em; max-width: 10ch; }
+    .subline { margin: 18px 0 0; color: var(--ink-soft); max-width: 38rem; }
+    .rail { display: none; }
+    .brief-section { padding: 34px 0 30px; border-top: 1px solid var(--rule); }
+    .brief-section:first-child { border-top: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--accent); flex: 0 0 auto; }
+    h2 { margin: 0 0 17px; font: 650 clamp(1.55rem, 5vw, 2.15rem)/1.05 var(--serif); letter-spacing: -.025em; }
+    h3 { margin: 0 0 7px; font: 650 1.15rem/1.25 var(--serif); letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p:first-child { font-size: 1.03rem; }
+    .link-list, .news-list { margin: 0; padding: 0; list-style: none; }
+    .link-list { display: grid; gap: 10px; }
+    .link-list li:not(.plain) a { display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 64%, transparent); color: var(--ink); font-weight: 680; }
+    .link-list .plain { color: var(--ink-soft); font-size: .94rem; margin-top: 8px; }
+    .news-list { counter-reset: news; }
+    .news-list li { position: relative; padding: 18px 0 18px 42px; border-top: 1px solid var(--rule); }
+    .news-list li:first-child { border-top: 0; padding-top: 0; }
+    .news-list li::before { counter-increment: news; content: counter(news); position: absolute; left: 0; top: 18px; width: 24px; height: 24px; display: grid; place-items: center; color: var(--paper); background: var(--ink); font: 700 12px/1 var(--sans); }
+    .news-list li:first-child::before { top: 0; }
+    .dek { color: var(--ink-soft); margin: 0; }
+    footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 22px; color: var(--ink-soft); font-size: .9rem; }
+    @media (min-width: 760px) {
+      body { font-size: 18px; }
+      .shell { width: min(100% - 72px, 1120px); padding-top: 48px; }
+      .dateline { max-width: 13ch; }
+      .content { max-width: 42rem; }
+      .brief-section { padding: 46px 0 40px; }
+    }
+    @media (min-width: 1040px) {
+      .layout { grid-template-columns: 13rem minmax(0, 42rem); align-items: start; gap: 72px; }
+      .rail { display: block; position: sticky; top: 40px; padding-top: 8px; }
+      .rail p { color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; margin: 0 0 16px; }
+      .rail nav { display: grid; gap: 9px; }
+      .rail a { color: var(--ink-soft); font-size: .88rem; }
+      .rail a:hover { color: var(--ink); }
+    }
+  </style><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TJ Daily Brief · Wednesday, August 26, 2026</title>
+  <meta name="description" content="TJ's public daily brief: verse, motivation, workouts, sermon reflection, and AI news.">
+  <link rel="canonical" href="https://Tpizz23.github.io/daily-briefs/archive/2026-08-26.html">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <aside class="rail" role="navigation" aria-label="Sections">
+        <p>On this page</p>
+        <nav>
+          <a href="#verse">Scripture</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#emergency-medicine-reading">EM:RAP CorePendium</a>
+          <a href="#workout">Workout</a>
+          <a href="#sermon">Sermon Review</a>
+          <a href="#tech">AI · Industry</a>
+          <a href="#health">AI · Medicine</a>
+        </nav>
+      </aside>
+      <main id="main">
+        <header class="masthead">
+          <p class="wordmark">TJ Daily Brief</p>
+          <h1 class="dateline">Wednesday, August 26, 2026</h1>
+        </header>
+<section class="brief-section" id="verse" aria-labelledby="verse-label">
+  <p class="eyebrow">Today's Verse</p>
+  <h2 id="verse-label">Scripture</h2>
+  <div class="section-body">
+    <p>Psalm 46:1-3 — “God is our refuge and strength, a very present help in trouble. Therefore we won’t be afraid, though the earth changes, though the mountains are shaken into the heart of the seas; though its waters roar and are troubled, though the mountains tremble with their swelling. Selah.”</p>
+<p>Source: bible-api.com (World English Bible)</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="motivation" aria-labelledby="motivation-label">
+  <p class="eyebrow">Daily Inspiration</p>
+  <h2 id="motivation-label">Motivation</h2>
+  <div class="section-body">
+    <p>“A memory is a beautiful thing, it's almost a desire that you miss.” — Gustave Flaubert</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="emergency-medicine-reading" aria-labelledby="emergency-medicine-reading-label">
+  <p class="eyebrow">Clinical learning</p>
+  <h2 id="emergency-medicine-reading-label">EM:RAP CorePendium</h2>
+  <div class="section-body">
+    <p>Today’s most recently updated CorePendium chapter. Sign in to EM:RAP if prompted.</p>
+    <ul class="link-list"><li><a href="https://www.emrap.org/corependium/chapter/recJqyEeQJsqKyWci/Study-Guide-3-Year-Residency-PGY-3" target="_blank" rel="noopener noreferrer">Read: Study Guide -- 3-Year Residency: PGY-3</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="workout" aria-labelledby="workout-label">
+  <p class="eyebrow">Movement</p>
+  <h2 id="workout-label">Workout</h2>
+  <div class="section-body">
+    
+    <ul class="link-list"><li><a href="https://Tpizz23.github.io/workouts/2026-08-26_Chest-Triceps_Limited-Barbell.html" target="_blank" rel="noopener noreferrer">Chest-Triceps Limited-Barbell:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-08-26_Chest-Triceps_Full-Gym.html" target="_blank" rel="noopener noreferrer">Chest-Triceps Full-Gym:</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="sermon" aria-labelledby="sermon-label">
+  <p class="eyebrow">Reflection</p>
+  <h2 id="sermon-label">Sermon Review</h2>
+  <div class="section-body">
+    <p>Dead to Sin, Raised to Life — Romans — Clayton King</p>
+<p>Day 3 of 6 — Wednesday</p>
+<p>Theme: United With Christ</p>
+<p>Key Scripture: Romans 6:5 — “For if we have been united with him in a death like his, we shall certainly be united with him in a resurrection like his.”</p>
+<p>Sermon Insight: The answer to sin is not self-improvement detached from Jesus; it is union with Jesus. His death is where the old dominion is broken, and His resurrection is the source of the new life we are called to live. The sermon’s baptism language makes this personal: believers are not spectators of Christ’s story but participants in it. Because Jesus lives, obedience is not an attempt to earn life—it is the fruit of receiving life from Him.</p>
+<p>Today’s Application: Spend a few quiet minutes thanking Jesus for specific ways His resurrection life has already changed you. Then ask where you need to rely on His life rather than your willpower.</p>
+<p>Closing Prayer: Jesus, I need more than determination; I need Your life at work in me. Thank You that I am united with You in death and resurrection. Make Your resurrection power visible in the place where I feel weakest.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="tech" aria-labelledby="tech-label">
+  <p class="eyebrow">Technology briefing</p>
+  <h2 id="tech-label">AI · Industry</h2>
+  <div class="section-body">
+    <p>1. In a divided America, left and right unite to oppose artificial intelligence data centers — NBC Chicago</p>
+<p>Political coalitions are challenging AI data-center expansion, highlighting mounting community concerns about infrastructure and local impacts.</p>
+<p>https://news.google.com/rss/articles/CBMivwFBVV95cUxQNUdOd2RCXzVGdEZwRU1GZ1FWdmFtUGI4Z3hMa1V5YTZPbFA5NzNiRHJHck42b0I4a0NiMU1tdnVZWURwSS13c09XeVFuekxLeTgzdGkwOHZLT2JzVEgzZDdzZWZHMWhrMnBCRG9fODdubUtwVXZyaFMtNEJTQ085SUc0X0w0NktRZnJYUjA4TG50anlzMVFjSmpuS2ktbHExUU1xT015VGhKY3B3UnNZa25LbEtVaGFnS2E5dlVxd9IBxwFBVV95cUxNbi1XTXdfRU5FV3ZGQ21md2VIM0hHeDBNcExiNXZxQ1dGRDNVQldVQmIxTktSbmVCV1djY0oyekZaT0YyLS1od2huSkVESkE0aGZMR0VsSHdDTVlVQnI2SVE3NFBHeFU5bG5uSkhaMllENXpMTXVRclJVeXYxQWU3UllPYWdQM2ZuZW9YN0VyNmliV2dwZUh4UWh6dUdTRDVScHFVWG10SXhhRWFVVGpJVFd1YTc5YXNXWlBDd24wRkd6T29BRDJr?oc=5</p>
+<p>2. Life-inspired interoceptive artificial intelligence for autonomous and adaptive agents — Nature</p>
+<p>Researchers describe an interoceptive AI approach inspired by living systems to help autonomous agents adapt to changing conditions.</p>
+<p>https://news.google.com/rss/articles/CBMiX0FVX3lxTE00VnlsRnlfa2ZyNGJpLTdEdDNiWFJ6VnRpeVVxcFRvaWE5V2JCR0Z3dC1KRVUxSk9GM1RYcm1yVFBvb0p0Y3BEcFVHV2Y1T0dxcWFqS3hyNkpDS1BqeXJv?oc=5</p>
+<p>3. Amazon service Bezos once called 'artificial artificial intelligence' is shutting down — CNBC</p>
+<p>Amazon is closing a human-powered service once associated with AI, illustrating how automation strategies and service models continue evolving.</p>
+<p>https://news.google.com/rss/articles/CBMiqAFBVV95cUxNeTRIUDBYQWZnU3dTSGNmb012T2VvcDYxOHhleFhhZmY0NUZJaEhJMlZFRTIyZzQ2d1JrS0ZLd3F5LTkwVXQyaElOWVhxRTdPZVhsT1BlOUFWekNranBlRWRGM0t2YnFvMjI2ZnphV2pzUFNXeWFWcmZMN1hFTkJoekFqNGZiQzNmWWRtSnF4UkJ3VG1Vek05VlM2WW51OVJJeFVwZkU4VW7SAa4BQVVfeXFMTnZiS2ZVSnIxeHozVFRvb2NVVFFPSFhtWjcwczVVMWxjV1h0dktFbHZsSUZrSWlNQmRBaHFtaXNMWGFyMDZKYUhSZTdsNVBpaUdqaGxPb05TeGJSdmRmRTRFYktBRjRKVUc2dHZiZ2FqWXRfZWJlb3RibzdtaHk1SXdFLUQ5SkZlVElTbUlGZUIzNk5lUElhbDRud0RPZlBlZy13S1BHVkV5eVItWk9R?oc=5</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="health" aria-labelledby="health-label">
+  <p class="eyebrow">Healthcare briefing</p>
+  <h2 id="health-label">AI · Medicine</h2>
+  <div class="section-body">
+    <p>1. Americans want transparency when AI is used in their healthcare — Pew Research Center</p>
+<p>Pew reports broad public demand for disclosure when healthcare professionals use AI in patient care or clinical decisions.</p>
+<p>https://news.google.com/rss/articles/CBMitgFBVV95cUxNdXZJdmVxbmMxNTN3WVBobWl6T2JvdTV2TGh0dUtmUGl5NFlYRGpMcGV6b0s2Y1NxNk9WWV9wQ2JfaUV6aF9jdnZqNTJJVl9PeDQwZlRNMF9zTTNtdldTQmFnQ1dpbF9lMnFmRGdWc2ZWbnNpVjlYX0R6M0ZScHBTN0lDYks2dURFaVFwYlgzNER0NUYtWFREemxGZmVSSHYwY0Z5bHJRdGdBNzYxYWpfUmo4YUhudw?oc=5</p>
+<p>2. Healthcare AI Moves Beyond Incremental Change — Pharmacy Practice News</p>
+<p>Healthcare AI is moving toward broader operational transformation, increasing pressure for scalable implementation and measurable clinical value.</p>
+<p>https://news.google.com/rss/articles/CBMiyAFBVV95cUxNTm5CRWlUeldHQ19XV29xLVU2YWNIYW42eVRIeDQyTDU4cXFzeWw4VTJ2QzU2WnNfRzcxbXJYTTR2eDluNi1uY1g2S1hkUFhXS29sbHM0MXhXZEl2US1vMXMyNTZPbkNJa2JVSVJMRTBLZl9aVzI4MVNsRE9ubjNaVmtNamh0N3FtZkVaNVZTbi1MZElwSWhzaTlyQkRDRFJJdWp1SlBIb2s2Zk1xNWd6R082N05BdFgwQWpmcjU3eWZYYk1fOFNORA?oc=5</p>
+<p>3. ECRI Expands Problem Reporting Network and Calls for More Data on AI Errors in Patient Care — ECRI</p>
+<p>ECRI is expanding error reporting and urging better data collection to identify and reduce harms from AI-assisted patient care.</p>
+<p>https://news.google.com/rss/articles/CBMiyAFBVV95cUxNRS1IZnR2LTY3bjRBMllSbUV1QnI4QWs3UnBmcVZEbTZqeHRucGhFN1FUbXp1TUxWaFAtMHZzYXlUVzNKc0JCWTJkYTkxT2ZCOTRxNklTbWtNODhvYl9ITnR6VlRscnFLVUpiTjUzd21zNERHR1hZWElpTDdYQnNtbGloaWdKVk5NX2VGam9PMEpidDgxcmJzZWdXQlNYVjkxcEN6cDFFTUZwVzZyc0xOa0FPRWF6cXgzbkNmNGZvY0VPVXZ2RnU1ZQ?oc=5</p>
+    
+    
+  </div>
+</section>
+        <footer>
+          Generated at 7:03 AM ET · Vol. 2026, No. 238 · <a href="https://Tpizz23.github.io/daily-briefs/archive/2026-08-26.html">Permanent link</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
