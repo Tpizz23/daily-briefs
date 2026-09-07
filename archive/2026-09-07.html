@@ -1,0 +1,188 @@
+<style>
+    :root {
+      --ink: #1a1814;
+      --ink-soft: #5b554c;
+      --paper: #f6f2ea;
+      --paper-deep: #ece5d6;
+      --rule: #d9d2c4;
+      --accent: #8c3a1f;
+      --accent-soft: #b95a36;
+      --serif: Georgia, Charter, 'Iowan Old Style', 'Source Serif 4', serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(100% - 40px, 1120px); margin: 0 auto; padding: 28px 0 88px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .masthead { padding: 24px 0 38px; border-bottom: 1px solid var(--rule); }
+
+    .wordmark { margin: 0 0 18px; color: var(--ink-soft); font: 700 12px/1 var(--serif); letter-spacing: .04em; }
+    .dateline { margin: 0; font-family: Georgia, Charter, 'Iowan Old Style', serif; font-weight: 650; font-size: clamp(2.55rem, 12vw, 4.85rem); line-height: .96; letter-spacing: -.045em; max-width: 10ch; }
+    .subline { margin: 18px 0 0; color: var(--ink-soft); max-width: 38rem; }
+    .rail { display: none; }
+    .brief-section { padding: 34px 0 30px; border-top: 1px solid var(--rule); }
+    .brief-section:first-child { border-top: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--accent); flex: 0 0 auto; }
+    h2 { margin: 0 0 17px; font: 650 clamp(1.55rem, 5vw, 2.15rem)/1.05 var(--serif); letter-spacing: -.025em; }
+    h3 { margin: 0 0 7px; font: 650 1.15rem/1.25 var(--serif); letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p:first-child { font-size: 1.03rem; }
+    .link-list, .news-list { margin: 0; padding: 0; list-style: none; }
+    .link-list { display: grid; gap: 10px; }
+    .link-list li:not(.plain) a { display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 64%, transparent); color: var(--ink); font-weight: 680; }
+    .link-list .plain { color: var(--ink-soft); font-size: .94rem; margin-top: 8px; }
+    .news-list { counter-reset: news; }
+    .news-list li { position: relative; padding: 18px 0 18px 42px; border-top: 1px solid var(--rule); }
+    .news-list li:first-child { border-top: 0; padding-top: 0; }
+    .news-list li::before { counter-increment: news; content: counter(news); position: absolute; left: 0; top: 18px; width: 24px; height: 24px; display: grid; place-items: center; color: var(--paper); background: var(--ink); font: 700 12px/1 var(--sans); }
+    .news-list li:first-child::before { top: 0; }
+    .dek { color: var(--ink-soft); margin: 0; }
+    footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 22px; color: var(--ink-soft); font-size: .9rem; }
+    @media (min-width: 760px) {
+      body { font-size: 18px; }
+      .shell { width: min(100% - 72px, 1120px); padding-top: 48px; }
+      .dateline { max-width: 13ch; }
+      .content { max-width: 42rem; }
+      .brief-section { padding: 46px 0 40px; }
+    }
+    @media (min-width: 1040px) {
+      .layout { grid-template-columns: 13rem minmax(0, 42rem); align-items: start; gap: 72px; }
+      .rail { display: block; position: sticky; top: 40px; padding-top: 8px; }
+      .rail p { color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; margin: 0 0 16px; }
+      .rail nav { display: grid; gap: 9px; }
+      .rail a { color: var(--ink-soft); font-size: .88rem; }
+      .rail a:hover { color: var(--ink); }
+    }
+  </style><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TJ Daily Brief · Monday, September 7, 2026</title>
+  <meta name="description" content="TJ's public daily brief: verse, motivation, workouts, sermon reflection, and AI news.">
+  <link rel="canonical" href="https://Tpizz23.github.io/daily-briefs/archive/2026-09-07.html">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <aside class="rail" role="navigation" aria-label="Sections">
+        <p>On this page</p>
+        <nav>
+          <a href="#verse">Scripture</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#emergency-medicine-reading">EM:RAP CorePendium</a>
+          <a href="#sermon">Sermon Review</a>
+          <a href="#tech">AI · Industry</a>
+          <a href="#health">AI · Medicine</a>
+        </nav>
+      </aside>
+      <main id="main">
+        <header class="masthead">
+          <p class="wordmark">TJ Daily Brief</p>
+          <h1 class="dateline">Monday, September 7, 2026</h1>
+        </header>
+<section class="brief-section" id="verse" aria-labelledby="verse-label">
+  <p class="eyebrow">Today's Verse</p>
+  <h2 id="verse-label">Scripture</h2>
+  <div class="section-body">
+    <p>Colossians 3:23 — “And whatever you do, work heartily, as for the Lord, and not for men.”</p>
+<p>World English Bible</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="motivation" aria-labelledby="motivation-label">
+  <p class="eyebrow">Daily Inspiration</p>
+  <h2 id="motivation-label">Motivation</h2>
+  <div class="section-body">
+    <p>“Our heart is a treasury; if you pour out all its wealth at once, you are bankrupt.” — Honore de Balzac</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="emergency-medicine-reading" aria-labelledby="emergency-medicine-reading-label">
+  <p class="eyebrow">Clinical learning</p>
+  <h2 id="emergency-medicine-reading-label">EM:RAP CorePendium</h2>
+  <div class="section-body">
+    <p>Today’s most recently updated CorePendium chapter. Sign in to EM:RAP if prompted.</p>
+    <ul class="link-list"><li><a href="https://www.emrap.org/corependium/chapter/recZq1L1jwdEUMDWr/Pediatric-UTIs" target="_blank" rel="noopener noreferrer">Read: Pediatric UTIs</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="sermon" aria-labelledby="sermon-label">
+  <p class="eyebrow">Reflection</p>
+  <h2 id="sermon-label">Sermon Review</h2>
+  <div class="section-body">
+    <p>Day 1 — The Bible’s Greatest Chapter · Romans · Lee McDerment</p>
+<p>Theme: No Condemnation</p>
+<p>Key Scripture: Romans 8:1 — “There is therefore now no condemnation for those who are in Christ Jesus.”</p>
+<p>Sermon Insight: Romans 8 begins with a decisive word of grace: those who are in Christ are no longer under condemnation. Lee McDerment describes Romans 8 as the rousing conclusion to Paul’s explanation of righteousness through Christ, and this is the foundation beneath every benefit that follows. The gospel does not merely improve our standing; it changes the verdict over our lives. We can face sin, weakness, and failure honestly because our identity is secured in Jesus.</p>
+<p>Today’s Application: Notice the accusation or shame that has been loudest in your mind. Answer it with Romans 8:1, then bring one specific failure to God in confession rather than hiding.</p>
+<p>Closing Prayer: Father, thank You that Your verdict over me is found in Christ, not in my performance. Help me receive the freedom of no condemnation and live honestly before You today.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="tech" aria-labelledby="tech-label">
+  <p class="eyebrow">Technology briefing</p>
+  <h2 id="tech-label">AI · Industry</h2>
+  <div class="section-body">
+    <p>1. Tough choices ahead as the US pushes a global artificial-intelligence divide — bruegel.org</p>
+<p>A new analysis argues geopolitical choices will shape whether artificial-intelligence capabilities fragment across competing global ecosystems.</p>
+<p>https://news.google.com/rss/articles/CBMipwFBVV95cUxOMmlMY1VvZHBEQ3pwaTFMS0MweFhfTmJHUWhLZ2VjSjNfR1JMSHBuTjh2OUxMVlU0a3hlRnpZRUJOcHZIMHk4aXNSODUwdWhYSEkxWDYxU1FqbkJJNGgtdHdTNkhZdVhrN1BtQnBCVzcwYXZpQ0toS25rWGRfcnBxOVRoT0tPTWJxb1cxLWFtSVljZzIyYWdBcGpKMUJSckJrUVY5c1pxVQ?oc=5</p>
+<p>2. Saint-Gobain appoints Annica Hagen as Chief Artificial Intelligence Officer and accelerates AI deployment — saint-gobain.com</p>
+<p>Saint-Gobain created a dedicated AI leadership role while accelerating company-wide deployment of artificial-intelligence capabilities.</p>
+<p>https://news.google.com/rss/articles/CBMixwFBVV95cUxQNGpBU2p0YjJqbDJmZ1ZNVS1FT2xiQ1hBQjEzTGlBakFsbmVBaW15OGltd01sVmdHUExZNEozTWxUTElLekY3ZXJaMTNHOTBEZ1BrS29KOExQR3hkUlZOSlJEWDhUc1RPMWpEM19oTFVwWW9qZkdwdm1KTDltbGlLd0RCZkxQTkgwdEtFc2RYeVdfTzEtZmNWQXdGSzFjSzVGanVKaUF4NlFUWC1JMHFzOUF1Ym9KYmlRaEF6cDlpeTJVWG9PNjNn?oc=5</p>
+<p>3. Scientific literacy must keep pace with artificial intelligence — Research Information</p>
+<p>The article contends that stronger scientific literacy is essential for society to evaluate and govern rapidly advancing AI systems.</p>
+<p>https://news.google.com/rss/articles/CBMiugFBVV95cUxPQUhya1VndVhaaDVhSUpNWVI3cEhMWU5MWlJXUU1TRTV6NU92akpxd2RzQlVoS1B0enVLenpGM0R6QmZHUWRPUnRGUXFJVTlXOVRtUWtoSGRwNFgxbmhZOVB6aDVzV3pKODZWZjljTnFnU3BiNV8zY2dWOWFDUVZRLUFoaTJxX2ZwemtMZV9LQjg2aTVEWTVuNndGdjNuRFdhY0xlQWpRWng0Rm9pM0VXdVZ1YnJPRjZFVnc?oc=5</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="health" aria-labelledby="health-label">
+  <p class="eyebrow">Healthcare briefing</p>
+  <h2 id="health-label">AI · Medicine</h2>
+  <div class="section-body">
+    <p>1. Ambient AI Documentation Is Leaving the Exam Room, and the Medical Record Is Changing With It — technology.org</p>
+<p>Ambient documentation is expanding into nursing, inpatient, emergency, and post-acute settings, raising questions about model-shaped medical-record data.</p>
+<p>https://news.google.com/rss/articles/CBMiywFBVV95cUxQVGttQ2c0VVV3Y2xYTENaZ3lwc0hxbHY0NnJiWUFHZXRiNnZIYmc4NDFVNFZ0dnVuM2Jwd1V2WV9PSDhRT0MzcXRiMzhuOU5UeS1CbVAzVVhXdkx0d2FrODNrN2tpZ1dvdGN1UXRzbHduTFlMbERsVFpBMkJoZlhfLV9yN1Zqams4eHp3cWJaSXZjR2huZlVJMWItRzZGQ1BEcmd0TTJmclhDX2c2V0ZVWjdIVWpoalBiN0Q3QmlMT1RzOW1OcnpxdnlUWQ?oc=5</p>
+<p>2. PolyU and Diagens Tech establish joint lab to advance AI-driven medical innovation in Hong Kong — biospectrumasia.com</p>
+<p>PolyU and Diagens Tech launched a joint laboratory intended to advance collaborative AI-driven medical innovation in Hong Kong.</p>
+<p>https://news.google.com/rss/articles/CBMi3wFBVV95cUxQd3BrMkRjQzd6cWhXOEduNk9welRVSjZHX2IzZ0JzTHJDMUJpTlJiYXV4YlVvS05kTDB2amVpU1owX3RLYzlfc3I4cXF2R1dScmdsZE8zQXI3VGZ5R19NOXU3cUg1enhQaGt3SkptaGFRN1N6YS1aTU5CakZIUnlSRkpzdmQ0MjFQNHhkcVNYVTB3T1E1eEhVSDZNZWUyeDBYNGxISGh2VDJCRXMtTWhBVzFJZktTeUFCTmNhUWhZN2hfX2tJNlFQY1kzdTE3V0JRY3YweUlWLXdfMW9zeEFj?oc=5</p>
+<p>3. Beyond the AI Race: How BRICS Is Helping the Global South Harness Technology — thediplomaticinsight.com</p>
+<p>The report describes BRICS cooperation as a pathway for Global South countries to develop and apply AI beyond dominant technology blocs.</p>
+<p>https://news.google.com/rss/articles/CBMigwFBVV95cUxQWVg3NmUtZmpXOUtmOWFIQkkwdjBoNGVvazdReHRpaEdpLU9Yb1JJbExJNUJOUTRCZkpDSC1JdjJWQzhSZkozRGtnVzJDUVFSTmIxME9KVFBTb0RXTmhYWDZlMS1ELTg5LTNydmVEQmFPSTc5dFV4THpsS2lJMUpIcnlsZw?oc=5</p>
+    
+    
+  </div>
+</section>
+        <footer>
+          Generated at 7:04 AM ET · Vol. 2026, No. 250 · <a href="https://Tpizz23.github.io/daily-briefs/archive/2026-09-07.html">Permanent link</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
