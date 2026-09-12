@@ -1,0 +1,199 @@
+<style>
+    :root {
+      --ink: #1a1814;
+      --ink-soft: #5b554c;
+      --paper: #f6f2ea;
+      --paper-deep: #ece5d6;
+      --rule: #d9d2c4;
+      --accent: #8c3a1f;
+      --accent-soft: #b95a36;
+      --serif: Georgia, Charter, 'Iowan Old Style', 'Source Serif 4', serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(100% - 40px, 1120px); margin: 0 auto; padding: 28px 0 88px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .masthead { padding: 24px 0 38px; border-bottom: 1px solid var(--rule); }
+
+    .wordmark { margin: 0 0 18px; color: var(--ink-soft); font: 700 12px/1 var(--serif); letter-spacing: .04em; }
+    .dateline { margin: 0; font-family: Georgia, Charter, 'Iowan Old Style', serif; font-weight: 650; font-size: clamp(2.55rem, 12vw, 4.85rem); line-height: .96; letter-spacing: -.045em; max-width: 10ch; }
+    .subline { margin: 18px 0 0; color: var(--ink-soft); max-width: 38rem; }
+    .rail { display: none; }
+    .brief-section { padding: 34px 0 30px; border-top: 1px solid var(--rule); }
+    .brief-section:first-child { border-top: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--accent); flex: 0 0 auto; }
+    h2 { margin: 0 0 17px; font: 650 clamp(1.55rem, 5vw, 2.15rem)/1.05 var(--serif); letter-spacing: -.025em; }
+    h3 { margin: 0 0 7px; font: 650 1.15rem/1.25 var(--serif); letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p:first-child { font-size: 1.03rem; }
+    .link-list, .news-list { margin: 0; padding: 0; list-style: none; }
+    .link-list { display: grid; gap: 10px; }
+    .link-list li:not(.plain) a { display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 64%, transparent); color: var(--ink); font-weight: 680; }
+    .link-list .plain { color: var(--ink-soft); font-size: .94rem; margin-top: 8px; }
+    .news-list { counter-reset: news; }
+    .news-list li { position: relative; padding: 18px 0 18px 42px; border-top: 1px solid var(--rule); }
+    .news-list li:first-child { border-top: 0; padding-top: 0; }
+    .news-list li::before { counter-increment: news; content: counter(news); position: absolute; left: 0; top: 18px; width: 24px; height: 24px; display: grid; place-items: center; color: var(--paper); background: var(--ink); font: 700 12px/1 var(--sans); }
+    .news-list li:first-child::before { top: 0; }
+    .dek { color: var(--ink-soft); margin: 0; }
+    footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 22px; color: var(--ink-soft); font-size: .9rem; }
+    @media (min-width: 760px) {
+      body { font-size: 18px; }
+      .shell { width: min(100% - 72px, 1120px); padding-top: 48px; }
+      .dateline { max-width: 13ch; }
+      .content { max-width: 42rem; }
+      .brief-section { padding: 46px 0 40px; }
+    }
+    @media (min-width: 1040px) {
+      .layout { grid-template-columns: 13rem minmax(0, 42rem); align-items: start; gap: 72px; }
+      .rail { display: block; position: sticky; top: 40px; padding-top: 8px; }
+      .rail p { color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; margin: 0 0 16px; }
+      .rail nav { display: grid; gap: 9px; }
+      .rail a { color: var(--ink-soft); font-size: .88rem; }
+      .rail a:hover { color: var(--ink); }
+    }
+  </style><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TJ Daily Brief · Saturday, September 12, 2026</title>
+  <meta name="description" content="TJ's public daily brief: verse, motivation, workouts, sermon reflection, and AI news.">
+  <link rel="canonical" href="https://Tpizz23.github.io/daily-briefs/archive/2026-09-12.html">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <aside class="rail" role="navigation" aria-label="Sections">
+        <p>On this page</p>
+        <nav>
+          <a href="#verse">Scripture</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#emergency-medicine-reading">EM:RAP CorePendium</a>
+          <a href="#workout">Workout</a>
+          <a href="#sermon">Sermon Review</a>
+          <a href="#tech">AI · Industry</a>
+          <a href="#health">AI · Medicine</a>
+        </nav>
+      </aside>
+      <main id="main">
+        <header class="masthead">
+          <p class="wordmark">TJ Daily Brief</p>
+          <h1 class="dateline">Saturday, September 12, 2026</h1>
+        </header>
+<section class="brief-section" id="verse" aria-labelledby="verse-label">
+  <p class="eyebrow">Today's Verse</p>
+  <h2 id="verse-label">Scripture</h2>
+  <div class="section-body">
+    <p>Proverbs 12:25 — “Anxiety in a man’s heart weighs it down, but a kind word makes it glad.”</p>
+<p>Source: bible-api.com (World English Bible)</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="motivation" aria-labelledby="motivation-label">
+  <p class="eyebrow">Daily Inspiration</p>
+  <h2 id="motivation-label">Motivation</h2>
+  <div class="section-body">
+    <p>“Imagination is the beginning of creation.” — George Bernard Shaw</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="emergency-medicine-reading" aria-labelledby="emergency-medicine-reading-label">
+  <p class="eyebrow">Clinical learning</p>
+  <h2 id="emergency-medicine-reading-label">EM:RAP CorePendium</h2>
+  <div class="section-body">
+    <p>Today’s most recently updated CorePendium chapter. Sign in to EM:RAP if prompted.</p>
+    <ul class="link-list"><li><a href="https://www.emrap.org/corependium/chapter/recyBMqazT7o2lGZ7/Approach-to-the-Agitated-Patient" target="_blank" rel="noopener noreferrer">Read: Approach to the Agitated Patient</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="workout" aria-labelledby="workout-label">
+  <p class="eyebrow">Movement</p>
+  <h2 id="workout-label">Workout</h2>
+  <div class="section-body">
+    <p>Back-Biceps — Full Gym</p>
+<p>Back-Biceps — Limited Barbell</p>
+    <ul class="link-list"><li><a href="https://Tpizz23.github.io/workouts/2026-09-12_Back-Biceps_Full-Gym.html" target="_blank" rel="noopener noreferrer">2026-09-12 Back-Biceps Full-Gym</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-09-12_Back-Biceps_Limited-Barbell.html" target="_blank" rel="noopener noreferrer">2026-09-12 Back-Biceps Limited-Barbell</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="sermon" aria-labelledby="sermon-label">
+  <p class="eyebrow">Reflection</p>
+  <h2 id="sermon-label">Sermon Review</h2>
+  <div class="section-body">
+    <p>DAY 6 — SATURDAY</p>
+<p>Theme: Nothing Can Separate Us</p>
+<p>Key Scripture: Romans 8:38-39 — “Neither death nor life… nor anything else in all creation, will be able to separate us from the love of God in Christ Jesus our Lord.”</p>
+<p>Sermon Insight: The chapter ends where Christian security must end: in the unbreakable love of God in Christ. Romans 8 gathers life and death, present and future, spiritual and earthly powers, and declares that none can separate the believer from Jesus. This is the foundation for courage and hope in a chaotic culture. As this week closes, the invitation is not to manufacture certainty but to rest in the certainty God has already given.</p>
+<p>Today's Application: Review the six days and identify the fear that most needs the promise of Romans 8:38-39. Memorize the final verse or send it to someone who needs encouragement.</p>
+<p>Closing Prayer: Lord Jesus, let Your unbreakable love be the deepest truth I carry forward. When life feels unstable, keep me rooted in the grace, hope, and belonging You have secured for me.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="tech" aria-labelledby="tech-label">
+  <p class="eyebrow">Technology briefing</p>
+  <h2 id="tech-label">AI · Industry</h2>
+  <div class="section-body">
+    <p>1. The turbulent AI era is here. The choices we make now are critical. — Gates Notes</p>
+<p>Bill Gates argues that deliberate planning is needed to make AI expand opportunity rather than deepen inequality.</p>
+<p>https://news.google.com/rss/articles/CBMif0FVX3lxTE5vNHRZblJwZHNZZEZfZ285LUdncWl0YUk0UHVfTDM1b05YSU9rVHRhYUpkQ1VwV1RJaXZ4SzZwV2dBd2ZYeEZtbUpGNkpDdng5WjRTa28yOVdIM3drTERSVVVoeWI0WnpWT3dQbGVQcVhvdEZIZE1oaTB4cHdRb0E?oc=5</p>
+<p>2. From employee retention to artificial intelligence — New Ulm Journal</p>
+<p>The article connects workforce-retention challenges with growing organizational reliance on artificial-intelligence tools.</p>
+<p>https://news.google.com/rss/articles/CBMipwFBVV95cUxNTExyeW55WkFZa091cHBaOExuSUZNQTQ5cUw4Z0YtaFd2c3lST0ZuVXdma1I1aG5WNXZZdGlOczhZNTctbEF2Q04wUHNiOTFsQnFIWGpMVDRTeWcwV0VVWEF5YWRsdUlORDhHb0JZRWQ1ZUk2cG90Q3NyM3BseGFaUlJmWE1CY1VKd2xrYk1RR0VTN1ZPWC1YRlNHWVhtNGI0V3A0RHlyUQ?oc=5</p>
+<p>3. As AI fears grow, lawmakers are racing to turn alarm into action — The Washington Post</p>
+<p>Lawmakers are responding to escalating AI concerns by considering policy guardrails and accountability measures.</p>
+<p>https://news.google.com/rss/articles/CBMirgFBVV95cUxNTWJUeHV4a2xYQW5OWldpMmtheWZOMEdYbjVFT3R5RXV6TmYyb2FNRVJpZEFjS3gycGlzZWYyYzcxZWFkdWVBOVRuM0FXUFIzZ202bFdEalJpejN5WFhWMFdEbHM5c290SDJieE5EZVhsajhjcW9nSUdiLW5TQjd1ck9QbXZpRHdMT2x2Q0pnZm1zcTcwSHg0aXB4X0UyQ1RadTRWODJaZzVrMm10alE?oc=5</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="health" aria-labelledby="health-label">
+  <p class="eyebrow">Healthcare briefing</p>
+  <h2 id="health-label">AI · Medicine</h2>
+  <div class="section-body">
+    <p>1. How AI could change patient care, not replace it — Medical Economics</p>
+<p>Medical Economics examines how AI may augment clinical care while preserving clinicians’ central role in patient decisions.</p>
+<p>https://news.google.com/rss/articles/CBMijgFBVV95cUxPdWtuUkpfR2dWell1b09MU19pMFZaeExlcUJKYTdkem4tZUxTR2EyRHZPbVJUOFplOGl5djJDY1liR0xSTC1tVkRMREZzSlhYNGd4LWkxRGswQ0tOYngzSzBLWXlocWU4WkxVTHZXdmRJR3pZLUtKWWdtTS1JOG5adHRXYVNTdy1Wd1B5TEJn?oc=5</p>
+<p>2. Funding Tracker '26: Ours Privacy, Arintra and Happy Health — Fierce Healthcare</p>
+<p>Fierce Healthcare highlights new funding activity involving privacy, automation, and digital-health companies.</p>
+<p>https://news.google.com/rss/articles/CBMijgFBVV95cUxQaFJTdWtYZzBuMHVULWhJWFV3dVB3d0NfeEE1V0RMcV82Z2VFZ2ZtV2x2ZDBYTG1ZUnQ1RGFsZ0pFWmNFZW1rczNCOFRDUjFCTlFvUEplLVFuZmpHRVpfS2pZX3M1ZjZDaFUzZVV3QURjclpScmZlVndpaWlaN3hBNU11dWRpMkxmamp5ZXhR?oc=5</p>
+<p>3. GenHealth.ai Raises $16.5M to Automate Healthcare Administrative Tasks — MedCity News</p>
+<p>The funding will support GenHealth.ai’s effort to automate administrative workflows across healthcare organizations.</p>
+<p>https://news.google.com/rss/articles/CBMipAFBVV95cUxPVWdOXzNSbElLbFJTR0RHZ0hCS01RZXNIcEVlVEFzZ0ZsTWdaVWpJMFhSdHlPY1FZVlBybkZTRHlCNnVsc1BoVnpoVEtHOG5DVVpCNVQyMlJiX2VMN29ONUwxb1VzdXRJeFZ5aGZsSlAybzRiMndNMUo5XzZGY1lyVTc5b1ZxYVRDMUYtUWlNN0QwZmJDc1ZRa045bWdoUmhNdFQ0eg?oc=5</p>
+    
+    
+  </div>
+</section>
+        <footer>
+          Generated at 7:15 AM ET · Vol. 2026, No. 255 · <a href="https://Tpizz23.github.io/daily-briefs/archive/2026-09-12.html">Permanent link</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
