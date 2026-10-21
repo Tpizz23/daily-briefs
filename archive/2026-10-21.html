@@ -1,0 +1,189 @@
+<style>
+    :root {
+      --ink: #1a1814;
+      --ink-soft: #5b554c;
+      --paper: #f6f2ea;
+      --paper-deep: #ece5d6;
+      --rule: #d9d2c4;
+      --accent: #8c3a1f;
+      --accent-soft: #b95a36;
+      --serif: Georgia, Charter, 'Iowan Old Style', 'Source Serif 4', serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(100% - 40px, 1120px); margin: 0 auto; padding: 28px 0 88px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .masthead { padding: 24px 0 38px; border-bottom: 1px solid var(--rule); }
+
+    .wordmark { margin: 0 0 18px; color: var(--ink-soft); font: 700 12px/1 var(--serif); letter-spacing: .04em; }
+    .dateline { margin: 0; font-family: Georgia, Charter, 'Iowan Old Style', serif; font-weight: 650; font-size: clamp(2.55rem, 12vw, 4.85rem); line-height: .96; letter-spacing: -.045em; max-width: 10ch; }
+    .subline { margin: 18px 0 0; color: var(--ink-soft); max-width: 38rem; }
+    .rail { display: none; }
+    .brief-section { padding: 34px 0 30px; border-top: 1px solid var(--rule); }
+    .brief-section:first-child { border-top: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--accent); flex: 0 0 auto; }
+    h2 { margin: 0 0 17px; font: 650 clamp(1.55rem, 5vw, 2.15rem)/1.05 var(--serif); letter-spacing: -.025em; }
+    h3 { margin: 0 0 7px; font: 650 1.15rem/1.25 var(--serif); letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p:first-child { font-size: 1.03rem; }
+    .link-list, .news-list { margin: 0; padding: 0; list-style: none; }
+    .link-list { display: grid; gap: 10px; }
+    .link-list li:not(.plain) a { display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 64%, transparent); color: var(--ink); font-weight: 680; }
+    .link-list .plain { color: var(--ink-soft); font-size: .94rem; margin-top: 8px; }
+    .news-list { counter-reset: news; }
+    .news-list li { position: relative; padding: 18px 0 18px 42px; border-top: 1px solid var(--rule); }
+    .news-list li:first-child { border-top: 0; padding-top: 0; }
+    .news-list li::before { counter-increment: news; content: counter(news); position: absolute; left: 0; top: 18px; width: 24px; height: 24px; display: grid; place-items: center; color: var(--paper); background: var(--ink); font: 700 12px/1 var(--sans); }
+    .news-list li:first-child::before { top: 0; }
+    .dek { color: var(--ink-soft); margin: 0; }
+    footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 22px; color: var(--ink-soft); font-size: .9rem; }
+    @media (min-width: 760px) {
+      body { font-size: 18px; }
+      .shell { width: min(100% - 72px, 1120px); padding-top: 48px; }
+      .dateline { max-width: 13ch; }
+      .content { max-width: 42rem; }
+      .brief-section { padding: 46px 0 40px; }
+    }
+    @media (min-width: 1040px) {
+      .layout { grid-template-columns: 13rem minmax(0, 42rem); align-items: start; gap: 72px; }
+      .rail { display: block; position: sticky; top: 40px; padding-top: 8px; }
+      .rail p { color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; margin: 0 0 16px; }
+      .rail nav { display: grid; gap: 9px; }
+      .rail a { color: var(--ink-soft); font-size: .88rem; }
+      .rail a:hover { color: var(--ink); }
+    }
+  </style><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TJ Daily Brief · Wednesday, October 21, 2026</title>
+  <meta name="description" content="TJ's public daily brief: verse, motivation, workouts, sermon reflection, and AI news.">
+  <link rel="canonical" href="https://Tpizz23.github.io/daily-briefs/archive/2026-10-21.html">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <aside class="rail" role="navigation" aria-label="Sections">
+        <p>On this page</p>
+        <nav>
+          <a href="#verse">Scripture</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#emergency-medicine-reading">EM:RAP CorePendium</a>
+          <a href="#sermon">Sermon Review</a>
+          <a href="#tech">AI · Industry</a>
+          <a href="#health">AI · Medicine</a>
+        </nav>
+      </aside>
+      <main id="main">
+        <header class="masthead">
+          <p class="wordmark">TJ Daily Brief</p>
+          <h1 class="dateline">Wednesday, October 21, 2026</h1>
+        </header>
+<section class="brief-section" id="verse" aria-labelledby="verse-label">
+  <p class="eyebrow">Today's Verse</p>
+  <h2 id="verse-label">Scripture</h2>
+  <div class="section-body">
+    <p>Romans 15:20 — “Yes, making it my aim to preach the Good News, not where Christ was already named, that I might not build on another’s foundation.”</p>
+<p>Source: bible-api.com (World English Bible)</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="motivation" aria-labelledby="motivation-label">
+  <p class="eyebrow">Daily Inspiration</p>
+  <h2 id="motivation-label">Motivation</h2>
+  <div class="section-body">
+    <p>“Kind words can be short and easy to speak, but their echoes are truly endless.” — Mother Teresa</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="emergency-medicine-reading" aria-labelledby="emergency-medicine-reading-label">
+  <p class="eyebrow">Clinical learning</p>
+  <h2 id="emergency-medicine-reading-label">EM:RAP CorePendium</h2>
+  <div class="section-body">
+    <p>Today’s most recently updated CorePendium chapter. Sign in to EM:RAP if prompted.</p>
+    <ul class="link-list"><li><a href="https://www.emrap.org/corependium/chapter/recLIbLCBlmchvyfs/Pharyngitis" target="_blank" rel="noopener noreferrer">Read: Pharyngitis</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="sermon" aria-labelledby="sermon-label">
+  <p class="eyebrow">Reflection</p>
+  <h2 id="sermon-label">Sermon Review</h2>
+  <div class="section-body">
+    <p>Our Role in Evangelism/ Mission — Day 3 of 6</p>
+<p>Clayton King | Romans series</p>
+<p>Theme: A Heart for the Nations</p>
+<p>Key Scripture: Romans 15:20 — “It has always been my ambition to preach the gospel where Christ was not known.”</p>
+<p>Sermon Insight: Paul’s ambition was shaped by places and people who had not yet heard of Christ. Evangelism is more than maintaining familiar religious spaces; it carries the message toward those who are far away, overlooked, or unreached. Clayton King’s message calls us to notice the missionary direction of God’s heart.</p>
+<p>Today’s Application: Make a short list of three people or communities who may be far from church or faith. Pray for them by name and ask God to show you one respectful bridge toward them.</p>
+<p>Closing Prayer: Lord, enlarge my heart beyond the people who are already comfortable with faith. Give me compassion for those who do not know You and wisdom to serve them well. Amen.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="tech" aria-labelledby="tech-label">
+  <p class="eyebrow">Technology briefing</p>
+  <h2 id="tech-label">AI · Industry</h2>
+  <div class="section-body">
+    <p>1. Writing Artificial Intelligence Into Constitutions: A Global Constitutional Moment for the Algorithmic State — www.iconnectblog.com</p>
+<p>The analysis examines how constitutional systems may adapt as artificial intelligence becomes embedded in governance and public decision-making.</p>
+<p>https://news.google.com/rss/articles/CBMi0wFBVV95cUxOYkpNYzYxc2h1TzBFdDRXTXZqR3dQQnB1VUg2YUF2d2VoZW8taURPSjFRd3V0X0gtVmlmMG8zb19jeUdaNWY5bVFyaFFrcjNSV1JNNG5WWjlSMTN0NlgxZXdCcHYwMlViZFp6Qk5sRzFrXzlWUGpNUUVScmlRcFo2SUpPOHJycUM5N0w3WGVkNmc0Z3V1UzE1S0FpUjh4cnJXbEE4YlVUM1RkM2tFd0N5dml1VmV4WUEyU1pfeEJ6SnZDZFBaeTBtX3ZVT3pFSU9MTUtz?oc=5</p>
+<p>2. Strategy Is Not Conscience: The Moskovitz Perspective, Artificial Intelligence, and the Mo — Institute for National Strategic Studies (INSS)</p>
+<p>The commentary distinguishes strategic AI planning from ethical judgment, emphasizing that capability does not replace human responsibility.</p>
+<p>https://news.google.com/rss/articles/CBMivwFBVV95cUxPNGZmV1ZUeGJLSTRkUk5LSFNxM3laSjJzYURyaUpiclhuV0tmQmN2LTUxa2tUUzV4cklHVW9velM5aU1pbjlaU1hFWW9idHRCYW5EeGxDbHU4S1g0cXNScnV4Qkx1VkhlQVJzblhicVN3MEdTQ2FwNTJvbjdNSkV3dFVIbXV6cU0ta2JzWkIyd25lN3Fsem5GZGJCQ2hFN2plS2RQUjRYZUhOWmNOQndSRTJEY1lVb3RUdFRBOEF0TQ?oc=5</p>
+<p>3. Artificial Intelligence-Enabled Triage Tools May Reflect Human Biases — Newswise</p>
+<p>Research coverage warns that AI triage tools can reproduce human biases, making validation and equitable deployment essential in clinical settings.</p>
+<p>https://news.google.com/rss/articles/CBMipgFBVV95cUxPNkM5dHJuSHBxN1k2eHoxSWlpZFZ1d2t1ZDNwTUZXeHBzWTJuZGhvUGFKN2FJT0I0VXhYcFBBUi1JdWRLcFB5SHY3VU1ZTU1JTUZiT3VtN2ttOVRxWVpTQ0h2TEJjMVE2Y2NYQkVqZ0ltTE5ZTTNEdlRkTWs3SC1td0ZlV0ZVS1BBTnMzckVWbC1rUzMzc1RXcGpINHRkM3dXdGxSdEJR0gGmAUFVX3lxTE82Qzl0cm5IcHE3WTZ4ejFJaWlkVnV3a3VkM3BNRld4cHNZMm5kaG9QYUo3YUlPQjRVeFhwUEFSLUl1ZEtwUHlIdjdVTVlNTUlNRmJPdW03a205VHFZWlNDSHZMQmMxUTZjY1hCRWpnSW1MTllNM0R2VGRNazdILW13RmVXRlVLUEFOczNyRVZsLWtTMzNzVFdwakg0dGQzd1d0bFJ0QlE?oc=5</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="health" aria-labelledby="health-label">
+  <p class="eyebrow">Healthcare briefing</p>
+  <h2 id="health-label">AI · Medicine</h2>
+  <div class="section-body">
+    <p>1. AstraZeneca and Oracle collaborate to test AI in clinical trial recruitment — Yahoo Finance</p>
+<p>AstraZeneca and Oracle are testing AI-supported recruitment methods intended to improve how clinical trials identify and enroll suitable participants.</p>
+<p>https://news.google.com/rss/articles/CBMioAFBVV95cUxPYkJHME9yZmg0MElLSmF6WHZIc3pVMkIxN00wUEFxNGVaa19QTkdaU1Bmel9Ya1FDWTNyWmtMTmEwR0Zna0RmVG1TTHBpT0NCV1VFZEhsb05sQl8tV2kwQXJGWFVzejFBVVRvRjFJQXRuSUdyVDN0VnBWdk1nMnJEeUZUOHVJNF9OeThSOXVGMUhaMEtyZ2N3WmljQXlZb3FI?oc=5</p>
+<p>2. AI will not replace the doctor. It will do something that might surprise you — The Jerusalem Post</p>
+<p>The report argues that AI is more likely to reshape physicians’ work and augment care than eliminate doctors’ clinical roles.</p>
+<p>https://news.google.com/rss/articles/CBMimAFBVV95cUxOSmJYLTRGLTlVOFFhUWJpcFBDaG1VWHdNRGQ1bDg1Tk9KcENSOTBHdGtyOTFMOVVNNUFLX08wdDMwOFlSM3lKdzU3djlpUTFKQ0x3VC1vWGdBcEpXeWc4alY0dTRlblhBd2gxOGNGcjlrSklNSERudm5XdVNnc3lkeEJ0a0RTbzhrYnhTZ0xXZTZ0VjJQYV9oZA?oc=5</p>
+<p>3. AMA releases framework for ‘clinical authority’ to guide agentic AI adoption in healthcare — HealthExec</p>
+<p>The AMA framework emphasizes preserving clinical authority and accountability as healthcare organizations adopt agentic AI systems.</p>
+<p>https://news.google.com/rss/articles/CBMizAFBVV95cUxQV0JRTlRZM3poZEJ5UVZ3TktmOXhTUG52QUhINVV0cm1nUUgzTGZYZ3dHN2xBSXNKcmwxQkFwNExUb216WndMaG51cTQzNHVJOUxwcEJBOEMzYXhFV2prQWVMTFJhNFNmZ2h2dzZodmk3QmxLOWwtZ3I4TXhncDd5SkFEOWUzaS1hRWFIdDJ2Sk4tUktMbGIwTlYzak1lOXZ4M2dSUUdNVTdwaWhCSkEwSjNKcV9GTWFaQ3ZfcEVLanpWWkljUWQtMFotSXc?oc=5</p>
+    
+    
+  </div>
+</section>
+        <footer>
+          Generated at 7:03 AM ET · Vol. 2026, No. 294 · <a href="https://Tpizz23.github.io/daily-briefs/archive/2026-10-21.html">Permanent link</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
