@@ -1,0 +1,198 @@
+<style>
+    :root {
+      --ink: #1a1814;
+      --ink-soft: #5b554c;
+      --paper: #f6f2ea;
+      --paper-deep: #ece5d6;
+      --rule: #d9d2c4;
+      --accent: #8c3a1f;
+      --accent-soft: #b95a36;
+      --serif: Georgia, Charter, 'Iowan Old Style', 'Source Serif 4', serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--ink); color: var(--paper); padding: .5rem .75rem; z-index: 2; }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(100% - 40px, 1120px); margin: 0 auto; padding: 28px 0 88px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .masthead { padding: 24px 0 38px; border-bottom: 1px solid var(--rule); }
+
+    .wordmark { margin: 0 0 18px; color: var(--ink-soft); font: 700 12px/1 var(--serif); letter-spacing: .04em; }
+    .dateline { margin: 0; font-family: Georgia, Charter, 'Iowan Old Style', serif; font-weight: 650; font-size: clamp(2.55rem, 12vw, 4.85rem); line-height: .96; letter-spacing: -.045em; max-width: 10ch; }
+    .subline { margin: 18px 0 0; color: var(--ink-soft); max-width: 38rem; }
+    .rail { display: none; }
+    .brief-section { padding: 34px 0 30px; border-top: 1px solid var(--rule); }
+    .brief-section:first-child { border-top: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--accent); flex: 0 0 auto; }
+    h2 { margin: 0 0 17px; font: 650 clamp(1.55rem, 5vw, 2.15rem)/1.05 var(--serif); letter-spacing: -.025em; }
+    h3 { margin: 0 0 7px; font: 650 1.15rem/1.25 var(--serif); letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p:first-child { font-size: 1.03rem; }
+    .link-list, .news-list { margin: 0; padding: 0; list-style: none; }
+    .link-list { display: grid; gap: 10px; }
+    .link-list li:not(.plain) a { display: inline-flex; min-height: 44px; align-items: center; padding: 9px 13px; border: 1px solid var(--rule); background: color-mix(in srgb, var(--paper-deep) 64%, transparent); color: var(--ink); font-weight: 680; }
+    .link-list .plain { color: var(--ink-soft); font-size: .94rem; margin-top: 8px; }
+    .news-list { counter-reset: news; }
+    .news-list li { position: relative; padding: 18px 0 18px 42px; border-top: 1px solid var(--rule); }
+    .news-list li:first-child { border-top: 0; padding-top: 0; }
+    .news-list li::before { counter-increment: news; content: counter(news); position: absolute; left: 0; top: 18px; width: 24px; height: 24px; display: grid; place-items: center; color: var(--paper); background: var(--ink); font: 700 12px/1 var(--sans); }
+    .news-list li:first-child::before { top: 0; }
+    .dek { color: var(--ink-soft); margin: 0; }
+    footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 22px; color: var(--ink-soft); font-size: .9rem; }
+    @media (min-width: 760px) {
+      body { font-size: 18px; }
+      .shell { width: min(100% - 72px, 1120px); padding-top: 48px; }
+      .dateline { max-width: 13ch; }
+      .content { max-width: 42rem; }
+      .brief-section { padding: 46px 0 40px; }
+    }
+    @media (min-width: 1040px) {
+      .layout { grid-template-columns: 13rem minmax(0, 42rem); align-items: start; gap: 72px; }
+      .rail { display: block; position: sticky; top: 40px; padding-top: 8px; }
+      .rail p { color: var(--ink-soft); font: 700 11px/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; margin: 0 0 16px; }
+      .rail nav { display: grid; gap: 9px; }
+      .rail a { color: var(--ink-soft); font-size: .88rem; }
+      .rail a:hover { color: var(--ink); }
+    }
+  </style><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>TJ Daily Brief · Tuesday, October 27, 2026</title>
+  <meta name="description" content="TJ's public daily brief: verse, motivation, workouts, sermon reflection, and AI news.">
+  <link rel="canonical" href="https://Tpizz23.github.io/daily-briefs/archive/2026-10-27.html">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <aside class="rail" role="navigation" aria-label="Sections">
+        <p>On this page</p>
+        <nav>
+          <a href="#verse">Scripture</a>
+          <a href="#motivation">Motivation</a>
+          <a href="#emergency-medicine-reading">EM:RAP CorePendium</a>
+          <a href="#workout">Workout</a>
+          <a href="#sermon">Sermon Review</a>
+          <a href="#tech">AI · Industry</a>
+          <a href="#health">AI · Medicine</a>
+        </nav>
+      </aside>
+      <main id="main">
+        <header class="masthead">
+          <p class="wordmark">TJ Daily Brief</p>
+          <h1 class="dateline">Tuesday, October 27, 2026</h1>
+        </header>
+<section class="brief-section" id="verse" aria-labelledby="verse-label">
+  <p class="eyebrow">Today's Verse</p>
+  <h2 id="verse-label">Scripture</h2>
+  <div class="section-body">
+    <p>Proverbs 27:17 — “Iron sharpens iron; so a man sharpens his friend’s countenance.”</p>
+<p>Source: bible-api.com (World English Bible)</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="motivation" aria-labelledby="motivation-label">
+  <p class="eyebrow">Daily Inspiration</p>
+  <h2 id="motivation-label">Motivation</h2>
+  <div class="section-body">
+    <p>“The pursuit of mastery bears gifts.” — Gary Keller</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="emergency-medicine-reading" aria-labelledby="emergency-medicine-reading-label">
+  <p class="eyebrow">Clinical learning</p>
+  <h2 id="emergency-medicine-reading-label">EM:RAP CorePendium</h2>
+  <div class="section-body">
+    <p>Today’s most recently updated CorePendium chapter. Sign in to EM:RAP if prompted.</p>
+    <ul class="link-list"><li><a href="https://www.emrap.org/corependium/chapter/recUMxRrwZ5yw53QI/EMTALA-Obligations-of-Sending-and-Receiving-Physicians" target="_blank" rel="noopener noreferrer">Read: EMTALA: Obligations of Sending and Receiving Physicians</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="workout" aria-labelledby="workout-label">
+  <p class="eyebrow">Movement</p>
+  <h2 id="workout-label">Workout</h2>
+  <div class="section-body">
+    
+    <ul class="link-list"><li><a href="https://Tpizz23.github.io/workouts/2026-10-20_Chest-Triceps_Limited-Barbell.html" target="_blank" rel="noopener noreferrer">2026-10-20 Chest-Triceps — Limited-Barbell:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-10-20_Chest-Triceps_Full-Gym.html" target="_blank" rel="noopener noreferrer">2026-10-20 Chest-Triceps — Full-Gym:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-10-21_Back-Biceps_Limited-Barbell.html" target="_blank" rel="noopener noreferrer">2026-10-21 Back-Biceps — Limited-Barbell:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-10-21_Back-Biceps_Full-Gym.html" target="_blank" rel="noopener noreferrer">2026-10-21 Back-Biceps — Full-Gym:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-10-22_Legs-Shoulders-Core_Limited-Barbell.html" target="_blank" rel="noopener noreferrer">2026-10-22 Legs-Shoulders-Core — Limited-Barbell:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-10-22_Legs-Shoulders-Core_Full-Gym.html" target="_blank" rel="noopener noreferrer">2026-10-22 Legs-Shoulders-Core — Full-Gym:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-10-23_Chest-Triceps_Limited-Barbell.html" target="_blank" rel="noopener noreferrer">2026-10-23 Chest-Triceps — Limited-Barbell:</a></li><li><a href="https://Tpizz23.github.io/workouts/2026-10-23_Chest-Triceps_Full-Gym.html" target="_blank" rel="noopener noreferrer">2026-10-23 Chest-Triceps — Full-Gym:</a></li></ul>
+    
+  </div>
+</section>
+<section class="brief-section" id="sermon" aria-labelledby="sermon-label">
+  <p class="eyebrow">Reflection</p>
+  <h2 id="sermon-label">Sermon Review</h2>
+  <div class="section-body">
+    <p>Our Role in Evangelism/ Mission — Day 2 of 6</p>
+<p>Theme: Partnering in Mission</p>
+<p>Key Scripture Romans 15:24 — “I hope to see you in passing and to have you assist me on my journey there, after I have enjoyed your company for a while.”</p>
+<p>Sermon insight: Paul envisioned mission as partnership, with believers encouraging, sending, praying, giving, welcoming, and witnessing beyond their immediate neighborhood.</p>
+<p>Today’s application: Identify one missionary, ministry, or local believer doing gospel work, then send encouragement, offer practical help, or pray specifically for their next step.</p>
+<p>Closing prayer: Father, free me from thinking mission belongs only to experts. Show me how my ordinary resources and relationships can strengthen the spread of the gospel. Amen.</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="tech" aria-labelledby="tech-label">
+  <p class="eyebrow">Technology briefing</p>
+  <h2 id="tech-label">AI · Industry</h2>
+  <div class="section-body">
+    <p>1. Insight: Fashion's AI era: face swaps and digital clones — Reuters</p>
+<p>Reuters reports fashion brands are using face swaps and digital clones, intensifying debates over synthetic identities and commercial authenticity.</p>
+<p>https://news.google.com/rss/articles/CBMimgFBVV95cUxPMWtnLUwtNEgzYnkxbDdsWlA3TXZDUGFtYWpub0p0YXdfaHliNldnVzB4WjQ0a0pxeElLRFBWdXZrTFQzcHJSa1IwVEkwWVBsNFJzYVFIbTNjYXQ0ZWpOUjdBNkNwRzlCQVQ1dERobkJnOEVfdVV3djNqbWtjSEFhVHR0LThlVl8zZWp6dGZjNi1VUWJOTmN6dHFR?oc=5</p>
+<p>2. Beijing pushes for UN-led governance of artificial intelligence at global forum — South China Morning Post</p>
+<p>China is urging UN-led AI governance, signaling a push for international rules as national approaches diverge.</p>
+<p>https://news.google.com/rss/articles/CBMiugFBVV95cUxQalprODluR0pCN2hLYU5fRzZYek9jS3pSMTg4Y0gzUGVCNGp1S1V4MTg3TXI3eVZkeWtoT1E1RXZmU1pIZnhVSktqOEtUcUhVT0laaDRvUkpreGFOZW5rVFJCaHUweFFLaFEybGw2Q3VQWmV3a01aeTVvd1ltUXJyYnBFR3hLaHpFNFoxcWU1Nm5sLWlscTF6WHNLcGxaZTdDa1ZHYVFuSDdxYmRhN1FXcWRiRmVqbU9SVHfSAboBQVVfeXFMUGpaazg5bkdKQjdoS2FOX0c2WHpPY0t6UjE4OGNIM1BlQjRqdUtVeDE4N01yN3lWZHlraE9RNUV2ZlNaSGZ4VUpLajhLVHFIVU9JWmg0b1JKa3hhTmVua1RSQmh1MHhRS2hRMmxsNkN1UFpld2tNWnk1b3dZbVFycmJwRUd4S2h6RTRaMXFlNTZubC1pbHExelhzS3BsWmU3Q2tWR2FRbkg3cWJkYTdRV3FkYkZlam1PUlR3?oc=5</p>
+<p>3. Virginia orders plans to address artificial intelligence cyber threats — Potomac Local News</p>
+<p>Virginia is ordering statewide planning to strengthen defenses against AI-enabled cyberattacks and improve preparedness.</p>
+<p>https://news.google.com/rss/articles/CBMisAFBVV95cUxQb3BrYm9SaTR4cWdzV3VKN0NmQU9CeXF3eGN2c1lDcHRWWlJOaFU0NC1UUk5DS2lGV1JNeTRoWVBoV0U3SDBXU3FfVjhkSkc2TmNZemlXR1l4eHRkaFZvS1RqRGlrdzlCeF8xSW9UdGlDVFoxZDNxUDBFVEdQUFl5M3BoOTlRZzhGNXphV2x0MXFFMjBpY2hWSHZUUjQ2YTNvYmZ2azc5enFldzVxa2djeQ?oc=5</p>
+    
+    
+  </div>
+</section>
+<section class="brief-section" id="health" aria-labelledby="health-label">
+  <p class="eyebrow">Healthcare briefing</p>
+  <h2 id="health-label">AI · Medicine</h2>
+  <div class="section-body">
+    <p>1. Telekom invests in Tandem Health: AI-powered medical assistant eases the burden on healthcare professionals — Deutsche Telekom</p>
+<p>Deutsche Telekom is investing in Tandem Health’s AI medical assistant to reduce administrative burden for healthcare professionals.</p>
+<p>https://news.google.com/rss/articles/CBMirgFBVV95cUxQMEduOHFWS1FIMHlVUUFjR0djQlBuWVpYNXc0VGxCV0pGUC1TSm5BbnR4TjN0c19QVlRPblM0UC1QdW45dkJGd0c2ejhaUkFBdjM1cHZ2d3AzTjRreVR2WGt6OUtENXVFbjY1TDN5V0lCaXpzVlZaRDZ4STdWXzlwTERvd1NLWndaWHJHYnpUSzduRllkZ0ZBN1RZZjhZTTg5alBLN1pVVUhfcThnOGc?oc=5</p>
+<p>2. UMich and European professors discuss AI in healthcare — The Michigan Daily</p>
+<p>European and Michigan professors discussed AI’s healthcare opportunities and challenges in a cross-border academic conversation.</p>
+<p>https://news.google.com/rss/articles/CBMiowFBVV95cUxNUkpOOEUyekw3ZHdqandzVENFWjRMTEI0NWVLQm4xcVUyU0t1R3N3QU5SaDhnYkpOM2dOYkVzb1VWRkIwd1pIcWhLTnJVb3B1dDhBLW5kS2xoWTlBaENVRkRWZjdwc0ZETHE2d2tUcW1KNkdmX3ZRYkdjQzVFZ2p2MF9qM1ZaTnJZVFVJbzdvdk4xMm5STlh0MWFSUGptczRuZUdr?oc=5</p>
+<p>3. Why AI legal liability should be a red flag for health systems — Modern Healthcare</p>
+<p>Modern Healthcare highlights legal liability as health systems deploy AI, emphasizing governance and accountability alongside innovation.</p>
+<p>https://news.google.com/rss/articles/CBMikgFBVV95cUxNaTJuSkRReXI5akhEb2lOaXZSMDRZNUF3VWRfUEFjMTQ3SWZLZ3IyWHh1cHpuZlNZUENvNm93U1YzanFTU2h3Y0NJNUExTVBXMndjRFZuUG1uS1BtbzFNVlhvVTBTNkhFTmkxalhnRDRySHBPd3RiTUwxWERlRlJKdEFQb2NSeHVlajJoOE4taVREQQ?oc=5</p>
+    
+    
+  </div>
+</section>
+        <footer>
+          Generated at 7:02 AM ET · Vol. 2026, No. 300 · <a href="https://Tpizz23.github.io/daily-briefs/archive/2026-10-27.html">Permanent link</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
